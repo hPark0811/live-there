@@ -1,9 +1,21 @@
 import csv
 import requests
 import json
-from statistics import mean
+import numpy
 import os.path
 from os import path
+
+# Calculate mean with outliers removed.
+def calculate_mean(prices):
+  prices = numpy.array(prices)
+  mean = numpy.mean(prices)
+  std_dev = numpy.std(prices)
+  distance_from_mean = abs(prices - mean)
+  max_deviations = 2
+  not_outlier = distance_from_mean < max_deviations * std_dev
+  no_outliers = prices[not_outlier]
+
+  return numpy.mean(no_outliers)
 
 # constants
 UNIVERSITY = 'university'
@@ -90,8 +102,8 @@ for row in cities_csv:
   prices = []
 
   for listing in listings:
-    rent_price = mean(listing[RENT_MIN_MAX])
-    room_count = mean(listing[BEDS_MIN_MAX])
+    rent_price = numpy.max(listing[RENT_MIN_MAX])
+    room_count = numpy.max(listing[BEDS_MIN_MAX])
 
     # bachelors room
     if room_count < 1:
@@ -99,7 +111,7 @@ for row in cities_csv:
 
     prices.append(rent_price / room_count)
 
-  average_price_per_room = mean(prices)
+  average_price_per_room = calculate_mean(prices)
   average_rentals_dict[city] = average_price_per_room
 
 # create average rentals data
