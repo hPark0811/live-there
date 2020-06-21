@@ -198,21 +198,34 @@ if __name__ == "__main__":
     try:
         # Retrieve pool and obj
         ec_options = get_bill_options('e')
+        ng_options = get_bill_options('n')
         options_candidates = get_distribution_company(driver, postal_code)
 
         # Find available options for all obj
-        available_options = []
+        available_ec_options = []
+        available_ng_options = []
         for o in options_candidates:
-            available_options.extend(find_options(o, ec_options))
+            available_ec_options.extend(find_options(o, ec_options))
+            available_ng_options.extend(find_options(o, ng_options))
 
         # Calculate average electricity bills over the available options
-        total_bill = 0
-        for o in available_options:
-            total_bill += get_bill(driver, o, t='e')
-        average_bill = total_bill/len(available_options)
+        total_ec_bill = 0
+        for o in available_ec_options:
+            total_ec_bill += get_bill(driver, o, t='e')
 
-        print(f'The average electricity bill is { average_bill :.2f}$ sampled from')
-        pprint.pprint(available_options)
+        total_ng_bill = 0
+        for o in available_ng_options:
+            total_ng_bill += get_bill(driver, o, t='n')
+
+        # If len of both list is not zero
+        if not (len(available_ec_options) and len(available_ng_options)):
+            average_bill = total_ec_bill / len(available_ec_options) + total_ng_bill / len(available_ng_options)
+        else:
+            raise Exception()
+
+        print(f'The average bill is { average_bill :.2f}$ sampled from')
+        pprint.pprint(available_ec_options)
+        pprint.pprint(available_ng_options)
 
     except Exception:
         raise Exception('utilities_fees.py: Error occurred during automatic web-scrapping')
