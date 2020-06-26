@@ -1,0 +1,59 @@
+,Institution,Postal Code,City,Province,Type,Avg EC,Avg NG
+0,University of Toronto - St. George Campus,M5S 2R7,Toronto,ON,U,114.67,40.95
+1,University of Toronto - Scarborough,M1C 1A4,Scarborough,ON,U,114.67,40.95
+2,University of Toronto - Mississauga,L5L 1C6,Mississauga,ON,U,108.61399999999999,41.948
+3,University of Ontario Institute of Technology,L1H 7K4,Oshawa,ON,U,107.87,41.948
+4,Western University,N6A 3K7,London,ON,U,107.26,41.948
+5,Queen's University,K7L 3N6,Kingston,ON,U,109.8,41.948
+6,University of Waterloo,N2L 3G1,Waterloo,ON,U,110.66,40.055
+7,McMaster University,L8S 4L8,Hamilton,ON,U,108.61399999999999,41.948
+8,York University,M3J 1P3,Toronto,ON,U,114.67,40.95
+10,University of Guelph,N1G 2W1,Guelph,ON,U,108.79,40.95
+11,University of Ottawa,K1N 6N5,Ottawa,ON,U,108.79,40.95
+12,Carleton University,K1S 5B6,Ottawa,ON,U,107.88,41.948
+13,Laurentian University,P3E 2C6,Sudbury,ON,U,108.61399999999999,41.948
+14,Brock University,L2S 3A1,Catharines,On,U,110.21,40.95
+15,Nipissing University,P1B 8L7,North Bay,ON,U,110.66,40.055
+17,Wilfrid Laurier University,N2L 3C5,Waterloo,ON,U,114.67,40.95
+18,University of Windsor,N9B 3P4,Windsor,ON,U,114.67,40.95
+19,Seneca - Newnham Campus,M2J 2X5,Toronto,ON,C,124.32714285714283,41.948
+20,Seneca - @ York,M3J 3M6,Toronto,ON,C,108.61399999999999,41.948
+21,Seneca - King Campus,L7B 1B3,King,ON,C,124.32714285714283,41.948
+22,Seneca - Markham Campus,L3R 5Y1,Markham,ON,C,114.67,40.95
+23,Seneca - Peterborough Campus,K9J 0E7,Peterborough,ON,C,114.67,40.95
+24,Seneca - Downtown,M5L 1E2,Toronto, ON,C,111.73,41.948
+25,Seneca - Yorkgate Campus,M3N 3A1,North York,ON,C,108.61399999999999,41.948
+26,Sheridan - Trafalgar Road Campus,L6H 2L1,Oakville,ON,C,114.67,40.95
+28,Sheridan - Davis Campus,L6Y 5H9,Brampton,ON,C,107.85,40.95
+29,Humber - North Campus,M9W 5L7,Toronto,ON,C,114.67,40.95
+30,Humber - Lakeshore Campus,M8V 4B6,Toronto,ON,C,114.67,40.95
+31,Humber - Orangeville Campus,L9W 5A9,Orangeville,ON,C,110.14500000000001,41.948
+32,George Brown - Casa Loma Campus,M5R 1M3,Toronto,ON,C,109.86,41.948
+33,George Brown - St. James Campus,M5A 3W8,Toronto,ON,C,116.78642857142859,41.948
+34,George Brown - Waterfront Campus,M5E 3Y5,Toronto,ON,C,110.14500000000001,41.948
+35,Niagara - Welland,L3C 7L3,Welland,ON,C,108.61399999999999,41.948
+36,Niagara - Niagara On The Lake,L0S 1J0,Niagara-on-the-Lake,ON,C,108.61399999999999,41.948
+37,Mohawk - Fennell Campus,L9C 0E5,Hamilton,ON,C,107.26,41.948
+38,Mohawk - Stoney Creek Campus,L8E 2L7,Stoney Creek,ON,C,107.26,41.948
+39,Mohawk - Institute for Applied Health Sciences at McMaster,L8S 1C7,Hamilton,ON,C,107.26,41.948
+40,Fanshawe - London Campus,N5Y 5R6,London,ON,C,107.26,41.948
+41,Fanshawe - Aviation Centre,N5V 3S4,London,ON,C,107.26,41.948
+42,Fanshawe - Centre for Applied Transportation Technologies,N5V 3R6,London,ON,C,107.26,41.948
+43,Fanshawe - London South Campus,N6E 3W5,London,ON,C,107.26,41.948
+44,Fanshawe - School of Digital and Performing Arts,N6A 1E9,London,ON,C,112.82,41.948
+45,Fanshawe - School of Information Technology/School of Tourism Hospitality and Culinary Arts,N6A 1G2,London,ON,C,114.67,40.95
+46,Fanshawe - Academic Upgrading and Community Employment Services,N6A 6E2,London,ON,C,108.79,40.95
+47,Lambton - Main Campus,N7S 6K4,Sarnia,ON,C,124.32714285714283,41.948
+48,Lambton - Toronto Campus,M2J 1S5,Toronto,ON,C,124.32714285714283,41.948
+49,Algonquin - Ottawa Campus,K2G 1V8,Nepean,ON,C,107.88,41.948
+50,Algonquin - Pembroke,K8A 0C8,Pembroke,ON,C,,
+51,Algonquin - Perth,K7H 1X7,Perth,ON,C,112.34,41.948
+52,Cambrian - Barrydowne Campus,P3A 3V8,Sudbury,ON,C,110.21,40.95
+53,Cambrian - Manitoulin Campus,POP 1KO,Little Current,ON,C,117.11,41.948
+54,Cambrian - Espanola Campus,P5E 1S6,Espanola,ON,C,114.67,40.95
+55,Canadore - College Drive Campus,P1B 8K9,North Bay,ON,C,108.61399999999999,41.948
+56,Canadore - West Parry Sound Campus,P2A 0A9,Parry Sound,ON,C,108.61399999999999,41.948
+57,Canadore - Stanford Scarborough Campus,M1G 3T5,Scarborough,ON,C,114.67,40.95
+58,Canadore - Stanford Mississauga Campus,L4W 1K4,Mississauga,ON,C,,
+59,Canadore - Stanford Brampton Campus,L6S 6B5,Brampton,ON,C,,
+60,Canadore - Stanford Toronto Campus,M3B 2R2,Toronto,ON,C,,

@@ -16,6 +16,7 @@ import os
 import requests
 import pprint
 import numpy as np
+from collections.abc import Iterable
 
 EC_CALC_URL = r'https://www.oeb.ca/_html/calculator/billcalc.php'
 NG_CALC_URL = r'https://www.oeb.ca/_html/calculator/gasbillcalc.php'
@@ -178,7 +179,7 @@ def find_options(obj, pool):
     :param pool:
     :return:
     """
-    pmf = calculate_pmf(ec_options)
+    pmf = calculate_pmf(pool)
     scores = {}
     for p in pool:
         scores[p] = calculate_score(obj, p, pmf)
@@ -192,43 +193,65 @@ def find_options(obj, pool):
     return [k for k, v in scores.items() if v == max_score]
 
 
+def run_scraper(postal_code):
+    average_ec_bills = []
+    average_ng_bills = []
+
+    driver = get_chrome_driver()
+
+    postal_codes = []
+    if (not isinstance(postal_code, Iterable)) or isinstance(postal_code, str):
+        postal_codes = [postal_code]
+    else:
+        postal_codes = postal_code
+
+    for postal_code in postal_codes:
+        try:
+            # Retrieve pool and obj
+            ec_options = get_bill_options('e')
+            ng_options = get_bill_options('n')
+            options_candidates = get_distribution_company(driver, postal_code)
+
+            # Find available options for all obj
+            available_ec_options = []
+            available_ng_options = []
+            for o in options_candidates:
+                available_ec_options.extend(find_options(o, ec_options))
+                available_ng_options.extend(find_options(o, ng_options))
+
+            # Calculate average electricity bills over the available options
+            total_ec_bill = 0
+            for o in available_ec_options:
+                total_ec_bill += get_bill(driver, o, t='e')
+
+            total_ng_bill = 0
+            for o in available_ng_options:
+                total_ng_bill += get_bill(driver, o, t='n')
+
+            # If len of both list is not zero
+            if (len(available_ec_options) != 0 and len(available_ng_options)) != 0:
+                average_ec_bill = total_ec_bill / len(available_ec_options)
+                average_ng_bill = total_ng_bill / len(available_ng_options)
+            else:
+                raise Exception(f'{len(available_ng_options)} average NG Options and {len(available_ec_options)} average EC Options')
+
+            print(f'The average electrical bill is { average_ec_bill :.2f}$ sampled from')
+            pprint.pprint(available_ec_options)
+            print(f'The average natural gas bill is {average_ng_bill :.2f}$ sampled from')
+            pprint.pprint(available_ng_options)
+
+            average_ec_bills.append(average_ec_bill)
+            average_ng_bills.append(average_ng_bill)
+
+        except Exception:
+            print(f'utilities_fees.py: Error occurred during automatic web-scrapping @ {postal_code}')
+            average_ec_bills.append(float('nan'))
+            average_ng_bills.append(float('nan'))
+
+    driver.close()
+    return average_ec_bills, average_ng_bills
+
+
 if __name__ == "__main__":
     postal_code = input('Please enter available postal code: ')
-    driver = get_chrome_driver()
-    try:
-        # Retrieve pool and obj
-        ec_options = get_bill_options('e')
-        ng_options = get_bill_options('n')
-        options_candidates = get_distribution_company(driver, postal_code)
-
-        # Find available options for all obj
-        available_ec_options = []
-        available_ng_options = []
-        for o in options_candidates:
-            available_ec_options.extend(find_options(o, ec_options))
-            available_ng_options.extend(find_options(o, ng_options))
-
-        # Calculate average electricity bills over the available options
-        total_ec_bill = 0
-        for o in available_ec_options:
-            total_ec_bill += get_bill(driver, o, t='e')
-
-        total_ng_bill = 0
-        for o in available_ng_options:
-            total_ng_bill += get_bill(driver, o, t='n')
-
-        # If len of both list is not zero
-        if not (len(available_ec_options) and len(available_ng_options)):
-            average_bill = total_ec_bill / len(available_ec_options) + total_ng_bill / len(available_ng_options)
-        else:
-            raise Exception()
-
-        print(f'The average bill is { average_bill :.2f}$ sampled from')
-        pprint.pprint(available_ec_options)
-        pprint.pprint(available_ng_options)
-
-    except Exception:
-        raise Exception('utilities_fees.py: Error occurred during automatic web-scrapping')
-
-    finally:
-        driver.close()
+    run_scraper(postal_code)
