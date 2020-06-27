@@ -200,6 +200,7 @@ def run_scraper(postal_code):
     driver = get_chrome_driver()
 
     postal_codes = []
+    # Allow iterable or single element scraping
     if (not isinstance(postal_code, Iterable)) or isinstance(postal_code, str):
         postal_codes = [postal_code]
     else:
@@ -235,6 +236,7 @@ def run_scraper(postal_code):
             else:
                 raise Exception(f'{len(available_ng_options)} average NG Options and {len(available_ec_options)} average EC Options')
 
+            # Display summary on every iteration of  university
             print(f'The average electrical bill is { average_ec_bill :.2f}$ sampled from')
             pprint.pprint(available_ec_options)
             print(f'The average natural gas bill is {average_ng_bill :.2f}$ sampled from')
@@ -249,6 +251,7 @@ def run_scraper(postal_code):
             average_ng_bills.append(float('nan'))
 
     driver.close()
+
     return average_ec_bills, average_ng_bills
 
 
