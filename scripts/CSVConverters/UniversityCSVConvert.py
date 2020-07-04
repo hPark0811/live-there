@@ -3,10 +3,14 @@ import pandas as pd
 
 
 class UniversityConverter(CSVToSQLConverter):
+    """
+    Convert University data to University SQL Table.
+    """
     def __init__(self, host, user, password, csv_path):
         super(UniversityConverter, self).__init__(host, user, password, csv_path)
 
     def __process__(self, df) -> pd.DataFrame:
+        # Clean Institution to (universityName, campus)
         universities = df['Institution'].str.split(' - ')
         uni_names = []
         campuses = []
@@ -14,6 +18,7 @@ class UniversityConverter(CSVToSQLConverter):
             uni_names.append(uni[0])
             campuses.append(uni[1] if len(uni) > 1 else None)
 
+        # Mapping CSV to SQL Table
         table = {
             'universityName':  pd.Series(uni_names),
             'campus': pd.Series(campuses),
