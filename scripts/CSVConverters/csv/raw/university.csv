@@ -1,0 +1,59 @@
+,Unnamed: 0,Institution,Postal Code,City,Province,Type,Avg EC,Avg NG,postal_code,country code,place_name,state_name,state_code,county_name,county_code,community_name,community_code,latitude,longitude,accuracy
+0,0,University of Toronto - St. George Campus,M5S 2R7,Toronto,ON,U,114.67,40.95,M5S,CA,Downtown Toronto (University of Toronto / Harbord),Ontario,ON,Toronto,8133394.0,,,43.6629,-79.3987,6.0
+1,1,University of Toronto - Scarborough,M1C 1A4,Scarborough,ON,U,114.67,40.95,M1C,CA,Scarborough (Rouge Hill / Port Union / Highland Creek),Ontario,ON,Scarborough,,,,43.7878,-79.1564,6.0
+2,2,University of Toronto - Mississauga,L5L 1C6,Mississauga,ON,U,108.614,41.948,L5L,CA,Mississauga (Erin Mills / Western Business Park),Ontario,ON,Mississauga,,,,43.5373,-79.6903,6.0
+3,3,University of Ontario Institute of Technology,L1H 7K4,Oshawa,ON,U,107.87,41.948,L1H,CA,Oshawa Southeast,Ontario,ON,Oshawa,,,,43.9721,-78.8837,1.0
+4,4,Western University,N6A 3K7,London,ON,U,107.26,41.948,N6A,CA,London North (UWO),Ontario,ON,London,,,,42.9976,-81.2563,6.0
+5,5,Queen's University,K7L 3N6,Kingston,ON,U,109.8,41.948,K7L,CA,Kingston (Downtown),Ontario,ON,Kingston,,,,44.2955,-76.428,1.0
+6,6,University of Waterloo,N2L 3G1,Waterloo,ON,U,110.66,40.055,N2L,CA,Waterloo South,Ontario,ON,Waterloo,,,,43.4715,-80.5454,1.0
+7,7,McMaster University,L8S 4L8,Hamilton,ON,U,108.614,41.948,L8S,CA,Hamilton (Westdale / Cootes Paradise / Ainslie Wood),Ontario,ON,Hamilton,5969784.0,,,43.2606,-79.9161,6.0
+8,8,York University,M3J 1P3,Toronto,ON,U,114.67,40.95,M3J,CA,North York (Northwood Park / York University),Ontario,ON,North York ,,,,43.7694,-79.4921,1.0
+9,10,University of Guelph,N1G 2W1,Guelph,ON,U,108.79,40.95,N1G,CA,Guelph Central,Ontario,ON,Guelph,,,,43.5184,-80.2257,1.0
+10,11,University of Ottawa,K1N 6N5,Ottawa,ON,U,108.79,40.95,K1N,CA,Ottawa (Lower Town / Sandy Hill / University of Ottawa),Ontario,ON,Ottawa,8581623.0,,,45.4289,-75.6844,6.0
+11,12,Carleton University,K1S 5B6,Ottawa,ON,U,107.88,41.948,K1S,CA,Ottawa (The Glebe / Ottawa South / Ottawa East),Ontario,ON,Ottawa,8581623.0,,,45.399,-75.6871,6.0
+12,13,Laurentian University,P3E 2C6,Sudbury,ON,U,108.614,41.948,P3E,CA,Greater Sudbury (Robinson / Lockerby),Ontario,ON,Greater Sudbury ,,,,46.2676,-80.9063,6.0
+13,14,Brock University,L2S 3A1,Catharines,On,U,110.21,40.95,L2S,CA,St. Catharines Southwest,Ontario,ON,St. Catharines ,,,,43.1447,-79.2634,1.0
+14,15,Nipissing University,P1B 8L7,North Bay,ON,U,110.66,40.055,P1B,CA,North Bay Central,Ontario,ON,North Bay ,,,,46.3364,-79.583,1.0
+15,17,Wilfrid Laurier University,N2L 3C5,Waterloo,ON,U,114.67,40.95,N2L,CA,Waterloo South,Ontario,ON,Waterloo,,,,43.4715,-80.5454,1.0
+16,18,University of Windsor,N9B 3P4,Windsor,ON,U,114.67,40.95,N9B,CA,Windsor (University / South Cameron),Ontario,ON,Windsor,,,,42.2949,-83.052,1.0
+17,19,Seneca - Newnham Campus,M2J 2X5,Toronto,ON,C,124.32714285714285,41.948,M2J,CA,North York (Fairview / Henry Farm / Oriole),Ontario,ON,North York ,,,,43.7801,-79.3479,6.0
+18,20,Seneca - @ York,M3J 3M6,Toronto,ON,C,108.614,41.948,M3J,CA,North York (Northwood Park / York University),Ontario,ON,North York ,,,,43.7694,-79.4921,1.0
+19,21,Seneca - King Campus,L7B 1B3,King,ON,C,124.32714285714285,41.948,L7B,CA,King City,Ontario,ON,,,,,43.9286,-79.5269,4.0
+20,22,Seneca - Markham Campus,L3R 5Y1,Markham,ON,C,114.67,40.95,L3R,CA,Markham Outer Southwest,Ontario,ON,Markham,,,,43.8479,-79.3288,1.0
+21,23,Seneca - Peterborough Campus,K9J 0E7,Peterborough,ON,C,114.67,40.95,K9J,CA,Peterborough South,Ontario,ON,Peterborough,,,,44.3104,-78.2396,5.0
+22,24,Seneca - Downtown,M5L 1E2,Toronto, ON,C,111.73,41.948,M5L,CA,Downtown Toronto (Commerce Court / Victoria Hotel),Ontario,ON,Toronto,8133394.0,,,43.6492,-79.3823,
+23,25,Seneca - Yorkgate Campus,M3N 3A1,North York,ON,C,108.614,41.948,M3N,CA,North York (Jane and Finch),Ontario,ON,North York ,,,,43.7568,-79.521,1.0
+24,26,Sheridan - Trafalgar Road Campus,L6H 2L1,Oakville,ON,C,114.67,40.95,L6H,CA,Oakville North,Ontario,ON,Oakville,,,,43.4881,-79.7098,4.0
+25,28,Sheridan - Davis Campus,L6Y 5H9,Brampton,ON,C,107.85,40.95,L6Y,CA,Brampton South,Ontario,ON,Brampton,,,,43.6249,-79.7876,5.0
+26,29,Humber - North Campus,M9W 5L7,Toronto,ON,C,114.67,40.95,M9W,CA,Etobicoke Northwest (Clairville / Humberwood / Woodbine Downs / West Humber / Kipling Heights / Rexdale / Elms / Tandridge / Old Rexdale),Ontario,ON,Etobicoke,,,,43.7144,-79.5909,6.0
+27,30,Humber - Lakeshore Campus,M8V 4B6,Toronto,ON,C,114.67,40.95,M8V,CA,Etobicoke (New Toronto / Mimico South / Humber Bay Shores),Ontario,ON,Toronto,8133394.0,,,43.6075,-79.5013,6.0
+28,31,Humber - Orangeville Campus,L9W 5A9,Orangeville,ON,C,110.145,41.948,L9W,CA,Orangeville South,Ontario,ON,Orangeville,,,,43.9702,-80.016,5.0
+29,32,George Brown - Casa Loma Campus,M5R 1M3,Toronto,ON,C,109.86,41.948,M5R,CA,Central Toronto (The Annex / North Midtown / Yorkville),Ontario,ON,Toronto,8133394.0,,,43.6736,-79.4035,6.0
+30,33,George Brown - St. James Campus,M5A 3W8,Toronto,ON,C,116.78642857142859,41.948,M5A,CA,Downtown Toronto (Regent Park / Port of Toronto),Ontario,ON,Toronto,8133394.0,,,43.6555,-79.3626,6.0
+31,34,George Brown - Waterfront Campus,M5E 3Y5,Toronto,ON,C,110.145,41.948,M5E,CA,Downtown Toronto (Berczy Park),Ontario,ON,Toronto,8133394.0,,,43.6456,-79.3754,5.0
+32,35,Niagara - Welland,L3C 7L3,Welland,ON,C,108.614,41.948,L3C,CA,Welland West,Ontario,ON,Welland,,,,42.9998,-79.2656,1.0
+33,36,Niagara - Niagara On The Lake,L0S 1J0,Niagara-on-the-Lake,ON,C,108.614,41.948,L0S,CA,Niagara Regional Municipality (Fonthill),Ontario,ON,,,,,42.9071,-79.0832,5.0
+34,37,Mohawk - Fennell Campus,L9C 0E5,Hamilton,ON,C,107.26,41.948,L9C,CA,Hamilton (Southam / Bonnington / Yeoville / Kernighan / Gourley / Rolston / Buchanan / Mohawk / Westcliffe / Gilbert / Gilkson / Gurnett / Fessenden / Mountview),Ontario,ON,Hamilton,5969784.0,,,43.2313,-79.9049,1.0
+35,38,Mohawk - Stoney Creek Campus,L8E 2L7,Stoney Creek,ON,C,107.26,41.948,L8E,CA,Hamilton (Confederation Park / Nashdale / East Kentley / Riverdale / Lakely / Grayside / North Stoney Creek),Ontario,ON,Hamilton,5969784.0,,,43.2245,-79.6988,6.0
+36,39,Mohawk - Institute for Applied Health Sciences at McMaster,L8S 1C7,Hamilton,ON,C,107.26,41.948,L8S,CA,Hamilton (Westdale / Cootes Paradise / Ainslie Wood),Ontario,ON,Hamilton,5969784.0,,,43.2606,-79.9161,6.0
+37,40,Fanshawe - London Campus,N5Y 5R6,London,ON,C,107.26,41.948,N5Y,CA,London (West Huron Heights / Carling),Ontario,ON,London,,,,43.0123,-81.2307,1.0
+38,41,Fanshawe - Aviation Centre,N5V 3S4,London,ON,C,107.26,41.948,N5V,CA,London (YXU / North and East Argyle / East Huron Heights),Ontario,ON,London,,,,43.0233,-81.1643,1.0
+39,42,Fanshawe - Centre for Applied Transportation Technologies,N5V 3R6,London,ON,C,107.26,41.948,N5V,CA,London (YXU / North and East Argyle / East Huron Heights),Ontario,ON,London,,,,43.0233,-81.1643,1.0
+40,43,Fanshawe - London South Campus,N6E 3W5,London,ON,C,107.26,41.948,N6E,CA,London (South White Oaks / Central Westminster / East Longwoods / West Brockley),Ontario,ON,London,,,,42.9185,-81.2244,6.0
+41,44,Fanshawe - School of Digital and Performing Arts,N6A 1E9,London,ON,C,112.82,41.948,N6A,CA,London North (UWO),Ontario,ON,London,,,,42.9976,-81.2563,6.0
+42,45,Fanshawe - School of Information Technology/School of Tourism Hospitality and Culinary Arts,N6A 1G2,London,ON,C,114.67,40.95,N6A,CA,London North (UWO),Ontario,ON,London,,,,42.9976,-81.2563,6.0
+43,46,Fanshawe - Academic Upgrading and Community Employment Services,N6A 6E2,London,ON,C,108.79,40.95,N6A,CA,London North (UWO),Ontario,ON,London,,,,42.9976,-81.2563,6.0
+44,47,Lambton - Main Campus,N7S 6K4,Sarnia,ON,C,124.32714285714285,41.948,N7S,CA,Sarnia Central,Ontario,ON,Sarnia,,,,42.9888,-82.3592,1.0
+45,48,Lambton - Toronto Campus,M2J 1S5,Toronto,ON,C,124.32714285714285,41.948,M2J,CA,North York (Fairview / Henry Farm / Oriole),Ontario,ON,North York ,,,,43.7801,-79.3479,6.0
+46,49,Algonquin - Ottawa Campus,K2G 1V8,Nepean,ON,C,107.88,41.948,K2G,CA,Nepean (Davidson Heights),Ontario,ON,Nepean,,,,45.3211,-75.7391,1.0
+47,50,Algonquin - Pembroke,K8A 0C8,Pembroke,ON,C,,,K8A,CA,Pembroke Central and northern subdivisions,Ontario,ON,Pembroke,,,,45.7466,-77.2047,1.0
+48,51,Algonquin - Perth,K7H 1X7,Perth,ON,C,112.34,41.948,K7H,CA,Perth,Ontario,ON,,,,,44.9001,-76.2494,4.0
+49,52,Cambrian - Barrydowne Campus,P3A 3V8,Sudbury,ON,C,110.21,40.95,P3A,CA,Greater Sudbury (New Sudbury),Ontario,ON,Greater Sudbury ,,,,46.5187,-80.934,6.0
+50,53,Cambrian - Manitoulin Campus,POP 1KO,Little Current,ON,C,117.11,41.948,POP,,,,,,,,,,,
+51,54,Cambrian - Espanola Campus,P5E 1S6,Espanola,ON,C,114.67,40.95,P5E,CA,Espanola,Ontario,ON,,,,,46.2584,-81.7665,4.0
+52,55,Canadore - College Drive Campus,P1B 8K9,North Bay,ON,C,108.614,41.948,P1B,CA,North Bay Central,Ontario,ON,North Bay ,,,,46.3364,-79.583,1.0
+53,56,Canadore - West Parry Sound Campus,P2A 0A9,Parry Sound,ON,C,108.614,41.948,P2A,CA,Parry Sound,Ontario,ON,,,,,45.3501,-80.033,4.0
+54,57,Canadore - Stanford Scarborough Campus,M1G 3T5,Scarborough,ON,C,114.67,40.95,M1G,CA,Scarborough (Woburn),Ontario,ON,Scarborough,,,,43.7712,-79.2144,6.0
+55,58,Canadore - Stanford Mississauga Campus,L4W 1K4,Mississauga,ON,C,,,L4W,CA,Mississauga (Matheson / East Rathwood),Ontario,ON,Mississauga,,,,43.6413,-79.6296,1.0
+56,59,Canadore - Stanford Brampton Campus,L6S 6B5,Brampton,ON,C,,,L6S,CA,Brampton North Central,Ontario,ON,Brampton,,,,43.7379,-79.726,1.0
+57,60,Canadore - Stanford Toronto Campus,M3B 2R2,Toronto,ON,C,,,M3B,CA,Don Mills North,Ontario,ON,Don Mills ,,,,43.745,-79.359,4.0
