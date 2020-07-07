@@ -16,7 +16,7 @@ class UniversityConverter(CSVToSQLConverter):
         campuses = []
         for uni in universities:
             uni_names.append(uni[0])
-            campuses.append(uni[1] if len(uni) > 1 else None)
+            campuses.append(uni[1] if len(uni) > 1 else 'Main')
 
         # Mapping CSV to SQL Table
         table = {

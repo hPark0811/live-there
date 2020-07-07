@@ -12,9 +12,9 @@ if __name__ == '__main__':
             # Execute university csv conversion
 
             # Retrieve parameters
-            host = input('Enter Host: ')
-            user = input('Enter user: ')
-            pw = input('Enter password: ')
+            host = '35.225.74.52' #input('Enter Host: ')
+            user = 'root' #input('Enter user: ')
+            pw = 'livethere2020' #input('Enter password: ')
 
             # Configure path
             uni_csv_path = os.path.join(CSV_RAW_PATH, 'university.csv')
