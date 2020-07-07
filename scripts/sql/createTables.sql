@@ -1,12 +1,13 @@
 CREATE TABLE IF NOT EXISTS University (
 	id 							INT PRIMARY KEY AUTO_INCREMENT,
     universityName 				VARCHAR(255) NOT NULL,
-    campus 						VARCHAR(255),
+    campus 						VARCHAR(255) NOT NULL,
     institutionType 			CHAR(1) NOT NULL,
     postalCode 					CHAR(6) NOT NULL,
     city						VARCHAR(255) NOT NULL,
     province 					VARCHAR(255) NOT NULL,
-    CONSTRAINT CHK_institutionType CHECK(institutionType = 'C' OR institutionType = 'U')
+    CONSTRAINT CHK_institutionType CHECK(institutionType = 'C' OR institutionType = 'U'),
+    UNIQUE KEY (universityName, campus)
 );
 
 CREATE TABLE IF NOT EXISTS Rental (
@@ -20,7 +21,8 @@ CREATE TABLE IF NOT EXISTS Rental (
     bedroomCount				TINYINT,
     lastUpdatedDate 			DATE NOT NULL,
     CONSTRAINT CHK_bathroomCount CHECK(bathroomCount > 0),
-    CONSTRAINT CHK_bedroomCount CHECK(bathroomCount > 0)
+    CONSTRAINT CHK_bedroomCount CHECK(bathroomCount > 0),
+    UNIQUE KEY (stubId)
 );
 
 CREATE TABLE IF NOT EXISTS RentalRange (
