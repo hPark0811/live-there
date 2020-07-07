@@ -1,12 +1,17 @@
 import csv
+import os
+
 import requests
-import json
 import numpy
-import os.path
-from os import path
+import pgeocode
+import mysql.connector
+import dateutil.parser
+import time
 
 # constants
-UNIVERSITY = 'university'
+UNIVERSITY = 'universityName'
+CAMPUS = 'campus'
+POSTAL_CODE = 'postalCode'
 ID = 'id'
 RENTALS_CA_URL = 'https://rentals.ca/phoenix/api/v1.0.1/listings'
 FAKE_USER_AGENT_HEADER = {
@@ -34,6 +39,38 @@ DEFAULT_PARAMS = {
     SUPPRESS_PAGINATION: 1
 }
 
+DB = mysql.connector.connect(
+    host="35.225.74.52",
+    user="root",
+    password="livethere2020",
+    database="livethere"
+)
+
+INSERT_SQL = """
+INSERT IGNORE INTO livethere.Rental
+(`rentalPrice`,
+`postalCode`,
+`longitude`,
+`latitude`,
+`stubId`,
+`bathroomCount`,
+`bedroomCount`,
+`lastUpdatedDate`)
+VALUES
+(%s,
+%s,
+%s,
+%s,
+%s,
+%s,
+%s,
+%s);
+"""
+
+CURSOR = DB.cursor()
+
+NOMI = pgeocode.Nominatim('ca')
+
 
 class RentalsWrapper:
     @staticmethod
@@ -54,37 +91,53 @@ def calculate_mean(prices):
 
     return numpy.mean(no_outliers)
 
-# make restcall or load from cache
+
+def generate_coordinate_range(lon, lat, range_in_km):
+    distance_metic = range_in_km / 111
+    min_long = lon - distance_metic
+    min_lat = lat - distance_metic
+    max_long = lon + distance_metic
+    max_lat = lat + distance_metic
+    return [
+        min_long,
+        min_lat,
+        max_long,
+        max_lat
+    ]
 
 
-def get_listings(university, coordinate_list):
+# make rest call or load from cache
+
+
+def fetch_listings(university, postal_code):
     rentals_map = None
+    if len(postal_code) == 6:
+        postal_code = postal_code[:3] + ' ' + postal_code[3:]
+    location_data = NOMI.query_postal_code(postal_code).to_dict()
+    coordinate_list = generate_coordinate_range(
+        location_data['longitude'],
+        location_data['latitude'],
+        10 #km
+    )
 
-    # considering university.json as a cache and not make REST call again.
-    if path.exists("scripts/rental/cache/" + university + ".json"):
-        print(f"Getting {university} file from cache")
-        with open("scripts/rental/cache/" + university + ".json") as f:
-            rentals_map = json.load(f)
-    else:
-        print(f"Getting {university} file from rentals.ca")
-        rentals_map = request_listings(coordinate_list)
-        # generate cache
-        with open('scripts/rental/cache/' + university + '.json', 'w') as outfile:
-            json.dump(rentals_map, outfile)
-        print(f"Retrieved {len(rentals_map)} rentals from rentals.ca")
+    print(f"Getting {university} rentals from rentals.ca")
+    rentals_map = request_listings(coordinate_list)
+    print(f"Retrieved {len(rentals_map)} rentals from rentals.ca")
 
     return rentals_map
 
 
 def request_listings(coordinate_list):
     params = dict(DEFAULT_PARAMS)
-    params[MAP_COORDINATES] = ','.join(coordinate_list)
+    params[MAP_COORDINATES] = ','.join(map(str, coordinate_list))
 
     rentals_res = requests.get(
         RENTALS_CA_URL,
         params=params,
         headers=FAKE_USER_AGENT_HEADER
     ).json()
+
+    time.sleep(2)
 
     # 3. check meta data & check if region needs to be broken down into smaller quadrants
 
@@ -103,22 +156,19 @@ def request_listings(coordinate_list):
 
 
 def get_sub_coordinates(coordinate_list):
-    lon = {
-        min: coordinate_list[0],
-        max: coordinate_list[2],
-    }
-    lat = {
-        min: coordinate_list[1],
-        max: coordinate_list[3]
-    }
-    lon.mid = lon.max - lon.max
-    lat.mid = lat.max - lat.max
+    lon_min = coordinate_list[0]
+    lon_max = coordinate_list[2]
+    lat_min = coordinate_list[1]
+    lat_max = coordinate_list[3]
+
+    lon_mid = lon_min + (lon_max - lon_min) / 2
+    lat_mid = lat_min + (lat_max - lat_min) / 2
 
     return [
-        [lon.min, lat.min, lon.mid, lat.mid],
-        [lon.mid, lat.min, lon.max, lat.mid],
-        [lon.min, lat.mid, lon.mid, lat.max],
-        [lon.mid, lat.mid, lon.max, lat.max],
+        [lon_min, lat_min, lon_mid, lat_mid],
+        [lon_mid, lat_min, lon_max, lat_mid],
+        [lon_min, lat_mid, lon_mid, lat_max],
+        [lon_mid, lat_mid, lon_max, lat_max],
     ]
 
 
@@ -130,36 +180,44 @@ def rental_json_to_map(json):
     return rentals_map
 
 
+def listing_to_insert_value(listing):
+    return (
+        numpy.max(listing[RENT_MIN_MAX]),
+        str(listing['postal_code']).replace(" ", ""),
+        listing['location']['lng'],
+        listing['location']['lat'],
+        listing['id'],
+        numpy.max(listing['baths_range']),
+        numpy.max(listing[BEDS_MIN_MAX]),
+        dateutil.parser.parse(listing['updated']).strftime('%Y-%m-%d')
+    )
+
+
 def scrape_rentals_api():
     # Map column title to column number
     field_dict = {}
 
     # 1. Iterate over csv & create GET API calls
-    universities_query_csv = open('scripts/rental/query/university.csv')
-    res_csv = open('scripts/rental/data/university.csv', 'w')
+    # TODO: Get these from DB directly
+    universities_csv_path = os.path.join(os.path.dirname(__file__), 'query', 'universities.csv')
+    universities_query_csv = open(universities_csv_path)
 
     print('Reading university csv file and result file')
     query_csv_reader = csv.reader(universities_query_csv)
-    result_csv_writer = csv.writer(res_csv)
-    average_rentals_dict = {} 
 
     for row in query_csv_reader:
         print('\n')
-        if (query_csv_reader.line_num == 1):
+        if query_csv_reader.line_num == 1:
             for i in range(len(row)):
                 field_dict[row[i]] = i
-            result_csv_writer.writerow(row)
             continue
 
         # 2. Make REST GET call to rentals.ca
 
-        university = row[field_dict[UNIVERSITY]]
-        rentals_map = get_listings(
-            university,
-            row[field_dict['min_long']:field_dict['max_lat'] + 1]
+        rentals_map = fetch_listings(
+            row[field_dict[UNIVERSITY]],
+            row[field_dict[POSTAL_CODE]]
         )
-
-        # TODO: compare above 2 and break down into smaller quadrant.
 
         listings = list(rentals_map.values())
 
@@ -171,22 +229,14 @@ def scrape_rentals_api():
         listings = [listing for listing in listings if len(
             listing[BEDS_MIN_MAX]) > 0]
 
-        # Get average price per room
-        prices = []
+        listings_to_insert = list(map(
+            lambda listing: listing_to_insert_value(listing),
+            listings
+        ))
 
-        for listing in listings:
-            rent_price = numpy.max(listing[RENT_MIN_MAX])
-            room_count = numpy.max(listing[BEDS_MIN_MAX])
-
-            # bachelors room
-            if room_count < 1:
-                room_count = 1
-
-            prices.append(rent_price / room_count)
-
-        row.append(calculate_mean(prices), len(rentals_map))
-
-        result_csv_writer.writerow(row)
+        print('executing update')
+        CURSOR.executemany(INSERT_SQL, listings_to_insert)
+        DB.commit()
 
 
 if __name__ == "__main__":
