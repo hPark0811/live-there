@@ -37,4 +37,30 @@ CREATE TABLE IF NOT EXISTS RentalRange (
 CREATE TABLE IF NOT EXISTS MainCampusMap (
 	universityId				INT PRIMARY KEY,
     FOREIGN KEY (universityId) REFERENCES University(id)
-)
+);
+
+
+CREATE TABLE IF NOT EXISTS Restraunt (
+	restrauntId 				INT PRIMARY KEY AUTO_INCREMENT,
+    restrauntType				CHAR(1),
+    postalCode 					CHAR(6) NOT NULL,
+    yelpPriceLevel              int ,
+    constraint FK_Yelp_Map FOREIGN Key(yelpPriceLevel) REFERENCES YelpSchema (priceLevel)
+    
+);
+
+CREATE TABLE IF NOT EXISTS YelpSchema (
+	yelpId				INT PRIMARY KEY,
+    priceLevel          int NOT NULL,
+    minPrice            float,
+    maxPrice            float
+);
+
+CREATE TABLE IF NOT EXISTS RestrauntRange (
+	universityId 				INT,
+    restrauntId					INT,
+    restrauntToUniversityDistance 	DECIMAL(3, 1) NOT NULL,
+    PRIMARY KEY (universityId, restrauntId),
+    FOREIGN KEY (universityId) REFERENCES University(id),
+    FOREIGN KEY (restrauntId) REFERENCES Restraunt(restrauntId)
+);
