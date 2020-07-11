@@ -3,10 +3,9 @@ import os
 
 import requests
 import numpy
-import pgeocode
-import mysql.connector
 import dateutil.parser
 import time
+from .utility import geo, sql
 
 # constants
 UNIVERSITY = 'universityName'
@@ -39,43 +38,11 @@ DEFAULT_PARAMS = {
     SUPPRESS_PAGINATION: 1
 }
 
-DB = mysql.connector.connect(
-    host="35.225.74.52",
-    user="root",
-    password="livethere2020",
-    database="livethere"
-)
-
-INSERT_SQL = """
-INSERT IGNORE INTO livethere.Rental
-(`rentalPrice`,
-`postalCode`,
-`longitude`,
-`latitude`,
-`stubId`,
-`bathroomCount`,
-`bedroomCount`,
-`lastUpdatedDate`)
-VALUES
-(%s,
-%s,
-%s,
-%s,
-%s,
-%s,
-%s,
-%s);
-"""
-
-CURSOR = DB.cursor()
-
-NOMI = pgeocode.Nominatim('ca')
-
-
 class RentalsWrapper:
     @staticmethod
     def get_listings(json):
         return json['data']['listings']
+
 
 # Calculate mean with outliers removed.
 
@@ -92,32 +59,15 @@ def calculate_mean(prices):
     return numpy.mean(no_outliers)
 
 
-def generate_coordinate_range(lon, lat, range_in_km):
-    distance_metic = range_in_km / 111
-    min_long = lon - distance_metic
-    min_lat = lat - distance_metic
-    max_long = lon + distance_metic
-    max_lat = lat + distance_metic
-    return [
-        min_long,
-        min_lat,
-        max_long,
-        max_lat
-    ]
-
-
 # make rest call or load from cache
 
 
 def fetch_listings(university, postal_code):
-    rentals_map = None
-    if len(postal_code) == 6:
-        postal_code = postal_code[:3] + ' ' + postal_code[3:]
-    location_data = NOMI.query_postal_code(postal_code).to_dict()
-    coordinate_list = generate_coordinate_range(
+    location_data = geo.ca_postal_code_to_location_data(postal_code)
+    coordinate_list = geo.generate_coordinate_range(
         location_data['longitude'],
         location_data['latitude'],
-        10 #km
+        10  # km
     )
 
     print(f"Getting {university} rentals from rentals.ca")
@@ -194,6 +144,8 @@ def listing_to_insert_value(listing):
 
 
 def scrape_rentals_api():
+    dbms = sql.RentalDBMS()
+
     # Map column title to column number
     field_dict = {}
 
@@ -235,8 +187,8 @@ def scrape_rentals_api():
         ))
 
         print('executing update')
-        CURSOR.executemany(INSERT_SQL, listings_to_insert)
-        DB.commit()
+        dbms.cursor.executemany(sql.RENTAL_INSERT_SQL, listings_to_insert)
+        dbms.commit()
 
 
 if __name__ == "__main__":
