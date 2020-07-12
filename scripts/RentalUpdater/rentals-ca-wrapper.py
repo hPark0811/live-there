@@ -1,14 +1,11 @@
-import csv
-import os
-
 import requests
 import numpy
 import dateutil.parser
 import time
-from .utility import geo, sql
+from utility import geo, sql
 
 # constants
-UNIVERSITY = 'universityName'
+NAME = 'universityName'
 CAMPUS = 'campus'
 POSTAL_CODE = 'postalCode'
 ID = 'id'
@@ -38,6 +35,7 @@ DEFAULT_PARAMS = {
     SUPPRESS_PAGINATION: 1
 }
 
+
 class RentalsWrapper:
     @staticmethod
     def get_listings(json):
@@ -64,17 +62,18 @@ def calculate_mean(prices):
 
 def fetch_listings(university, postal_code):
     location_data = geo.ca_postal_code_to_location_data(postal_code)
-    coordinate_list = geo.generate_coordinate_range(
-        location_data['longitude'],
-        location_data['latitude'],
-        10  # km
-    )
 
-    print(f"Getting {university} rentals from rentals.ca")
-    rentals_map = request_listings(coordinate_list)
-    print(f"Retrieved {len(rentals_map)} rentals from rentals.ca")
+    if isinstance(location_data['longitude'], float):
+        coordinate_list = geo.generate_coordinate_range(
+            location_data['longitude'],
+            location_data['latitude'],
+            20  # km
+        )
 
-    return rentals_map
+        print(f"Getting {university} rentals from rentals.ca")
+        return request_listings(coordinate_list)
+    else:
+        return {}
 
 
 def request_listings(coordinate_list):
@@ -139,36 +138,25 @@ def listing_to_insert_value(listing):
         listing['id'],
         numpy.max(listing['baths_range']),
         numpy.max(listing[BEDS_MIN_MAX]),
-        dateutil.parser.parse(listing['updated']).strftime('%Y-%m-%d')
+        dateutil.parser.parse(listing['updated']).strftime('%Y-%m-%d'),
+        listing['property_type']
     )
 
 
 def scrape_rentals_api():
     dbms = sql.RentalDBMS()
 
-    # Map column title to column number
-    field_dict = {}
-
     # 1. Iterate over csv & create GET API calls
     # TODO: Get these from DB directly
-    universities_csv_path = os.path.join(os.path.dirname(__file__), 'query', 'universities.csv')
-    universities_query_csv = open(universities_csv_path)
+    universities_df = dbms.get_all_universities()
 
-    print('Reading university csv file and result file')
-    query_csv_reader = csv.reader(universities_query_csv)
-
-    for row in query_csv_reader:
-        print('\n')
-        if query_csv_reader.line_num == 1:
-            for i in range(len(row)):
-                field_dict[row[i]] = i
-            continue
-
+    for universityNdx, university in universities_df.iterrows():
+        print('initiating fetch for ' + university[NAME] + ' university\n')
         # 2. Make REST GET call to rentals.ca
 
         rentals_map = fetch_listings(
-            row[field_dict[UNIVERSITY]],
-            row[field_dict[POSTAL_CODE]]
+            university[NAME],
+            university[POSTAL_CODE]
         )
 
         listings = list(rentals_map.values())

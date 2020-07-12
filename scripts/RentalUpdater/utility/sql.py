@@ -17,9 +17,11 @@ INSERT IGNORE INTO livethere.Rental
 `stubId`,
 `bathroomCount`,
 `bedroomCount`,
-`lastUpdatedDate`)
+`lastUpdatedDate`,
+`propertyType`)
 VALUES
 (%s,
+%s,
 %s,
 %s,
 %s,
@@ -70,3 +72,11 @@ class RentalDBMS:
         )
 
         return pd.DataFrame(query, columns=['id', 'postalCode'])
+
+    def get_all_universities(self):
+        query = pd.read_sql_query(
+            "SELECT * FROM University",
+            self.db
+        )
+
+        return pd.DataFrame(query, columns=['id', 'universityName', 'postalCode'])

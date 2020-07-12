@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS Rental (
     bathroomCount				TINYINT,
     bedroomCount				TINYINT,
     lastUpdatedDate 			DATE NOT NULL,
+    propertyType                VARCHAR(255),
     CONSTRAINT CHK_bathroomCount CHECK(bathroomCount > 0),
     CONSTRAINT CHK_bedroomCount CHECK(bathroomCount > 0),
     UNIQUE KEY (stubId)
