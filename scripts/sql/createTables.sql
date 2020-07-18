@@ -41,27 +41,26 @@ CREATE TABLE IF NOT EXISTS MainCampusMap (
 );
 
 
-CREATE TABLE IF NOT EXISTS Restraunt (
-    restrauntId 				INT PRIMARY KEY AUTO_INCREMENT,
-    restrauntType				CHAR(1),
-    postalCode 					CHAR(6) NOT NULL,
-    yelpPriceLevel              int ,
-    constraint FK_Yelp_Map FOREIGN Key(yelpPriceLevel) REFERENCES YelpSchema (priceLevel)
-    
-);
-
 CREATE TABLE IF NOT EXISTS YelpSchema (
-    yelpId		INT PRIMARY KEY,
-    priceLevel          int NOT NULL,
+    yelpId				INT PRIMARY KEY,
+    priceLevel          INT NOT NULL,
     minPrice            float,
     maxPrice            float
 );
 
-CREATE TABLE IF NOT EXISTS RestrauntRange (
-    universityId 			INT,
-    restrauntId				INT,
-    restrauntToUniversityDistance 	DECIMAL(3, 1) NOT NULL,
-    PRIMARY KEY (universityId, restrauntId),
+CREATE TABLE IF NOT EXISTS Restaurant (
+    restaurantId 				INT PRIMARY KEY AUTO_INCREMENT,
+    restaurantType				CHAR(1),
+    postalCode 					CHAR(6) NOT NULL,
+    yelpId              		INT NOT NULL,
+    FOREIGN KEY (yelpId) REFERENCES YelpSchema()
+);
+
+CREATE TABLE IF NOT EXISTS RestaurantRange (
+    universityId 					INT,
+    restaurantId					INT,
+    restaurantToUniversityDistance 	DECIMAL(3, 1) NOT NULL,
+    PRIMARY KEY (universityId, restaurantId),
     FOREIGN KEY (universityId) REFERENCES University(id),
-    FOREIGN KEY (restrauntId) REFERENCES Restraunt(restrauntId)
+    FOREIGN KEY (restaurantId) REFERENCES Restaurant(restaurantId)
 );
