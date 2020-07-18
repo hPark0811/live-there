@@ -1,0 +1,59 @@
+id,universityName,campus,institutionType,postalCode,city,province
+1,University of Toronto,St. George Campus,U,M5S2R7,Toronto,ON
+2,University of Toronto,Scarborough,U,M1C1A4,Scarborough,ON
+3,University of Toronto,Mississauga,U,L5L1C6,Mississauga,ON
+4,University of Ontario Institute of Technology,Main,U,L1H7K4,Oshawa,ON
+5,Western University,Main,U,N6A3K7,London,ON
+6,Queen's University,Main,U,K7L3N6,Kingston,ON
+7,University of Waterloo,Main,U,N2L3G1,Waterloo,ON
+8,McMaster University,Main,U,L8S4L8,Hamilton,ON
+9,York University,Main,U,M3J1P3,Toronto,ON
+10,University of Guelph,Main,U,N1G2W1,Guelph,ON
+11,University of Ottawa,Main,U,K1N6N5,Ottawa,ON
+12,Carleton University,Main,U,K1S5B6,Ottawa,ON
+13,Laurentian University,Main,U,P3E2C6,Sudbury,ON
+14,Brock University,Main,U,L2S3A1,Catharines,On
+15,Nipissing University,Main,U,P1B8L7,North Bay,ON
+16,Wilfrid Laurier University,Main,U,N2L3C5,Waterloo,ON
+17,University of Windsor,Main,U,N9B3P4,Windsor,ON
+18,Seneca,Newnham Campus,C,M2J2X5,Toronto,ON
+19,Seneca,@ York,C,M3J3M6,Toronto,ON
+20,Seneca,King Campus,C,L7B1B3,King,ON
+21,Seneca,Markham Campus,C,L3R5Y1,Markham,ON
+22,Seneca,Peterborough Campus,C,K9J0E7,Peterborough,ON
+23,Seneca,Downtown,C,M5L1E2,Toronto," ON"
+24,Seneca,Yorkgate Campus,C,M3N3A1,North York,ON
+25,Sheridan,Trafalgar Road Campus,C,L6H2L1,Oakville,ON
+26,Sheridan,Davis Campus,C,L6Y5H9,Brampton,ON
+27,Humber,North Campus,C,M9W5L7,Toronto,ON
+28,Humber,Lakeshore Campus,C,M8V4B6,Toronto,ON
+29,Humber,Orangeville Campus,C,L9W5A9,Orangeville,ON
+30,George Brown,Casa Loma Campus,C,M5R1M3,Toronto,ON
+31,George Brown,St. James Campus,C,M5A3W8,Toronto,ON
+32,George Brown,Waterfront Campus,C,M5E3Y5,Toronto,ON
+33,Niagara,Welland,C,L3C7L3,Welland,ON
+34,Niagara,Niagara On The Lake,C,L0S1J0,Niagara-on-the-Lake,ON
+35,Mohawk,Fennell Campus,C,L9C0E5,Hamilton,ON
+36,Mohawk,Stoney Creek Campus,C,L8E2L7,Stoney Creek,ON
+37,Mohawk,Institute for Applied Health Sciences at McMaster,C,L8S1C7,Hamilton,ON
+38,Fanshawe,London Campus,C,N5Y5R6,London,ON
+39,Fanshawe,Aviation Centre,C,N5V3S4,London,ON
+40,Fanshawe,Centre for Applied Transportation Technologies,C,N5V3R6,London,ON
+41,Fanshawe,London South Campus,C,N6E3W5,London,ON
+42,Fanshawe,School of Digital and Performing Arts,C,N6A1E9,London,ON
+43,Fanshawe,School of Information Technology/School of Tourism Hospitality and Culinary Arts,C,N6A1G2,London,ON
+44,Fanshawe,Academic Upgrading and Community Employment Services,C,N6A6E2,London,ON
+45,Lambton,Main Campus,C,N7S6K4,Sarnia,ON
+46,Lambton,Toronto Campus,C,M2J1S5,Toronto,ON
+47,Algonquin,Ottawa Campus,C,K2G1V8,Nepean,ON
+48,Algonquin,Pembroke,C,K8A0C8,Pembroke,ON
+49,Algonquin,Perth,C,K7H1X7,Perth,ON
+50,Cambrian,Barrydowne Campus,C,P3A3V8,Sudbury,ON
+51,Cambrian,Manitoulin Campus,C,POP1KO,Little Current,ON
+52,Cambrian,Espanola Campus,C,P5E1S6,Espanola,ON
+53,Canadore,College Drive Campus,C,P1B8K9,North Bay,ON
+54,Canadore,West Parry Sound Campus,C,P2A0A9,Parry Sound,ON
+55,Canadore,Stanford Scarborough Campus,C,M1G3T5,Scarborough,ON
+56,Canadore,Stanford Mississauga Campus,C,L4W1K4,Mississauga,ON
+57,Canadore,Stanford Brampton Campus,C,L6S6B5,Brampton,ON
+58,Canadore,Stanford Toronto Campus,C,M3B2R2,Toronto,ON
