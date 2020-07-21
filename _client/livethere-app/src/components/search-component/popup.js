@@ -1,5 +1,6 @@
 /* components/search/popup.jsx */
 import React from "react";
+import './search.css';
 
 export default class Popup extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class Popup extends React.Component {
           <div className="popup-content">
             {
               items.map((item, index) => {
-                return <div className='item' key={index} onClick={()=> searchFunc(item)}> {item} </div>
+                return <div className='popup-item' key={index} onClick={() => searchFunc(item)}> {item} </div>
               })
             }
           </div>

@@ -1,7 +1,9 @@
 import React from "react";
 import Popup from "./popup";
 import { dummyFetchPopupItems } from './../../server/dummyServer';
-import './searchBar.css';
+import './search.css';
+import { IconButton } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 
 
 export default class Search extends React.Component {
@@ -42,15 +44,17 @@ export default class Search extends React.Component {
       <div className='searchBody'>
         <div className="search-content">
             <input
+                id="searchBar"
                 type="text"
                 placeholder="Search your university/college"
                 onChange={ this.handleInputChange }
                 onKeyUp={ this.handleKeyPress }
             />
-            <button onClick={()=>this.searchByKey(this.state.keyword)}> Search </button>
-            <Popup items={this.state.popupItem} searchFunc={this.searchByKey}/>
-        </div>
+            <IconButton id='searchButton' onClick={()=>this.searchByKey(this.state.keyword)} size='small'> <SearchIcon/> </IconButton>
+        </div>   
+        <Popup items={this.state.popupItem} searchFunc={this.searchByKey}/>
+
       </div>
     );
-  }
+  } 
 }
