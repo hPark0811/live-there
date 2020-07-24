@@ -1,11 +1,12 @@
 import React from 'react';
-import styles from './app.module.css';
+import Navbar from './components/Navigation/Navbar/Navbar'
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
   return (
-    <div className={styles.test}>
-      Hello World!
-    </div>
+    <BrowserRouter>
+      <Navbar/>
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,40 @@
+@import "src/assets/styles/_breakpoint.scss";
+
+.container {
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  @include up-sm() {
+    padding: 10px 100px;
+  }
+  @include down-sm() {
+    padding: 6px 20px;
+  }
+}
+
+.logo {
+  font-family: poiret-one, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: #38A1BF;
+  line-height: 1;
+
+  @include up-sm() {
+    font-size: 46px;
+    padding-top: 8px;
+  }
+
+  @include down-sm() {
+    font-size: 30px;
+    padding-top: 4px;
+  }
+}
+
+.toggle {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+}
