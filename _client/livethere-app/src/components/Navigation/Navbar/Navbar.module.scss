@@ -21,6 +21,7 @@
   font-weight: normal;
   color: #38A1BF;
   line-height: 1;
+  cursor: pointer;
 
   @include up-sm() {
     font-size: 46px;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Navbar.module.scss';
 import {ReactComponent as ToggleLogo} from '../../../assets/navToggle.svg';
-import Box from '@material-ui/core/Box';
+import {Box} from '@material-ui/core';
 import {Desktop, Mobile} from "../../_hoc/Responsive";
 import NavItems from "../NavItems/NavItems";
 

@@ -37,9 +37,12 @@
 .Item a.active,
 .Item a:hover {
   color: #38A1BF;
-  font-weight: bold;
 
   svg path {
     fill: #38A1BF;
   }
+}
+
+.Item a.active {
+  font-weight: bold;
 }
