@@ -1,0 +1,48 @@
+@import "src/assets/styles/breakpoint";
+
+* {
+  font-family: open-sans, sans-serif;
+  font-style: normal;
+}
+
+.NavItems {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  @include mobile {
+    flex-flow: column;
+  }
+
+  @include desktop {
+    flex-flow: row;
+    margin-left: auto;
+  }
+}
+
+
+.Item a {
+  color: #000000;
+  text-decoration: none;
+
+  @include desktop {
+    margin-left: 32px;
+    font-size: 16px;
+  }
+}
+
+.Item a:active,
+.Item a.active,
+.Item a:hover {
+  color: #38A1BF;
+
+  svg path {
+    fill: #38A1BF;
+  }
+}
+
+.Item a.active {
+  font-weight: bold;
+}
