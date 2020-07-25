@@ -1,11 +1,13 @@
 @import "src/assets/styles/_breakpoint.scss";
 
 .container {
-  background-color: #ffffff;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
 
   @include up-sm() {
     padding: 10px 100px;

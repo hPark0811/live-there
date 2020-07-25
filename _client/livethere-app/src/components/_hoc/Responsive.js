@@ -1,6 +1,6 @@
 /* PLEASE REFER TO src/assets/styles/_breakpoints.scss for size reference */
 
-import { useMediaQuery }from 'react-responsive'
+import { useMediaQuery }from 'react-responsive';
 
 const md = 960;
 

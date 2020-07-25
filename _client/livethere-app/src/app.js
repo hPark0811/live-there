@@ -1,14 +1,21 @@
 import React from 'react';
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {ThemeProvider} from '@material-ui/core/styles';
 import mainTheme from "./assets/styles/_theme";
 import Layout from "./components/Layout/Layout";
+import Home from "./containers/home/Home";
 
 function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={mainTheme}>
-        <Layout/>
+        <Layout>
+          <Switch>
+            <Route path="/" exact>
+              <Home/>
+            </Route>
+          </Switch>
+        </Layout>
       </ThemeProvider>
     </BrowserRouter>
   );

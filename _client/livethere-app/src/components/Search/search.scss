@@ -1,14 +1,16 @@
 .searchBody {
     /* border: solid 1px blue;    */
-    background: white;
     text-align: center;
     background: transparent;
     display: inline-block;
+    width: 424px;
+    max-width: 80vw;
 }
 
 
 .search-content {
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
     border-bottom: 0.2em solid black;
     padding: 0;
 }
@@ -38,7 +40,7 @@
 }
 
 #searchBar {
-    width: 20em;
+    width: 100%;
     height: 1.6em;
     font-size: medium;
     background: transparent;
@@ -56,5 +58,4 @@
     background: transparent;
     border: none;
     vertical-align: top;
-
 }
