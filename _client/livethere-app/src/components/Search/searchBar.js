@@ -1,24 +1,27 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Popup from "./popup";
 import {dummyFetchPopupItems} from '../../util/dummyServer';
-import './search.css';
+import './search.scss';
 import {IconButton} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-
 
 const Search = (props) => {
   const [keyword, setKeyword] = useState('');
   const [popupList, setPopupList] = useState([]);
+  const [showPopup, setShowPopup] = useState(true);
 
-  const handleInputChange = (event) => {
-    setKeyword(event.target.value);
+  useEffect(() => {
     dummyFetchPopupItems(keyword)
       .then(popupItems => {
         setPopupList(popupItems);
       })
       .catch(err => {
         console.error('Error connecting to search backend', err);
-      })
+      });
+  }, [keyword])
+
+  const handleInputChange = (event) => {
+    setKeyword(event.target.value);
   }
 
   const handleKeyPress = (event) => {
@@ -40,6 +43,8 @@ const Search = (props) => {
           placeholder="Search your university/college"
           onChange={handleInputChange}
           onKeyUp={handleKeyPress}
+          onFocus={() => setShowPopup(true)}
+          onBlur={() => setShowPopup(false)}
         />
         <IconButton id='searchButton'
                     onClick={search}
@@ -47,7 +52,9 @@ const Search = (props) => {
           <SearchIcon/>
         </IconButton>
       </div>
-      <Popup items={popupList}
+      {/* TODO: Handle keyboard input to choose*/}
+      <Popup show={showPopup}
+             items={popupList}
              onSearch={search}/>
     </div>
   );

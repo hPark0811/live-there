@@ -1,6 +1,7 @@
 import * as React from "react";
 import Typography from "@material-ui/core/Typography";
 import styles from "./Home.module.scss";
+import Search from "../../components/Search/searchBar";
 
 class Home extends React.Component {
 
@@ -15,8 +16,8 @@ class Home extends React.Component {
             <Typography variant="subtitle1" component="p">
               LiveThere provides regional research tools based on postgraduate institutions. Get an esimate of living cost, utility costs, and more.
             </Typography>
-            {/* TODO: Add Search Bar */}
           </div>
+          <Search/>
         </div>
         {/* TODO: Add cards */}
       </>

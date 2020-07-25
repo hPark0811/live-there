@@ -1,6 +1,7 @@
 .mainContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -9,11 +10,19 @@
 }
 
 .descriptionWrapper {
-  margin: 5vh 5vw 0;
+  margin: 5vh 5vw 10vh;
 
-  h1,
-  p{
+  h1, p {
     text-align: center;
-    margin-bottom: 10px;
   }
+
+  p{
+    max-width: 732px;
+    margin: auto;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
 }

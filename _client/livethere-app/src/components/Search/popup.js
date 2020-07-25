@@ -1,12 +1,12 @@
 /* components/search/popup.jsx */
 import React from "react";
-import './search.css';
+import './search.scss';
 
 const Popup = (props) => {
   return (
     <>
       {
-        (props.items && props.items.length > 0)
+        (props.items && props.items.length > 0 && props.show)
           ? <div className="popup">
               <div className="popup-content">
                 {
