@@ -1,60 +1,56 @@
-import React from "react";
+import React, {useState} from "react";
 import Popup from "./popup";
-import { dummyFetchPopupItems } from './../../server/dummyServer';
+import {dummyFetchPopupItems} from '../../util/dummyServer';
 import './search.css';
-import { IconButton } from '@material-ui/core';
+import {IconButton} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 
-export default class Search extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        "keyword": '', 
-        "popupItem": [],
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
+const Search = (props) => {
+  const [keyword, setKeyword] = useState('');
+  const [popupList, setPopupList] = useState([]);
+
+  const handleInputChange = (event) => {
+    setKeyword(event.target.value);
+    dummyFetchPopupItems(keyword)
+      .then(popupItems => {
+        setPopupList(popupItems);
+      })
+      .catch(err => {
+        console.error('Error connecting to search backend', err);
+      })
   }
 
-  handleInputChange = (event) => {
-      let newKey = event.target.value;
-      // TODO: when to send search ?
-      if(newKey===''){
-          this.setState({'keyword':'', popupItem:[]})
-      }
-      else{
-        dummyFetchPopupItems().then((popupItems=>{
-            this.setState({ 'keyword': newKey, 'popupItem': popupItems});      
-        }));
-      }
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      search();
+    }
   }
 
-  handleKeyPress = (event) => {
-      if(event.key === 'Enter'){
-          this.searchByKey(this.state.keyword)
-      }
+  const search = (recommendedKeyword = keyword) => {
+    console.log(`Search with keyword ${recommendedKeyword}`)
   }
 
-  searchByKey = (keyword) => {
-      console.log(`Search with keyword ${keyword}`)
-  }
-
-  render() {
-    return (
-      <div className='searchBody'>
-        <div className="search-content">
-            <input
-                id="searchBar"
-                type="text"
-                placeholder="Search your university/college"
-                onChange={ this.handleInputChange }
-                onKeyUp={ this.handleKeyPress }
-            />
-            <IconButton id='searchButton' onClick={()=>this.searchByKey(this.state.keyword)} size='small'> <SearchIcon/> </IconButton>
-        </div>   
-        <Popup items={this.state.popupItem} searchFunc={this.searchByKey}/>
-
+  return (
+    <div className='searchBody'>
+      <div className="search-content">
+        <input
+          id="searchBar"
+          type="text"
+          placeholder="Search your university/college"
+          onChange={handleInputChange}
+          onKeyUp={handleKeyPress}
+        />
+        <IconButton id='searchButton'
+                    onClick={search}
+                    size='small'>
+          <SearchIcon/>
+        </IconButton>
       </div>
-    );
-  } 
+      <Popup items={popupList}
+             onSearch={search}/>
+    </div>
+  );
 }
+
+export default Search;
