@@ -13,7 +13,7 @@ const NavItems = () => (
     </li>
     <li className={styles.Item}>
       <NavLink to="/user" activeClassName={styles.active} exact>
-        <UserIcon activeClassName={styles.active} />
+        <UserIcon/>
       </NavLink>
     </li>
   </ul>
