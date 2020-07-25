@@ -9,16 +9,24 @@
   padding: 0;
   list-style: none;
   display: flex;
-  align-items: center;
   height: 100%;
 
   @include mobile {
     flex-flow: column;
+
+    li {
+      margin: 10px 0;
+    }
   }
 
   @include desktop {
     flex-flow: row;
     margin-left: auto;
+    align-items: center;
+
+    li {
+      margin-left: 32px;
+    }
   }
 }
 
@@ -28,7 +36,6 @@
   text-decoration: none;
 
   @include desktop {
-    margin-left: 32px;
     font-size: 16px;
   }
 }
