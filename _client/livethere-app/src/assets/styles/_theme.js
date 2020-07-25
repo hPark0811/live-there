@@ -15,6 +15,48 @@ const mainTheme = createMuiTheme({
       contrastText: '#fff',
     },
   },
+  typography: {
+    fontFamily: 'open-sans',
+    fontSize: 12,
+    h1: {
+      fontWeight: 'bold',
+      fontSize: '2.6rem',
+      '@media (min-width: 960px)': {
+        fontSize: '4rem',
+      }
+    },
+    h2: {
+      fontSize: '1.8rem',
+      '@media (min-width: 960px)': {
+        fontSize: '2.8rem',
+      }
+    },
+    h3: {
+      fontSize: '1.4rem',
+      '@media (min-width: 960px)': {
+        fontSize: '2.6rem',
+      }
+    },
+    h4: {
+      fontSize: '1.2rem',
+      '@media (min-width: 960px)': {
+        fontSize: '1.8rem',
+      }
+    },
+    h5: {
+      fontSize: '1rem',
+      '@media (min-width: 960px)': {
+        fontSize: '1.5rem',
+      }
+    },
+    subtitle1: {
+      fontSize: '0.8rem',
+      lineHeight: 1.4,
+      '@media (min-width: 960px)': {
+        fontSize: '1rem',
+      }
+    }
+  }
 });
 
 export default mainTheme;
