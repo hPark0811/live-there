@@ -94,8 +94,7 @@ class University(db.Model):
 
 class UniversitySchema(ma.Schema):
     class Meta:
-        fields = ('id', 'universityName', 'campus',
-                  'institutionType', 'postalCode', 'city', 'province')
+        fields = ('id', 'universityName', 'campus', 'city')
 
 
 class MainCampusMap(University):
