@@ -3,7 +3,7 @@ import React from 'react';
 import Backdrop from '@material-ui/core/Backdrop';
 import {makeStyles} from '@material-ui/core/styles';
 import styles from './SideDrawer.module.scss';
-import NavItems from "../NavItems/NavItems";
+import NavItems from "../navItems/NavItems";
 
 // TODO: Use theme zIndex
 const useStyles = makeStyles((theme) => ({

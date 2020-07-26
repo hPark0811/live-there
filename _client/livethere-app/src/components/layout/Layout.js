@@ -1,8 +1,8 @@
 import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
-import Navbar from "../Navigation/Navbar/Navbar";
-import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
+import Navbar from "../navigation/navbar/Navbar";
+import SideDrawer from "../navigation/sideDrawer/SideDrawer";
 import {Mobile} from "../_hoc/Responsive";
-import {withRouter} from "react-router-dom";
+import withRouter from "react-router-dom/es/withRouter";
 
 const Layout = (props) => {
   const [isSideDrawerOpen, setSideDrawer] = useState(false);

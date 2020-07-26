@@ -3,7 +3,7 @@ import styles from './Navbar.module.scss';
 import {ReactComponent as ToggleIcon} from '../../../assets/navToggle.svg';
 import {NavLink} from "react-router-dom";
 import {Desktop, Mobile} from "../../_hoc/Responsive";
-import NavItems from "../NavItems/NavItems";
+import NavItems from "../navItems/NavItems";
 
 const Navbar = (props, ref) => (
   <div className={styles.container}

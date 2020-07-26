@@ -1,9 +1,11 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
+import {Route, Switch} from "react-router"
 import {ThemeProvider} from '@material-ui/core/styles';
 import mainTheme from "./assets/styles/_theme";
-import Layout from "./components/Layout/Layout";
-import Home from "./containers/home/Home";
+import Layout from "./components/layout/Layout";
+import Home from "./pages/home/Home";
+import CostOfLiving from "./pages/costOfLiving/CostOfLiving";
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
             <Route path="/" exact>
               <Home/>
             </Route>
+            <Route path="/cost-of-living" component={CostOfLiving}/>
           </Switch>
         </Layout>
       </ThemeProvider>

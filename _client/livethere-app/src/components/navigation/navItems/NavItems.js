@@ -9,13 +9,16 @@ const NavItems = () => (
       <NavLink to="/" activeClassName={styles.active} exact>HOME</NavLink>
     </li>
     <li className={styles.Item}>
-      <NavLink to="/contact" activeClassName={styles.active} exact>CONTACT</NavLink>
+      <NavLink to="/cost-of-living/overview/uwo" activeClassName={styles.active} exact>TEST</NavLink>
     </li>
     <li className={styles.Item}>
+      <NavLink to="/about" activeClassName={styles.active} exact>ABOUT US</NavLink>
+    </li>
+    {/*<li className={styles.Item}>
       <NavLink to="/user" activeClassName={styles.active} exact>
         <UserIcon/>
       </NavLink>
-    </li>
+    </li>*/}
   </ul>
 )
 
