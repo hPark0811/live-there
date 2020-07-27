@@ -13,9 +13,7 @@ function App() {
       <ThemeProvider theme={mainTheme}>
         <Layout>
           <Switch>
-            <Route path="/" exact>
-              <Home/>
-            </Route>
+            <Route path="/" exact component={Home}/>
             <Route path="/cost-of-living" component={CostOfLiving}/>
           </Switch>
         </Layout>

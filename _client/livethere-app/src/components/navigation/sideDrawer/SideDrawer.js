@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Backdrop from '@material-ui/core/Backdrop';
+import {Backdrop} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import styles from './SideDrawer.module.scss';
 import NavItems from "../navItems/NavItems";
