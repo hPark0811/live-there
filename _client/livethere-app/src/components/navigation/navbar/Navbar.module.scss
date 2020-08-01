@@ -8,11 +8,15 @@
   display: flex;
   align-items: center;
   background-color: #ffffff;
+  box-shadow: 0 1px 6px #A9B7BD;
 
-  @include up-sm() {
+  // TODO: Use react theme z-index
+  z-index: 10;
+
+  @include desktop() {
     padding: 10px 100px;
   }
-  @include down-sm() {
+  @include mobile() {
     padding: 6px 20px;
   }
 }
@@ -26,12 +30,12 @@
   line-height: 1;
   cursor: pointer;
 
-  @include up-sm() {
+  @include desktop() {
     font-size: 46px;
     padding-top: 8px;
   }
 
-  @include down-sm() {
+  @include mobile() {
     font-size: 30px;
     padding-top: 4px;
   }
