@@ -14,7 +14,8 @@ const SimpleMap = ({props = defaultProps}) => {
   // Important! Always set the container height explicitly
   return (
     <GoogleMap
-      bootstrapURLKeys={{key: 'TODO: GENERATE_GOOGLE_MAP_API_FOR_PROD'}}
+      {/*TODO: Generate google map api for production*/}
+      bootstrapURLKeys={{key: ''}}
       defaultCenter={props.center}
       defaultZoom={props.zoom}
       onGoogleApiLoaded={({map, maps}) =>
