@@ -70,17 +70,17 @@ const Search = (props) => {
 
   /* event handler */
   const handleSearchByKeyword = (word) => {
-    if (keyword !== word) setKeyword(word);    
-    if (matchingTuples && matchingTuples.length > 0){
+    if (keyword !== word) setKeyword(word);
+    if (matchingTuples && matchingTuples.length > 0) {
       const [key, val] = matchingTuples[0]
       props.handleSearch(key);
     }
-    else{
+    else {
       alert('No University was found!');
     }
   }
 
-  const handleSearchByKey = (key) =>{
+  const handleSearchByKey = (key) => {
     props.handleSearch(key);
   }
 
@@ -97,28 +97,28 @@ const Search = (props) => {
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      if (dropDownIndx !== -1 && showDropbox){
+      if (dropDownIndx !== -1 && showDropbox) {
         // If dropDownIndx is selected and dropbox is shown => search by dropbox index.
         const [key, val] = matchingTuples[dropDownIndx];
         handleSearchByKey(key);
       }
-      else{
+      else {
         // If dropdown index is not selected or drop box is not shown, search by keyword
         handleSearchByKeyword(keyword);
       }
     }
-    if (event.key ==='ArrowUp'){
-      selectDropdown(dropDownIndx-1);
+    if (event.key === 'ArrowUp') {
+      selectDropdown(dropDownIndx - 1);
     }
-    if (event.key === 'ArrowDown'){
-      selectDropdown(dropDownIndx+1);
+    if (event.key === 'ArrowDown') {
+      selectDropdown(dropDownIndx + 1);
     }
   }
 
-  // Dropdown inner component. 
+  // Dropdown inner component.
   const Dropdown = (props) => {
     return (showDropbox && matchingTuples && matchingTuples.length > 0) ?
-      <div className="popup" onClick={()=>{console.log(1)}}>
+      <div className="popup">
         <div className="popup-content">
           {
             matchingTuples.map(([key, val], i) => {
@@ -146,7 +146,9 @@ const Search = (props) => {
             placeholder="Search your university/college"
             onChange={handleInputChange}
             onKeyUp={handleKeyPress}
-            onClick={()=>{ if (keyword !== '') setShowDropbox(true)}}
+            onClick={() => {
+              if (keyword !== '') setShowDropbox(true)
+            }}
             onBlur={handleOnBlur}
           />
           <IconButton id='searchButton'
