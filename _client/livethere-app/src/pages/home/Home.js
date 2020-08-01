@@ -6,7 +6,6 @@ import * as actionTypes from '../../store/actions.js'
 import axios from 'axios'
 import {connect} from "react-redux";
 
-/*TODO: Remove from container*/
 class Home extends React.Component {
   componentDidMount() {
     axios.get('http://localhost:5000/university')

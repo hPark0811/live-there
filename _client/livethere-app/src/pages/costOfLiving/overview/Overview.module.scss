@@ -1,0 +1,23 @@
+@import "src/assets/styles/breakpoint";
+
+.overviewContainer {
+  width: 100%;
+  height: 100%;
+
+  @include desktop {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.mapContainer {
+  @include mobile {
+    width: 100%;
+    height: 100vw;
+  }
+
+  @include desktop {
+    width: 720px;
+    height: 100%;
+  }
+}
