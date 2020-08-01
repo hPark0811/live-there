@@ -125,7 +125,7 @@ const Search = (props) => {
               return (
                 <div className={dropDownIndx === i ? 'popup-item:hover' : 'popup-item'}
                      key={key}
-                     onClick={() => handleSearchByKey(key)}>
+                     onMouseDown={() => handleSearchByKey(key)}>
                   {`${val.universityName}, at ${val.campus} `}
                 </div>
               )
@@ -146,8 +146,8 @@ const Search = (props) => {
             placeholder="Search your university/college"
             onChange={handleInputChange}
             onKeyUp={handleKeyPress}
-            onBlur={handleOnBlur}
             onClick={()=>{ if (keyword !== '') setShowDropbox(true)}}
+            onBlur={handleOnBlur}
           />
           <IconButton id='searchButton'
                       onClick={() => handleSearchByKeyword(keyword)}
