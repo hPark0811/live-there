@@ -4,7 +4,7 @@ from flask_cors import CORS
 import os
 
 #routes import
-from api import rental, university
+from api import rental, university, utility
 from models import *
 import config
 
@@ -22,6 +22,7 @@ db = SQLAlchemy(app)
 # Init routes
 app.register_blueprint(rental.rental_api, url_prefix='/rental')
 app.register_blueprint(university.university_api, url_prefix='/university')
+app.register_blueprint(utility.utility_api, url_prefix='/utility')
 
 # Run Server
 if __name__ == '__main__':

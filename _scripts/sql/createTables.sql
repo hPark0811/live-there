@@ -64,3 +64,11 @@ CREATE TABLE IF NOT EXISTS RestaurantRange (
     FOREIGN KEY (universityId) REFERENCES University(id),
     FOREIGN KEY (restaurantId) REFERENCES Restaurant(restaurantId)
 );
+
+CREATE TABLE IF NOT EXISTS AverageUtilityFee (
+    universityId INT PRIMARY KEY NOT NULL,
+    averageEC FLOAT,
+    averageNG FLOAT,
+    averageHD FlOAT,
+	FOREIGN KEY (universityId) REFERENCES University(id)
+);

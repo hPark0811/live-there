@@ -110,3 +110,19 @@ class YelpSchema(db.Model):
     priceLevel = db.Column(db.Integer, nullable=False)
     minPrice = db.Column(db.Float)
     maxPrice = db.Column(db.Float)
+
+
+class AverageUtilityFee(db.Model):
+    __tablename__ = 'AverageUtilityFee'
+    __table_args__ = (
+        db.ForeignKeyConstraint(['universityId'], ['University.id']),
+    )
+
+    universityId = db.Column(db.Integer, primary_key=True)
+    averageEC = Column(db.Float)
+    averageNG = Column(db.Float)
+    averageHD = Column(db.Float)
+
+class AverageUtilityFeeSchema(ma.Schema):
+    class Meta:
+        fields = ('universityId', 'averageEC', 'averageNG', 'averageHD')

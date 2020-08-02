@@ -38,7 +38,7 @@ class CSVToSQLConverter(ABC):
         :param df: cleaned DataFrame with proper fields name
         :return:
         """
-        df.to_sql(con=self.engine, index=False, name=name, if_exists='append')
+        df.to_sql(con=self.engine, index=False, name=name, if_exists='replace')
 
     def commit(self, name):
         """
