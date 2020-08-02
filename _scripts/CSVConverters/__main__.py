@@ -1,5 +1,5 @@
 """ Entry point of conversion module """
-from UniversityCSVConvert import UniversityConverter
+from UniversityCSVConvert import UniversityConverter, UniversityUpdater, AverageUtilityFeeConverter
 import os
 import sys
 
@@ -27,3 +27,14 @@ if __name__ == '__main__':
                 # Commit new changes
                 converter.commit()
                 print('DB is updated.')
+
+    # # Retrieve parameters
+    # host = '35.225.74.52' #input('Enter Host: ')
+    # user = 'root' #input('Enter user: ')
+    # pw = 'livethere2020' #input('Enter password: ')
+    # uni_csv_path = os.path.join(CSV_RAW_PATH, 'university.csv')
+    # # updater = UniversityUpdater(host, user, pw, uni_csv_path)
+    # # updater.commit()
+    # adder = AverageUtilityFeeConverter(host, user, pw, uni_csv_path)
+    # adder.commit()
+    
