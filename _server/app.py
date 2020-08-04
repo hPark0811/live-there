@@ -5,6 +5,7 @@ import os
 
 #routes import
 from api import rental, university, utility
+from api.exception.exception_handler import *
 from models import *
 import config
 
@@ -23,6 +24,12 @@ db = SQLAlchemy(app)
 app.register_blueprint(rental.rental_api, url_prefix='/rental')
 app.register_blueprint(university.university_api, url_prefix='/university')
 app.register_blueprint(utility.utility_api, url_prefix='/utility')
+
+# Generic Exception handler
+@app.errorhandler(GenericException)
+def handle_invalid_usage(error):
+    response = jsonify(error.to_dict())
+    return response
 
 # Run Server
 if __name__ == '__main__':
