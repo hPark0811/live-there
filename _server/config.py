@@ -1,7 +1,8 @@
+# User with only read access
 class Mysql:
-    host = "35.225.74.52"
+    host = "localhost"
     user = "root"
-    password = "livethere2020"
+    password = ""
     db = "livethere"
 
 
