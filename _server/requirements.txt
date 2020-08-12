@@ -12,6 +12,7 @@ Jinja2==2.11.2
 MarkupSafe==1.1.1
 marshmallow==3.7.0
 marshmallow-sqlalchemy==0.23.1
+numpy==1.19.1
 pycodestyle==2.6.0
 PyMySQL==0.10.0
 simplejson==3.17.2
