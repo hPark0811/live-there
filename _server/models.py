@@ -148,3 +148,7 @@ class AverageUtilityFee(db.Model):
 class AverageUtilityFeeSchema(ma.Schema):
     class Meta:
         fields = ('universityId', 'averageEC', 'averageNG', 'averageHD')
+
+class RestaurantSchema(ma.Schema):
+    class Meta:
+        fields = ('restaurantId', 'restaurantType', 'postalCode','yelpId')

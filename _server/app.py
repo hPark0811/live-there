@@ -24,6 +24,7 @@ db = SQLAlchemy(app)
 app.register_blueprint(rental.rental_api, url_prefix='/rental')
 app.register_blueprint(university.university_api, url_prefix='/university')
 app.register_blueprint(utility.utility_api, url_prefix='/utility')
+app.register_blueprint(restaurant.restaurant_api, url_prefix='/restaurant')
 
 # Generic Exception handler
 @app.errorhandler(GenericException)
