@@ -36,9 +36,9 @@ def get_average_rental():
         min_distance_km = request.args['minDistance']
     if request.args.get('maxDistance'):
         max_distance_km = request.args['maxDistance']
-    if request.args.get('propertyTypes'):
+    if request.args.get('propertyType'):
         property_types = property_type_alias_mapper(
-            request.args.get('propertyTypes')
+            request.args.get('propertyType')
         )
     if request.args.get('bathCount'):
         bath_count = request.args.get('bathCount')
@@ -63,11 +63,14 @@ def get_average_rental():
     )
 
     if property_types:
-        queried_rentals = queried_rentals.filter(Rental.propertyType.in_(property_types))
+        queried_rentals = queried_rentals.filter(
+            Rental.propertyType.in_(property_types))
     if bath_count:
-        queried_rentals = queried_rentals.filter(Rental.bathroomCount == bath_count)
+        queried_rentals = queried_rentals.filter(
+            Rental.bathroomCount == bath_count)
     if bed_count:
-        queried_rentals = queried_rentals.filter(Rental.bedroomCount == bed_count)
+        queried_rentals = queried_rentals.filter(
+            Rental.bedroomCount == bed_count)
 
     queried_rentals = queried_rentals.all()
 
@@ -76,8 +79,9 @@ def get_average_rental():
     rentals_average = calculate_average_rent_per_room(queried_rentals)
 
     return {
-        'rentals_count': rentals_count,
-        'average': rentals_average
+        'rentalsCount': rentals_count,
+        'average': rentals_average,
+        'distance': max_distance_km
     }
 
 
