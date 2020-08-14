@@ -1,10 +1,10 @@
 import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
-import Navbar from "../navigation/navbar/Navbar";
-import SideDrawer from "../navigation/sideDrawer/SideDrawer";
-import {Mobile} from "../_hoc/Responsive";
+import Navbar from "../../navigation/navbar/Navbar";
+import SideDrawer from "../../navigation/sideDrawer/SideDrawer";
+import {Mobile} from "../../_hoc/Responsive";
 import {withRouter} from "react-router-dom";
 
-const Layout = (props) => {
+const PageLayout = (props) => {
   const [isSideDrawerOpen, setSideDrawer] = useState(false);
   const [bodyStyle, setBodyStyle] = useState({});
 
@@ -59,4 +59,4 @@ const Layout = (props) => {
   )
 }
 
-export default withRouter(Layout);
+export default withRouter(PageLayout);
