@@ -64,6 +64,15 @@ $container-height: 200px;
     .Summary {
       margin-top: 10px;
       text-align: end;
+      justify-content: space-between;
+      align-items: center;
+      display: flex;
+
+      @include mobile {
+        button {
+          height: 40px;
+        }
+      }
     }
   }
 }
