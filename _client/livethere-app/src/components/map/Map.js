@@ -1,22 +1,13 @@
 import React from 'react';
 import GoogleMap from 'google-map-react';
 
-// TODO: Set center, zoom, circle radius from parent
-const defaultProps = {
-  center: {
-    lat: 43.007283,
-    lng: -81.275624
-  },
-  zoom: 14
-};
-
-const SimpleMap = ({props = defaultProps}) => {
+const SimpleMap = (props) => {
   // Important! Always set the container height explicitly
   return (
     <GoogleMap
       bootstrapURLKeys={{key: ''}}
-      defaultCenter={props.center}
-      defaultZoom={props.zoom}
+      center={props.center}
+      zoom={12}
       onGoogleApiLoaded={({map, maps}) =>
         new maps.Circle({
           strokeWeight: 0,
@@ -24,7 +15,7 @@ const SimpleMap = ({props = defaultProps}) => {
           fillOpacity: 0.2,
           map,
           center: props.center,
-          radius: 3000,
+          radius: 5000,
         })
       }
     />

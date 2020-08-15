@@ -17,7 +17,16 @@
   }
 
   @include desktop {
-    width: 720px;
+    flex-grow: 1;
     height: 100%;
+  }
+}
+
+.listContainer {
+  @include desktop {
+    width: 720px;
+  }
+  @include mobile {
+    width: 100%;
   }
 }

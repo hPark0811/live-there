@@ -2,14 +2,15 @@ import React from "react";
 import styles from "./SummaryLayout.module.scss";
 import {Desktop, Mobile} from "../../_hoc/Responsive";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 
 const SummaryLayout = (props) => {
   const iconEl = (
-    <div className={styles.IconContainerDesktop}>
+    <>
       {props.icon}
       <Typography variant="subtitle1"
                   className={styles.IconText}>{props.iconText}</Typography>
-    </div>
+    </>
   )
 
   return (
@@ -34,6 +35,8 @@ const SummaryLayout = (props) => {
           {props.formElement}
         </div>
         <div className={styles.Summary}>
+          <Button onClick={props.onSubmit}
+                  variant="contained">Update</Button>
           {props.summaryElement}
         </div>
       </div>
