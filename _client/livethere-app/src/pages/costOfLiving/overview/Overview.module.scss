@@ -29,4 +29,8 @@
   @include mobile {
     width: 100%;
   }
+
+  &>div:nth-child(odd) {
+    background: #F3F9FA;
+  }
 }

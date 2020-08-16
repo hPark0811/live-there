@@ -22,6 +22,8 @@ const RentalSummary = (props) => {
   }, [props]);
 
   const fetchRentalSummary = () => {
+    console.log('fetch rental summary data');
+
     let params = {universityId: props.universityId};
 
     if (maxDistance) {
@@ -43,6 +45,7 @@ const RentalSummary = (props) => {
         params: params
       })
       .then(response => {
+        console.log('fetched rental summary data');
         setSummary(response.data);
       })
       .catch(error => {
