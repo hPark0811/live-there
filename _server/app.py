@@ -4,7 +4,7 @@ from flask_cors import CORS
 import os
 
 #routes import
-from api import rental, university, utility
+from api import rental, university, utility, restaurant
 from api.exception.exception_handler import *
 from models import *
 import config

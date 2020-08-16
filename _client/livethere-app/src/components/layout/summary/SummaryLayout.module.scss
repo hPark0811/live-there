@@ -7,8 +7,7 @@ $container-height: 200px;
   min-height: $container-height;
 
   @include mobile {
-    margin: 24px auto;
-    width: 80vw;
+    padding: 24px 10vw;
     flex-direction: column;
   }
 
@@ -68,8 +67,11 @@ $container-height: 200px;
       align-items: center;
       display: flex;
 
-      @include mobile {
-        button {
+      button {
+        margin-right: 30px;
+
+        @include mobile {
+          margin-right: 10px;
           height: 40px;
         }
       }
