@@ -1,0 +1,19 @@
+@import "src/assets/styles/breakpoint";
+
+.RentalIconText {
+  text-align: center;
+}
+
+.Dropdown {
+  @include desktop {
+    width: 60%;
+  }
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.SummaryTextWrapper {
+  justify-content: space-between;
+  display: flex;
+}
