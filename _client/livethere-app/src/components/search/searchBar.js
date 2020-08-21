@@ -143,6 +143,7 @@ const Search = (props) => {
           <input
             id="searchBar"
             type="text"
+            autocomplete="off"
             placeholder="Search your university/college"
             onChange={handleInputChange}
             onKeyUp={handleKeyPress}
