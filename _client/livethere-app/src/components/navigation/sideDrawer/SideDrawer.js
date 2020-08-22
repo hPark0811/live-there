@@ -5,12 +5,13 @@ import {makeStyles} from '@material-ui/core/styles';
 import styles from './SideDrawer.module.scss';
 import NavItems from "../navItems/NavItems";
 
-// TODO: Use theme zIndex
 const useStyles = makeStyles((theme) => ({
   backdrop: {
-    zIndex: 10,
-    color: '#fff',
+    zIndex: theme.zIndex.drawer - 1
   },
+  sideDrawer: {
+    zIndex: theme.zIndex.drawer
+  }
 }));
 
 const SideDrawer = (props) => {
@@ -26,7 +27,7 @@ const SideDrawer = (props) => {
       <Backdrop className={classes.backdrop}
                 open={props.isOpen}
                 onClick={props.closeSide}/>
-      <div className={sideDrawerClasses}>
+      <div className={[sideDrawerClasses, classes.sideDrawer].join(' ')}>
         <nav>
           <NavItems />
         </nav>

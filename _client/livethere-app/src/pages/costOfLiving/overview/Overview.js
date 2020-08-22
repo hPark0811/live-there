@@ -3,7 +3,7 @@ import SimpleMap from "../../../components/map/Map";
 import styles from "./Overview.module.scss";
 import axios from "axios";
 import RentalSummary from "../../../components/summary/rentalSummary/RentalSummary";
-import Utility from "./../../../components/utility/utility"
+import UtilitySummary from "../../../components/summary/utilitySummary/utilitySummary"
 
 const Overview = (props) => {
   const [universityDetail, setUniversityDetail] = useState();
@@ -29,7 +29,7 @@ const Overview = (props) => {
       </div>
       <div className={styles.listContainer}>
         <RentalSummary universityId={universityDetail.id}/>
-        <Utility universityDetail={universityDetail}/>
+        <UtilitySummary universityDetail={universityDetail}/>
       </div>
     </div>
     : null;

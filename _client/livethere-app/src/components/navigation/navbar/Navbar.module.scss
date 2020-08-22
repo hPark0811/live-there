@@ -10,9 +10,6 @@
   background-color: #ffffff;
   box-shadow: 0 1px 6px #A9B7BD;
 
-  // TODO: Use react theme z-index
-  z-index: 10;
-
   @include desktop() {
     padding: 10px 100px;
   }

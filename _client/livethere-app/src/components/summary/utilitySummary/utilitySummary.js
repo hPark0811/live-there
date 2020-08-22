@@ -2,10 +2,9 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios'
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import {FormControl, FormControlLabel, Checkbox} from '@material-ui/core';
-import './utility.scss';
-import SummaryLayout from "../layout/summary/SummaryLayout";
+import SummaryLayout from "../../layout/summary/SummaryLayout";
 
-const Utility = (props) => {
+const UtilitySummary = (props) => {
   const [includeEC, setIncludeEC] = useState(true);
   const [includeNG, setIncludeNG] = useState(true);
   const [summary, setSummary] = useState();
@@ -61,7 +60,7 @@ const Utility = (props) => {
 
   const summaryText = (
     props.universityDetail
-      ? <div className='infoContainer'>
+      ? <div>
         Estimated utility fee is in the city of <b>{props.universityDetail.city}, {props.universityDetail.province}</b> is <b>${totalFee.toFixed(0)}</b>
       </div>
       : <div>No utilities found</div>
@@ -76,5 +75,5 @@ const Utility = (props) => {
   )
 }
 
-export default Utility;
+export default UtilitySummary;
 
