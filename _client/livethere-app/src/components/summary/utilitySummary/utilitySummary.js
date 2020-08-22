@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios'
+import axios from '../../../axios-wrapper'
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import {FormControl, FormControlLabel, Checkbox} from '@material-ui/core';
 import SummaryLayout from "../../layout/summary/SummaryLayout";
@@ -19,7 +19,7 @@ const UtilitySummary = (props) => {
     let params = {universityId: props.universityDetail.id};
 
     axios.get(
-      `http://localhost:5000/utility`,
+      `/utility`,
       {
         params: params
       })

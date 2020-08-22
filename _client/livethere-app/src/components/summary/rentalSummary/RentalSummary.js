@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios'
 import HouseRoundedIcon from '@material-ui/icons/HouseRounded';
 import styles from "./RentalSummary.module.scss";
 import {FormControl, FormControlLabel, FormLabel, FormGroup, Checkbox} from '@material-ui/core';
@@ -8,7 +7,7 @@ import Radio from "@material-ui/core/Radio";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import SummaryLayout from "../../layout/summary/SummaryLayout";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
+import axios from '../../../axios-wrapper';
 
 const RentalSummary = (props) => {
   const [maxDistance, setMaxDistance] = useState(15);
@@ -40,7 +39,7 @@ const RentalSummary = (props) => {
     }
 
     axios.get(
-      `http://localhost:5000/rental/average`,
+      `/rental/average`,
       {
         params: params
       })

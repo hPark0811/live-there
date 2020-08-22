@@ -5,7 +5,7 @@ const SimpleMap = (props) => {
   // Important! Always set the container height explicitly
   return (
     <GoogleMap
-      bootstrapURLKeys={{key: ''}}
+      bootstrapURLKeys={{key: process.env.REACT_APP_GOOGLE_MAP_API}}
       center={props.center}
       zoom={12}
       onGoogleApiLoaded={({map, maps}) =>

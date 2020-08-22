@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import SimpleMap from "../../../components/map/Map";
 import styles from "./Overview.module.scss";
-import axios from "axios";
+import axios from "../../../axios-wrapper";
 import RentalSummary from "../../../components/summary/rentalSummary/RentalSummary";
 import UtilitySummary from "../../../components/summary/utilitySummary/utilitySummary"
 
@@ -12,7 +12,7 @@ const Overview = (props) => {
     const { match: { params } } = props;
 
     console.log('Fetch cost of living overview data with university id: ' + params.id);
-    axios.get(`http://localhost:5000/university/${params.id}`)
+    axios.get(`/university/${params.id}`)
       .then(response => {
         setUniversityDetail(response.data);
       })
@@ -31,7 +31,7 @@ const Overview = (props) => {
         <RentalSummary universityId={universityDetail.id}/>
         <UtilitySummary universityDetail={universityDetail}/>
       </div>
-    </div>
+    </div >
     : null;
 }
 

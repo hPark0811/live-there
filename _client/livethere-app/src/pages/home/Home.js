@@ -3,12 +3,12 @@ import Typography from "@material-ui/core/Typography";
 import styles from "./Home.module.scss";
 import Search from "../../components/search/searchBar";
 import * as actionTypes from '../../store/actions.js'
-import axios from 'axios'
+import axios from '../../axios-wrapper'
 import {connect} from "react-redux";
 
 class Home extends React.Component {
   componentDidMount() {
-    axios.get('http://localhost:5000/university')
+    axios.get('/university')
       .then(response => {
         const universityArr = response.data;
         let universityDict = {};
