@@ -30,7 +30,15 @@
     width: 100%;
   }
 
-  &>div:nth-child(odd) {
+  .searchContainer {
+    text-align: center;
+    padding: 20px 0;
     background: #F3F9FA;
+  }
+
+  .summaryList {
+    &>div:nth-child(odd) {
+      background: #F3F9FA;
+    }
   }
 }

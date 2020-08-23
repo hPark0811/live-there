@@ -1,87 +1,76 @@
 import React, {useEffect, useState} from "react";
-import './search.scss';
+import './searchBar.scss';
 import {IconButton} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import * as levenshtein from 'js-levenshtein'
 
-// TODO: WRITE MORE COMMENTS.
-// TODO: Componentize search component
 const Search = (props) => {
   /* state and setState*/
   const [keyword, setKeyword] = useState('');
-  const [flatDict, setFlatDict] = useState([]);
-  const [matchingTuples, setMatchingTuples] = useState([]);
-  const [dropDownIndx, setDropDownIndx] = useState(-1);
+  const [matchingData, setMatchingData] = useState([]);
+  const [dropDownNdx, setDropDownNdx] = useState(-1);
   const [showDropbox, setShowDropbox] = useState(false);
-
-  /* hooks */
-  useEffect(() => {
-    setFlatDict(Object.entries(props.dictToSearch));
-  }, [props.dictToSearch])
 
   useEffect(() => {
     searchKeyword()
   }, [keyword])
 
-
-  // TODO: Make it generic for future usage
-  /* utils */
   const searchKeyword = () => {
     if (!keyword || keyword === '') {
-      setMatchingTuples([]);
+      setMatchingData([]);
       return;
     }
 
-    for (const [key, val] of flatDict) {
-      let universityName = val.universityName.toLowerCase().replace(/\s/g, '');
+    for (const data of props?.objsToSearch) {
+      let strToCompare = data.searchVal.toLowerCase().replace(/\s/g, '');
       let cleanedKeyword = keyword.toLowerCase().replace(/\s/g, '');
 
-      val.score = levenshtein(
-        universityName,
+      data.score = levenshtein(
+        strToCompare,
         cleanedKeyword
       );
 
-      val.score = Math.abs(val.score - Math.abs(universityName.length - cleanedKeyword.length))
-      val.score = val.score / (
-        universityName.length > cleanedKeyword.length
+      data.score = Math.abs(data.score - Math.abs(strToCompare.length - cleanedKeyword.length))
+      data.score = data.score / (
+        strToCompare.length > cleanedKeyword.length
           ? cleanedKeyword.length
-          : universityName.length
+          : strToCompare.length
       )
     }
 
     let count = 0;
-    let keys = flatDict
-      .sort(([keyA, valA], [keyB, valB]) => valA.score - valB.score)
-      .filter(([key, val]) => {
-        if (val.score < 0.3 && count < 10) {
+    let topMatches = props?.objsToSearch
+      .sort((dataA, dataB) => dataA.score - dataB.score)
+      .filter((data) => {
+        if (data.score < 0.3 && count < 10) {
           count++;
           return true;
         }
       });
 
-    setMatchingTuples(keys);
+    setMatchingData(topMatches);
   }
 
   const selectDropdown = (index) => {
     // Wrapper of setDropDownIndx with index condition.
-    if (index >= 0 && index < matchingTuples.length)
-      setDropDownIndx(index);
+    if (index >= 0 && index < matchingData.length)
+      setDropDownNdx(index);
+  }
+
+  const handleSearch = (data) => {
+    setKeyword('');
+    setShowDropbox(false);
+    props.handleSearch(data);
   }
 
   /* event handler */
   const handleSearchByKeyword = (word) => {
     if (keyword !== word) setKeyword(word);
-    if (matchingTuples && matchingTuples.length > 0) {
-      const [key, val] = matchingTuples[0]
-      props.handleSearch(key);
+    if (matchingData && matchingData.length > 0) {
+      handleSearch(matchingData[0]);
+    } else {
+      alert(props.errorMessage);
     }
-    else {
-      alert('No University was found!');
-    }
-  }
-
-  const handleSearchByKey = (key) => {
-    props.handleSearch(key);
   }
 
   const handleInputChange = (event) => {
@@ -92,41 +81,39 @@ const Search = (props) => {
   const handleOnBlur = () => {
     // OnBlur reset matching tuple and dropDownIndx.
     setShowDropbox(false);
-    setDropDownIndx(-1);
+    setDropDownNdx(-1);
   }
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      if (dropDownIndx !== -1 && showDropbox) {
+      if (dropDownNdx !== -1 && showDropbox) {
         // If dropDownIndx is selected and dropbox is shown => search by dropbox index.
-        const [key, val] = matchingTuples[dropDownIndx];
-        handleSearchByKey(key);
-      }
-      else {
+        handleSearch(matchingData[dropDownNdx]);
+      } else {
         // If dropdown index is not selected or drop box is not shown, search by keyword
         handleSearchByKeyword(keyword);
       }
     }
     if (event.key === 'ArrowUp') {
-      selectDropdown(dropDownIndx - 1);
+      selectDropdown(dropDownNdx - 1);
     }
     if (event.key === 'ArrowDown') {
-      selectDropdown(dropDownIndx + 1);
+      selectDropdown(dropDownNdx + 1);
     }
   }
 
   // Dropdown inner component.
-  const Dropdown = (props) => {
-    return (showDropbox && matchingTuples && matchingTuples.length > 0) ?
+  const Dropdown = () => {
+    return (showDropbox && matchingData && matchingData.length > 0) ?
       <div className="popup">
         <div className="popup-content">
           {
-            matchingTuples.map(([key, val], i) => {
+            matchingData.map((data, i) => {
               return (
-                <div className={dropDownIndx === i ? 'popup-item:hover' : 'popup-item'}
-                     key={key}
-                     onMouseDown={() => handleSearchByKey(key)}>
-                  {`${val.universityName}, at ${val.campus} `}
+                <div className={dropDownNdx === i ? 'popup-item:hover' : 'popup-item'}
+                     key={data.searchKey}
+                     onMouseDown={() => handleSearch(data)}>
+                  {props.generateDropdownText(data)}
                 </div>
               )
             })
@@ -137,30 +124,29 @@ const Search = (props) => {
   }
 
   return (
-    <>
-      <div className='searchBody'>
-        <div className="search-content">
-          <input
-            id="searchBar"
-            type="text"
-            autocomplete="off"
-            placeholder="Search your university/college"
-            onChange={handleInputChange}
-            onKeyUp={handleKeyPress}
-            onClick={() => {
-              if (keyword !== '') setShowDropbox(true)
-            }}
-            onBlur={handleOnBlur}
-          />
-          <IconButton id='searchButton'
-                      onClick={() => handleSearchByKeyword(keyword)}
-                      size='small'>
-            <SearchIcon/>
-          </IconButton>
-        </div>
-        <Dropdown/>
+    <div className='search-container'>
+      <div className="search-content">
+        <input
+          id="searchBar"
+          type="text"
+          autoComplete="off"
+          placeholder={props.placeHolder}
+          onChange={handleInputChange}
+          onKeyUp={handleKeyPress}
+          value={keyword}
+          onClick={() => {
+            if (keyword !== '') setShowDropbox(true)
+          }}
+          onBlur={handleOnBlur}
+        />
+        <IconButton id='searchButton'
+                    onClick={() => handleSearchByKeyword(keyword)}
+                    size='small'>
+          <SearchIcon/>
+        </IconButton>
       </div>
-    </>
+      <Dropdown/>
+    </div>
   );
 }
 

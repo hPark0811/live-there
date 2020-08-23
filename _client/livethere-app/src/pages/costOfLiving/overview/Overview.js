@@ -4,6 +4,7 @@ import styles from "./Overview.module.scss";
 import axios from "../../../axios-wrapper";
 import RentalSummary from "../../../components/summary/rentalSummary/RentalSummary";
 import UtilitySummary from "../../../components/summary/utilitySummary/utilitySummary"
+import UniversitySearch from "../../../components/search/universitySearch/UniversitySearch";
 
 const Overview = (props) => {
   const [universityDetail, setUniversityDetail] = useState();
@@ -28,8 +29,13 @@ const Overview = (props) => {
         <SimpleMap center={{lat: universityDetail.latitude, lng: universityDetail.longitude}}/>
       </div>
       <div className={styles.listContainer}>
-        <RentalSummary universityId={universityDetail.id}/>
-        <UtilitySummary universityDetail={universityDetail}/>
+        <div className={styles.searchContainer}>
+          <UniversitySearch/>
+        </div>
+        <div className={styles.summaryList}>
+          <RentalSummary universityId={universityDetail.id}/>
+          <UtilitySummary universityDetail={universityDetail}/>
+        </div>
       </div>
     </div >
     : null;

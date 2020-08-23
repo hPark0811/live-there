@@ -12,8 +12,8 @@ import axios from '../../../axios-wrapper';
 const RentalSummary = (props) => {
   const [maxDistance, setMaxDistance] = useState(15);
   const [propertyType, setPropertyType] = useState('');
-  const [bathCount, setBathCount] = useState(null);
-  const [bedCount, setBedCount] = useState(null);
+  const [bathCount, setBathCount] = useState('');
+  const [bedCount, setBedCount] = useState('');
   const [summary, setSummary] = useState()
 
   useEffect(() => {
@@ -31,10 +31,10 @@ const RentalSummary = (props) => {
     if (propertyType) {
       params.propertyType = propertyType;
     }
-    if (bathCount) {
+    if (bathCount?.length > 0) {
       params.bathCount = bathCount;
     }
-    if (bedCount) {
+    if (bedCount?.length > 0) {
       params.bedCount = bedCount;
     }
 
@@ -64,8 +64,9 @@ const RentalSummary = (props) => {
                         name="propertyType"
                         value={propertyType}
                         onChange={event => setPropertyType(event.target.value)}>
-              {['condo', 'house', 'town house', 'bachelor'].map((type) => (
+              {['condo', 'house', 'town house', 'bachelor'].map((type, ndx) => (
                 <FormControlLabel value={type}
+                                  key={ndx}
                                   control={<Radio color="primary"/>}
                                   label={type}/>
               ))}
@@ -87,8 +88,8 @@ const RentalSummary = (props) => {
               <NativeSelect value={maxDistance}
                             onChange={event => setMaxDistance(parseInt(event.target.value))}>
                 {
-                  [15, 10, 7, 5, 3, 1].map((maxDistance) => (
-                    <option value={maxDistance}>{'< ' + maxDistance + 'km'}</option>
+                  [15, 10, 7, 5, 3, 1].map((maxDistance, ndx) => (
+                    <option key={ndx} value={maxDistance}>{'< ' + maxDistance + 'km'}</option>
                   ))
                 }
               </NativeSelect>
@@ -101,10 +102,10 @@ const RentalSummary = (props) => {
             <FormControl className={styles.Dropdown}>
               <NativeSelect value={bathCount}
                             onChange={event => setBathCount(parseInt(event.currentTarget.value))}>
-                <option value={null}>All</option>
+                <option value={''}>All</option>
                 {
-                  [5, 4, 3, 2, 1].map((bathCount) => (
-                    <option value={bathCount}>{bathCount}</option>
+                  [5, 4, 3, 2, 1].map((bathCount, ndx) => (
+                    <option key={ndx} value={bathCount}>{bathCount}</option>
                   ))
                 }
               </NativeSelect>
@@ -117,10 +118,10 @@ const RentalSummary = (props) => {
             <FormControl className={styles.Dropdown}>
               <NativeSelect value={bedCount}
                             onChange={event => setBedCount(parseInt(event.currentTarget.value))}>
-                <option value={null}>All</option>
+                <option value={''}>All</option>
                 {
-                  [5, 4, 3, 2, 1].map((bedCount) => (
-                    <option value={bedCount}>{bedCount}</option>
+                  [5, 4, 3, 2, 1].map((bedCount, ndx) => (
+                    <option key={ndx} value={bedCount}>{bedCount}</option>
                   ))
                 }
               </NativeSelect>
