@@ -1,0 +1,2286 @@
+{
+   "businesses": [
+      {
+         "id": "4YnTxQ5j7tsbBhlasnDnPw",
+         "alias": "madam-boeuf-and-flea-toronto",
+         "name": "Madam Boeuf And Flea",
+         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/LKDS_NEm9yxeGibmuqzdDg/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/madam-boeuf-and-flea-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 6,
+         "categories": [
+            {
+               "alias": "bars",
+               "title": "Bars"
+            },
+            {
+               "alias": "burgers",
+               "title": "Burgers"
+            }
+         ],
+         "rating": 4.5,
+         "coordinates": {
+            "latitude": 43.67524,
+            "longitude": -79.40636
+         },
+         "transactions": [],
+         "location": {
+            "address1": "252 Dupont Street",
+            "address2": "",
+            "address3": null,
+            "city": "Toronto",
+            "zip_code": "M5R 1V7",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "252 Dupont Street",
+               "Toronto, ON M5R 1V7",
+               "Canada"
+            ]
+         },
+         "phone": "+16473523337",
+         "display_phone": "+1 647-352-3337",
+         "distance": 1578.8046762201575
+      },
+      {
+         "id": "gy5pr5bFAjOL5rERSdMCLg",
+         "alias": "the-keg-steakhouse-bar-toronto-6",
+         "name": "The Keg Steakhouse + Bar",
+         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/APT1I2BCwIqAL9hJPOJjkA/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/the-keg-steakhouse-bar-toronto-6?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 264,
+         "categories": [
+            {
+               "alias": "steak",
+               "title": "Steakhouses"
+            },
+            {
+               "alias": "bars",
+               "title": "Bars"
+            },
+            {
+               "alias": "seafood",
+               "title": "Seafood"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.64964,
+            "longitude": -79.38402
+         },
+         "transactions": [],
+         "price": "$$$",
+         "location": {
+            "address1": "165 York Street",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5H 3R8",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "165 York Street",
+               "Toronto, ON M5H 3R8",
+               "Canada"
+            ]
+         },
+         "phone": "+14167031773",
+         "display_phone": "+1 416-703-1773",
+         "distance": 1753.5888181504056
+      },
+      {
+         "id": "JG9UpsFR6hrqQqsKh_RyaQ",
+         "alias": "planta-yorkville-toronto",
+         "name": "Planta Yorkville",
+         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/RRck-ty3S6iSzrvv2WlWGw/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/planta-yorkville-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 430,
+         "categories": [
+            {
+               "alias": "tapasmallplates",
+               "title": "Tapas/Small Plates"
+            },
+            {
+               "alias": "pizza",
+               "title": "Pizza"
+            },
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.6702150961667,
+            "longitude": -79.3894335574237
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "1221 Bay Street",
+            "address2": "",
+            "address3": null,
+            "city": "Toronto",
+            "zip_code": "M5R 3P5",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "1221 Bay Street",
+               "Toronto, ON M5R 3P5",
+               "Canada"
+            ]
+         },
+         "phone": "+16473487000",
+         "display_phone": "+1 647-348-7000",
+         "distance": 921.7896874121972
+      },
+      {
+         "id": "q7MorRPzU_J-iekeDKUKgw",
+         "alias": "reposado-bar-and-lounge-toronto-2",
+         "name": "Reposado Bar & Lounge",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/B9dTBcx1eaR24deJCWRNKQ/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/reposado-bar-and-lounge-toronto-2?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 139,
+         "categories": [
+            {
+               "alias": "tapasmallplates",
+               "title": "Tapas/Small Plates"
+            },
+            {
+               "alias": "musicvenues",
+               "title": "Music Venues"
+            },
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.64729,
+            "longitude": -79.42012
+         },
+         "transactions": [
+            "restaurant_reservation"
+         ],
+         "price": "$$",
+         "location": {
+            "address1": "136 Ossington Avenue",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M6J 2Z5",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "136 Ossington Avenue",
+               "Toronto, ON M6J 2Z5",
+               "Canada"
+            ]
+         },
+         "phone": "+14165326474",
+         "display_phone": "+1 416-532-6474",
+         "distance": 2651.2687627352198
+      },
+      {
+         "id": "dd3GZs6zW2t7BM0cbxAzvg",
+         "alias": "la-palette-toronto-3",
+         "name": "La Palette",
+         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/OwYfW0w9yL4ToFM1STNBbA/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/la-palette-toronto-3?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 228,
+         "categories": [
+            {
+               "alias": "french",
+               "title": "French"
+            },
+            {
+               "alias": "desserts",
+               "title": "Desserts"
+            },
+            {
+               "alias": "bars",
+               "title": "Bars"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.64797,
+            "longitude": -79.40098
+         },
+         "transactions": [],
+         "price": "$$$",
+         "location": {
+            "address1": "492 Queen Street W",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5V 2B3",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "492 Queen Street W",
+               "Toronto, ON M5V 2B3",
+               "Canada"
+            ]
+         },
+         "phone": "+14169294900",
+         "display_phone": "+1 416-929-4900",
+         "distance": 1754.5151479965402
+      },
+      {
+         "id": "JOoblYsQjFT-47tkt6om0A",
+         "alias": "7-west-cafe-toronto",
+         "name": "7 West Cafe",
+         "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/_cwg3ACC-L2zYecum18OLQ/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/7-west-cafe-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 387,
+         "categories": [
+            {
+               "alias": "italian",
+               "title": "Italian"
+            },
+            {
+               "alias": "breakfast_brunch",
+               "title": "Breakfast & Brunch"
+            },
+            {
+               "alias": "bars",
+               "title": "Bars"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.6685661933329,
+            "longitude": -79.3865257501602
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "7 Charles Street W",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M4Y 1R4",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "7 Charles Street W",
+               "Toronto, ON M4Y 1R4",
+               "Canada"
+            ]
+         },
+         "phone": "+14169289041",
+         "display_phone": "+1 416-928-9041",
+         "distance": 943.9511675932159
+      },
+      {
+         "id": "9ooTxMSL0xe1b0RvwTyDgg",
+         "alias": "coffee-oysters-champagne-toronto",
+         "name": "Coffee Oysters Champagne",
+         "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/zgprOto1dR3QgjuOyR-WwA/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/coffee-oysters-champagne-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 57,
+         "categories": [
+            {
+               "alias": "champagne_bars",
+               "title": "Champagne Bars"
+            },
+            {
+               "alias": "seafood",
+               "title": "Seafood"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.64757,
+            "longitude": -79.38684
+         },
+         "transactions": [],
+         "location": {
+            "address1": "214 King Street W",
+            "address2": "Suite B1",
+            "address3": null,
+            "city": "Toronto",
+            "zip_code": "M5H 3S6",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "214 King Street W",
+               "Suite B1",
+               "Toronto, ON M5H 3S6",
+               "Canada"
+            ]
+         },
+         "phone": "+14164084044",
+         "display_phone": "+1 416-408-4044",
+         "distance": 1902.0276509839266
+      },
+      {
+         "id": "7ppWunvrIURnEZi5nUB_7g",
+         "alias": "baro-toronto-4",
+         "name": "Baro",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/5cveuaGDK49HFI7M5Rg9yQ/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/baro-toronto-4?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 151,
+         "categories": [
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            },
+            {
+               "alias": "chicken_wings",
+               "title": "Chicken Wings"
+            },
+            {
+               "alias": "latin",
+               "title": "Latin American"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.644906,
+            "longitude": -79.39694
+         },
+         "transactions": [],
+         "price": "$$$",
+         "location": {
+            "address1": "485 King Street W",
+            "address2": "",
+            "address3": null,
+            "city": "Toronto",
+            "zip_code": "M5V 1K4",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "485 King Street W",
+               "Toronto, ON M5V 1K4",
+               "Canada"
+            ]
+         },
+         "phone": "+14163638388",
+         "display_phone": "+1 416-363-8388",
+         "distance": 2045.1049838862778
+      },
+      {
+         "id": "GQSmxqRi_s9U9qd5gHLKAw",
+         "alias": "dukes-refresher-bar-toronto",
+         "name": "Duke's Refresher + Bar",
+         "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/HesF21WLJj-HSI_vLgBLHw/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/dukes-refresher-bar-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 187,
+         "categories": [
+            {
+               "alias": "burgers",
+               "title": "Burgers"
+            },
+            {
+               "alias": "tradamerican",
+               "title": "American (Traditional)"
+            },
+            {
+               "alias": "beerbar",
+               "title": "Beer Bar"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.6590440287003,
+            "longitude": -79.3830707246871
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "382 Yonge Street",
+            "address2": "Unit #8",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5B 1S8",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "382 Yonge Street",
+               "Unit #8",
+               "Toronto, ON M5B 1S8",
+               "Canada"
+            ]
+         },
+         "phone": "+14169798529",
+         "display_phone": "+1 416-979-8529",
+         "distance": 1119.9471778437305
+      },
+      {
+         "id": "qps2ITpg3DZi4RzN7YYUSQ",
+         "alias": "hys-steakhouse-toronto-toronto",
+         "name": "Hy's Steakhouse Toronto",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/HTQKKcqhoe1kxPKFk4e86g/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/hys-steakhouse-toronto-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 12,
+         "categories": [
+            {
+               "alias": "steak",
+               "title": "Steakhouses"
+            },
+            {
+               "alias": "seafood",
+               "title": "Seafood"
+            },
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.651051,
+            "longitude": -79.380849
+         },
+         "transactions": [],
+         "location": {
+            "address1": "365 Bay Street",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5H 2V1",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "365 Bay Street",
+               "Toronto, ON M5H 2V1",
+               "Canada"
+            ]
+         },
+         "phone": "+14163646600",
+         "display_phone": "+1 416-364-6600",
+         "distance": 1810.0135788460705
+      },
+      {
+         "id": "Gl6xFX8vM5dqknF9azPCMQ",
+         "alias": "the-keg-steakhouse-bar-esplanade-toronto",
+         "name": "The Keg Steakhouse + Bar - Esplanade",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/GDa8MJIJfgkW8z_xBLc8vQ/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/the-keg-steakhouse-bar-esplanade-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 121,
+         "categories": [
+            {
+               "alias": "steak",
+               "title": "Steakhouses"
+            },
+            {
+               "alias": "bars",
+               "title": "Bars"
+            },
+            {
+               "alias": "seafood",
+               "title": "Seafood"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.646644434586,
+            "longitude": -79.374950318025
+         },
+         "transactions": [],
+         "price": "$$$",
+         "location": {
+            "address1": "26 The Esplanade",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5E 1A7",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "26 The Esplanade",
+               "Toronto, ON M5E 1A7",
+               "Canada"
+            ]
+         },
+         "phone": "+14163670685",
+         "display_phone": "+1 416-367-0685",
+         "distance": 2491.586263680832
+      },
+      {
+         "id": "AOyMxWRZg_5dDMaYTTBwdw",
+         "alias": "the-annex-commons-toronto",
+         "name": "The Annex Commons",
+         "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/cPATpR2NIZBUCuJbOtCrBg/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/the-annex-commons-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 6,
+         "categories": [
+            {
+               "alias": "pizza",
+               "title": "Pizza"
+            },
+            {
+               "alias": "latin",
+               "title": "Latin American"
+            },
+            {
+               "alias": "bars",
+               "title": "Bars"
+            }
+         ],
+         "rating": 4.5,
+         "coordinates": {
+            "latitude": 43.66549,
+            "longitude": -79.40756
+         },
+         "transactions": [],
+         "location": {
+            "address1": "296 Brunswick Ave",
+            "address2": null,
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5S 2M7",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "296 Brunswick Ave",
+               "Toronto, ON M5S 2M7",
+               "Canada"
+            ]
+         },
+         "phone": "+16472771179",
+         "display_phone": "+1 647-277-1179",
+         "distance": 1010.2495007514445
+      },
+      {
+         "id": "tCjlXROlbcaGiBRfU2jaiw",
+         "alias": "the-keg-steakhouse-bar-mansion-toronto",
+         "name": "The Keg Steakhouse + Bar - Mansion",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/sxWrSSpkwtcSLhYw56kDBw/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/the-keg-steakhouse-bar-mansion-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 314,
+         "categories": [
+            {
+               "alias": "steak",
+               "title": "Steakhouses"
+            },
+            {
+               "alias": "bars",
+               "title": "Bars"
+            },
+            {
+               "alias": "seafood",
+               "title": "Seafood"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.66683,
+            "longitude": -79.37788
+         },
+         "transactions": [],
+         "price": "$$$",
+         "location": {
+            "address1": "515 Jarvis Street",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M4Y 2H7",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "515 Jarvis Street",
+               "Toronto, ON M4Y 2H7",
+               "Canada"
+            ]
+         },
+         "phone": "+14169646609",
+         "display_phone": "+1 416-964-6609",
+         "distance": 1483.2349563013634
+      },
+      {
+         "id": "W2NzlS8OJzGfDfr9oRz11Q",
+         "alias": "drake-one-fifty-toronto",
+         "name": "Drake One Fifty",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/0wtbH7Z8F5ui7qfNHAZ2-Q/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/drake-one-fifty-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 239,
+         "categories": [
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            },
+            {
+               "alias": "breakfast_brunch",
+               "title": "Breakfast & Brunch"
+            },
+            {
+               "alias": "tradamerican",
+               "title": "American (Traditional)"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.6493542,
+            "longitude": -79.3846843
+         },
+         "transactions": [],
+         "price": "$$$",
+         "location": {
+            "address1": "150 York Street",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5H 3S5",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "150 York Street",
+               "Toronto, ON M5H 3S5",
+               "Canada"
+            ]
+         },
+         "phone": "+14163636150",
+         "display_phone": "+1 416-363-6150",
+         "distance": 1783.9506253336567
+      },
+      {
+         "id": "Z5kjUEm1A18l864gb3XA8A",
+         "alias": "town-crier-pub-toronto",
+         "name": "Town Crier Pub",
+         "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/fhck54-vYv7NhkJFFOrAGw/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/town-crier-pub-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 210,
+         "categories": [
+            {
+               "alias": "pubs",
+               "title": "Pubs"
+            },
+            {
+               "alias": "german",
+               "title": "German"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.6481433882002,
+            "longitude": -79.3901514674822
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "115 John St",
+            "address2": "",
+            "address3": null,
+            "city": "Toronto",
+            "zip_code": "M5V 2E2",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "115 John St",
+               "Toronto, ON M5V 2E2",
+               "Canada"
+            ]
+         },
+         "phone": "+14162049588",
+         "display_phone": "+1 416-204-9588",
+         "distance": 1740.9939456103023
+      },
+      {
+         "id": "Kal1hFMTEzdXYpa5MNzUPw",
+         "alias": "spin-toronto-toronto",
+         "name": "SPIN Toronto",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/Yz5F4GRreD__GlIt9Mh6aQ/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/spin-toronto-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 132,
+         "categories": [
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            },
+            {
+               "alias": "sports_clubs",
+               "title": "Sports Clubs"
+            },
+            {
+               "alias": "tradamerican",
+               "title": "American (Traditional)"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.6447886395145,
+            "longitude": -79.3963426351547
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "461 King St W",
+            "address2": "Lower Level",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5V 1K4",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "461 King St W",
+               "Lower Level",
+               "Toronto, ON M5V 1K4",
+               "Canada"
+            ]
+         },
+         "phone": "+14165997746",
+         "display_phone": "+1 416-599-7746",
+         "distance": 2056.3784337513375
+      },
+      {
+         "id": "CM7IDKFxV6p5FdptjXsr8A",
+         "alias": "kellys-landing-toronto",
+         "name": "Kellys Landing",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/Xz4HIjOs52J07xrCVNDYgA/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/kellys-landing-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 142,
+         "categories": [
+            {
+               "alias": "sportsbars",
+               "title": "Sports Bars"
+            },
+            {
+               "alias": "tradamerican",
+               "title": "American (Traditional)"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.6448899,
+            "longitude": -79.38305
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "123 Front Street W",
+            "address2": "",
+            "address3": null,
+            "city": "Toronto",
+            "zip_code": "M5J 2M2",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "123 Front Street W",
+               "Toronto, ON M5J 2M2",
+               "Canada"
+            ]
+         },
+         "phone": "+16477761133",
+         "display_phone": "+1 647-776-1133",
+         "distance": 2285.1453757278723
+      },
+      {
+         "id": "S_F4XmLUZFv9Uzbjy44_NA",
+         "alias": "tabriz-persian-cookhouse-toronto",
+         "name": "Tabriz Persian Cookhouse",
+         "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/WtFo2rGKkJPzuXqHRSUJJQ/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/tabriz-persian-cookhouse-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 54,
+         "categories": [
+            {
+               "alias": "persian",
+               "title": "Persian/Iranian"
+            },
+            {
+               "alias": "bars",
+               "title": "Bars"
+            },
+            {
+               "alias": "mideastern",
+               "title": "Middle Eastern"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.66529,
+            "longitude": -79.38722
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "995 Bay street",
+            "address2": null,
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5S 3C4",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "995 Bay street",
+               "Toronto, ON M5S 3C4",
+               "Canada"
+            ]
+         },
+         "phone": "+14169222017",
+         "display_phone": "+1 416-922-2017",
+         "distance": 713.5360761530727
+      },
+      {
+         "id": "eJzstt2qNzJKElcskiB4KA",
+         "alias": "el-tenedor-toronto",
+         "name": "El Tenedor",
+         "image_url": "",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/el-tenedor-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 4,
+         "categories": [
+            {
+               "alias": "spanish",
+               "title": "Spanish"
+            },
+            {
+               "alias": "wine_bars",
+               "title": "Wine Bars"
+            }
+         ],
+         "rating": 5.0,
+         "coordinates": {
+            "latitude": 43.67512,
+            "longitude": -79.38837
+         },
+         "transactions": [],
+         "location": {
+            "address1": "909 Yonge St",
+            "address2": "",
+            "address3": null,
+            "city": "Toronto",
+            "zip_code": "M4W 2H2",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "909 Yonge St",
+               "Toronto, ON M4W 2H2",
+               "Canada"
+            ]
+         },
+         "phone": "+14169238888",
+         "display_phone": "+1 416-923-8888",
+         "distance": 1418.2479956756574
+      },
+      {
+         "id": "y7lhU3dl8cSvIOgKVrKGlw",
+         "alias": "grand-cru-deli-toronto",
+         "name": "Grand Cru Deli",
+         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/yXMfS7YjQNT2zO9SawvtgQ/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/grand-cru-deli-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 10,
+         "categories": [
+            {
+               "alias": "wine_bars",
+               "title": "Wine Bars"
+            },
+            {
+               "alias": "delis",
+               "title": "Delis"
+            },
+            {
+               "alias": "breakfast_brunch",
+               "title": "Breakfast & Brunch"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.64907,
+            "longitude": -79.39168
+         },
+         "transactions": [],
+         "location": {
+            "address1": "304 Richmond St W",
+            "address2": null,
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5V 1X2",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "304 Richmond St W",
+               "Toronto, ON M5V 1X2",
+               "Canada"
+            ]
+         },
+         "phone": "+14165519221",
+         "display_phone": "+1 416-551-9221",
+         "distance": 1617.8972824892858
+      },
+      {
+         "id": "OSF8Iy5Xq-hAN4-zhDVS4w",
+         "alias": "bar-reyna-toronto",
+         "name": "Bar Reyna",
+         "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/qpbbJm2wVKWuZPqLvlRjDw/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/bar-reyna-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 117,
+         "categories": [
+            {
+               "alias": "mediterranean",
+               "title": "Mediterranean"
+            },
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.6700299,
+            "longitude": -79.39335
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "158 Cumberland Street",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5R 1A8",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "158 Cumberland Street",
+               "Toronto, ON M5R 1A8",
+               "Canada"
+            ]
+         },
+         "phone": "+16477484464",
+         "display_phone": "+1 647-748-4464",
+         "distance": 777.2895025571326
+      },
+      {
+         "id": "_5XClj4E5VCIsEscbrrPKg",
+         "alias": "lopan-toronto",
+         "name": "LoPan",
+         "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/fqmg2e5gaix2OWzjqoe6qQ/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/lopan-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 24,
+         "categories": [
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            },
+            {
+               "alias": "chinese",
+               "title": "Chinese"
+            },
+            {
+               "alias": "asianfusion",
+               "title": "Asian Fusion"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.65574,
+            "longitude": -79.4098
+         },
+         "transactions": [],
+         "price": "$$$",
+         "location": {
+            "address1": "503 College Street",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M6G 1A5",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "503 College Street",
+               "Toronto, ON M6G 1A5",
+               "Canada"
+            ]
+         },
+         "phone": "+16473418882",
+         "display_phone": "+1 647-341-8882",
+         "distance": 1407.5169752195739
+      },
+      {
+         "id": "_crbEZ55ve6OFkoWa09R9A",
+         "alias": "the-wickson-social-toronto",
+         "name": "The Wickson Social",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/cvPnrdEGDR5jnGCuF30Vtg/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/the-wickson-social-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 111,
+         "categories": [
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            },
+            {
+               "alias": "newcanadian",
+               "title": "Canadian (New)"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.66584,
+            "longitude": -79.38539
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "5 St Joseph Street",
+            "address2": null,
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M4Y 1Z3",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "5 St Joseph Street",
+               "Toronto, ON M4Y 1Z3",
+               "Canada"
+            ]
+         },
+         "phone": "+16477481501",
+         "display_phone": "+1 647-748-1501",
+         "distance": 859.7307149756463
+      },
+      {
+         "id": "rxA9c0_XObabVL1WCTA4FA",
+         "alias": "sneaky-dees-toronto",
+         "name": "Sneaky Dee's",
+         "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/WHdAjRyTJj_ZlvJVqrqrNw/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/sneaky-dees-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 444,
+         "categories": [
+            {
+               "alias": "tex-mex",
+               "title": "Tex-Mex"
+            },
+            {
+               "alias": "bars",
+               "title": "Bars"
+            },
+            {
+               "alias": "breakfast_brunch",
+               "title": "Breakfast & Brunch"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.6562399,
+            "longitude": -79.4074
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "431 College Street",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5T 1T1",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "431 College Street",
+               "Toronto, ON M5T 1T1",
+               "Canada"
+            ]
+         },
+         "phone": "+14166033090",
+         "display_phone": "+1 416-603-3090",
+         "distance": 1222.4990821379322
+      },
+      {
+         "id": "5AC2yQzEe3iRGrsJ0at-8g",
+         "alias": "reverie-at-the-park-toronto-3",
+         "name": "Reverie at The Park",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/UbtwINaIIuXDqhEuTQKIxg/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/reverie-at-the-park-toronto-3?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 32,
+         "categories": [
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            },
+            {
+               "alias": "newcanadian",
+               "title": "Canadian (New)"
+            }
+         ],
+         "rating": 4.5,
+         "coordinates": {
+            "latitude": 43.65515,
+            "longitude": -79.41274
+         },
+         "transactions": [],
+         "price": "$$$",
+         "location": {
+            "address1": "569 College Street",
+            "address2": null,
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M6G 1B2",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "569 College Street",
+               "Toronto, ON M6G 1B2",
+               "Canada"
+            ]
+         },
+         "phone": "+14165338841",
+         "display_phone": "+1 416-533-8841",
+         "distance": 1643.5584968248343
+      },
+      {
+         "id": "cd3ced-z0OLP-yBUPSNKjQ",
+         "alias": "the-diners-corner-toronto",
+         "name": "The Diner's Corner",
+         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/ckIcFFfpG10vt0-z5-sMrg/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/the-diners-corner-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 17,
+         "categories": [
+            {
+               "alias": "bars",
+               "title": "Bars"
+            },
+            {
+               "alias": "caribbean",
+               "title": "Caribbean"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.6682708024309,
+            "longitude": -79.386226348579
+         },
+         "transactions": [],
+         "location": {
+            "address1": "714 Yonge street",
+            "address2": null,
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M4Y 2B3",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "714 Yonge street",
+               "Toronto, ON M4Y 2B3",
+               "Canada"
+            ]
+         },
+         "phone": "+14169297031",
+         "display_phone": "+1 416-929-7031",
+         "distance": 943.1992694607095
+      },
+      {
+         "id": "gp-b5jHZiASLrzyXeTO9Ow",
+         "alias": "stray-toronto",
+         "name": "Stray",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/VeG6YgBt9mFf3k3uhe-mJQ/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/stray-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 2,
+         "categories": [
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            },
+            {
+               "alias": "tapasmallplates",
+               "title": "Tapas/Small Plates"
+            }
+         ],
+         "rating": 5.0,
+         "coordinates": {
+            "latitude": 43.6559472442801,
+            "longitude": -79.4110082834959
+         },
+         "transactions": [],
+         "location": {
+            "address1": "532 College Street",
+            "address2": "",
+            "address3": null,
+            "city": "Toronto",
+            "zip_code": "M6G 1A6",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "532 College Street",
+               "Toronto, ON M6G 1A6",
+               "Canada"
+            ]
+         },
+         "phone": "+16478891366",
+         "display_phone": "+1 647-889-1366",
+         "distance": 1476.4199239469924
+      },
+      {
+         "id": "eYeFOcNJO2iTNPCPi8XAxw",
+         "alias": "el-pocho-antojitos-bar-toronto",
+         "name": "El Pocho Antojitos Bar",
+         "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/cMSjaQ-Km15ZsOjf4pHXeQ/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/el-pocho-antojitos-bar-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 64,
+         "categories": [
+            {
+               "alias": "bars",
+               "title": "Bars"
+            },
+            {
+               "alias": "breakfast_brunch",
+               "title": "Breakfast & Brunch"
+            },
+            {
+               "alias": "mexican",
+               "title": "Mexican"
+            }
+         ],
+         "rating": 4.5,
+         "coordinates": {
+            "latitude": 43.66963,
+            "longitude": -79.41338
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "2 Follis Avenue",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M6G 1S3",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "2 Follis Avenue",
+               "Toronto, ON M6G 1S3",
+               "Canada"
+            ]
+         },
+         "phone": "+16477947115",
+         "display_phone": "+1 647-794-7115",
+         "distance": 1591.4485745445277
+      },
+      {
+         "id": "fgTeVSSrqqCR1VDWMUgaKw",
+         "alias": "koi-koi-saké-bar-toronto",
+         "name": "Koi Koi Saké Bar",
+         "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/_-oGwaKOEWHAGrZ0jRDFbg/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/koi-koi-sak%C3%A9-bar-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 43,
+         "categories": [
+            {
+               "alias": "bars",
+               "title": "Bars"
+            },
+            {
+               "alias": "japanese",
+               "title": "Japanese"
+            },
+            {
+               "alias": "tapas",
+               "title": "Tapas Bars"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.65499,
+            "longitude": -79.40054
+         },
+         "transactions": [],
+         "location": {
+            "address1": "170 Baldwin Street",
+            "address2": null,
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5T 1L8",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "170 Baldwin Street",
+               "Toronto, ON M5T 1L8",
+               "Canada"
+            ]
+         },
+         "phone": "+16473434618",
+         "display_phone": "+1 647-343-4618",
+         "distance": 1007.9999635378476
+      },
+      {
+         "id": "EwlA5wluJw5zzXxtA42brQ",
+         "alias": "bar-centrale-toronto-3",
+         "name": "Bar Centrale",
+         "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/BGm0lD-ucHfgq8wMEEozcw/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/bar-centrale-toronto-3?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 5,
+         "categories": [
+            {
+               "alias": "wine_bars",
+               "title": "Wine Bars"
+            },
+            {
+               "alias": "italian",
+               "title": "Italian"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.68,
+            "longitude": -79.39055
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "1095 Yonge Street",
+            "address2": "",
+            "address3": null,
+            "city": "Toronto",
+            "zip_code": "M4W 2L8",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "1095 Yonge Street",
+               "Toronto, ON M4W 2L8",
+               "Canada"
+            ]
+         },
+         "phone": "+14169661372",
+         "display_phone": "+1 416-966-1372",
+         "distance": 1909.7741673106946
+      },
+      {
+         "id": "9Eghhu_LzEJgDKNgisf3rg",
+         "alias": "scaddabush-italian-kitchen-and-bar-toronto",
+         "name": "Scaddabush Italian Kitchen & Bar",
+         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/JWgYp4QjTrbQn_KXiIB6Pg/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/scaddabush-italian-kitchen-and-bar-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 460,
+         "categories": [
+            {
+               "alias": "wine_bars",
+               "title": "Wine Bars"
+            },
+            {
+               "alias": "italian",
+               "title": "Italian"
+            },
+            {
+               "alias": "beer_and_wine",
+               "title": "Beer, Wine & Spirits"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.659095,
+            "longitude": -79.382915
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "382 Yonge Street",
+            "address2": "Unit #7",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5B 1S8",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "382 Yonge Street",
+               "Unit #7",
+               "Toronto, ON M5B 1S8",
+               "Canada"
+            ]
+         },
+         "phone": "+14165978838",
+         "display_phone": "+1 416-597-8838",
+         "distance": 1128.9803111786068
+      },
+      {
+         "id": "_fWZH1p8B_lwK4feQgtWkQ",
+         "alias": "ritz-bar-toronto-3",
+         "name": "Ritz Bar",
+         "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/q-aPx8FoJlDmst_RGoZbOA/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/ritz-bar-toronto-3?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 16,
+         "categories": [
+            {
+               "alias": "international",
+               "title": "International"
+            },
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            },
+            {
+               "alias": "musicvenues",
+               "title": "Music Venues"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.6453554682417,
+            "longitude": -79.3871778220902
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "181 Wellington Street W",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5V 3G7",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "181 Wellington Street W",
+               "Toronto, ON M5V 3G7",
+               "Canada"
+            ]
+         },
+         "phone": "+14165852500",
+         "display_phone": "+1 416-585-2500",
+         "distance": 2107.4712864165067
+      },
+      {
+         "id": "Pkb75Ma72lVTiLQoqHQkqQ",
+         "alias": "socialite-restaurant-and-bar-toronto-4",
+         "name": "Socialite Restaurant & Bar",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/-zt3sXNh2WP7axPdnfsbPw/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/socialite-restaurant-and-bar-toronto-4?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 17,
+         "categories": [
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            },
+            {
+               "alias": "asianfusion",
+               "title": "Asian Fusion"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.65677,
+            "longitude": -79.40321
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "276 Augusta Avenue",
+            "address2": null,
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5T 2L9",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "276 Augusta Avenue",
+               "Toronto, ON M5T 2L9",
+               "Canada"
+            ]
+         },
+         "phone": "+16478962229",
+         "display_phone": "+1 647-896-2229",
+         "distance": 937.8114609195899
+      },
+      {
+         "id": "fiLcl_-nQAq0LSGdviznJA",
+         "alias": "long-time-no-see-toronto-5",
+         "name": "Long Time No See",
+         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/ZOJu5Q7aPwv34fjy9UJ5lA/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/long-time-no-see-toronto-5?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 11,
+         "categories": [
+            {
+               "alias": "bbq",
+               "title": "Barbeque"
+            },
+            {
+               "alias": "pubs",
+               "title": "Pubs"
+            },
+            {
+               "alias": "chinese",
+               "title": "Chinese"
+            }
+         ],
+         "rating": 3.0,
+         "coordinates": {
+            "latitude": 43.65318,
+            "longitude": -79.39524
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "421 Dundas Street W",
+            "address2": null,
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5T 2W4",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "421 Dundas Street W",
+               "Toronto, ON M5T 2W4",
+               "Canada"
+            ]
+         },
+         "phone": "+14168488887",
+         "display_phone": "+1 416-848-8887",
+         "distance": 1129.5618137223803
+      },
+      {
+         "id": "pzGDQ0QjukgqUyoJd0cqKA",
+         "alias": "labora-restaurant-toronto",
+         "name": "Labora Restaurant",
+         "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/-nUN81qO_3iey9jdmrEX4w/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/labora-restaurant-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 25,
+         "categories": [
+            {
+               "alias": "tapas",
+               "title": "Tapas Bars"
+            },
+            {
+               "alias": "spanish",
+               "title": "Spanish"
+            },
+            {
+               "alias": "bars",
+               "title": "Bars"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.64519,
+            "longitude": -79.39538
+         },
+         "transactions": [],
+         "location": {
+            "address1": "433 King Street West",
+            "address2": null,
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5V 1K4",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "433 King Street West",
+               "Toronto, ON M5V 1K4",
+               "Canada"
+            ]
+         },
+         "phone": "+14162609993",
+         "display_phone": "+1 416-260-9993",
+         "distance": 2020.1146206310925
+      },
+      {
+         "id": "Orgm9nmcClxnAUva4nOKyA",
+         "alias": "hothouse-toronto",
+         "name": "Hothouse",
+         "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/zjLBY4oNFr0QZKZWtRtBpQ/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/hothouse-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 343,
+         "categories": [
+            {
+               "alias": "italian",
+               "title": "Italian"
+            },
+            {
+               "alias": "bars",
+               "title": "Bars"
+            },
+            {
+               "alias": "venues",
+               "title": "Venues & Event Spaces"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.64884749595,
+            "longitude": -79.373683180012
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "35 Church Street",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5E 1T3",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "35 Church Street",
+               "Toronto, ON M5E 1T3",
+               "Canada"
+            ]
+         },
+         "phone": "+14163667800",
+         "display_phone": "+1 416-366-7800",
+         "distance": 2390.1097472303927
+      },
+      {
+         "id": "KT2E2HQtb0HA0zsjbVp2BQ",
+         "alias": "stk-steakhouse-toronto",
+         "name": "STK Steakhouse",
+         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/AwxoW7hNo6wUARlo-MN_yw/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/stk-steakhouse-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 167,
+         "categories": [
+            {
+               "alias": "steak",
+               "title": "Steakhouses"
+            },
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            },
+            {
+               "alias": "lounges",
+               "title": "Lounges"
+            }
+         ],
+         "rating": 3.0,
+         "coordinates": {
+            "latitude": 43.67032,
+            "longitude": -79.39418
+         },
+         "transactions": [],
+         "price": "$$$$",
+         "location": {
+            "address1": "153 Yorkville Avenue",
+            "address2": "",
+            "address3": null,
+            "city": "Toronto",
+            "zip_code": "M5R 1C4",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "153 Yorkville Avenue",
+               "Toronto, ON M5R 1C4",
+               "Canada"
+            ]
+         },
+         "phone": "+14166139660",
+         "display_phone": "+1 416-613-9660",
+         "distance": 798.9112313678223
+      },
+      {
+         "id": "HkPnai4LMRjAYZkZ2AQLkA",
+         "alias": "page-one-toronto-5",
+         "name": "Page One",
+         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/PzJvleObx62sEFfsOw7LSA/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/page-one-toronto-5?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 79,
+         "categories": [
+            {
+               "alias": "cafes",
+               "title": "Cafes"
+            },
+            {
+               "alias": "bars",
+               "title": "Bars"
+            },
+            {
+               "alias": "venues",
+               "title": "Venues & Event Spaces"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.657853,
+            "longitude": -79.376254
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "106 Mutual Street",
+            "address2": "Unit 8",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5B 2R7",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "106 Mutual Street",
+               "Unit 8",
+               "Toronto, ON M5B 2R7",
+               "Canada"
+            ]
+         },
+         "phone": "+14166634920",
+         "display_phone": "+1 416-663-4920",
+         "distance": 1676.8308831174918
+      },
+      {
+         "id": "wcR9Vbwn2EmlSeV7uBUIsA",
+         "alias": "hemingways-restaurant-toronto",
+         "name": "Hemingway's Restaurant",
+         "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/_k0qKHy9kwuP9j8GFEKW2Q/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/hemingways-restaurant-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 259,
+         "categories": [
+            {
+               "alias": "bars",
+               "title": "Bars"
+            },
+            {
+               "alias": "tradamerican",
+               "title": "American (Traditional)"
+            }
+         ],
+         "rating": 3.0,
+         "coordinates": {
+            "latitude": 43.67015,
+            "longitude": -79.39279
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "142 Cumberland St",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5R 1A8",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "142 Cumberland St",
+               "Toronto, ON M5R 1A8",
+               "Canada"
+            ]
+         },
+         "phone": "+14169682828",
+         "display_phone": "+1 416-968-2828",
+         "distance": 788.7594282967245
+      },
+      {
+         "id": "J4_q5iMukg-UnnLnT6ZwAA",
+         "alias": "northern-belle-toronto",
+         "name": "Northern Belle",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/wKTT77ccgAX8PMH0IGgosw/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/northern-belle-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 36,
+         "categories": [
+            {
+               "alias": "coffee",
+               "title": "Coffee & Tea"
+            },
+            {
+               "alias": "cafes",
+               "title": "Cafes"
+            },
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            }
+         ],
+         "rating": 4.5,
+         "coordinates": {
+            "latitude": 43.65081,
+            "longitude": -79.41258
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "913 Dundas Street W",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M6J 1W1",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "913 Dundas Street W",
+               "Toronto, ON M6J 1W1",
+               "Canada"
+            ]
+         },
+         "phone": "+14168238969",
+         "display_phone": "+1 416-823-8969",
+         "distance": 1943.6534591043662
+      },
+      {
+         "id": "E0QRR3IO5fs9gXst0lOfpA",
+         "alias": "nightowl-toronto-toronto",
+         "name": "Nightowl Toronto",
+         "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/J3sB0JySZZQ36OOlyjI7Xw/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/nightowl-toronto-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 33,
+         "categories": [
+            {
+               "alias": "bars",
+               "title": "Bars"
+            },
+            {
+               "alias": "newcanadian",
+               "title": "Canadian (New)"
+            },
+            {
+               "alias": "musicvenues",
+               "title": "Music Venues"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.65481,
+            "longitude": -79.41577
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "647 College Street",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M6G 1B7",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "647 College Street",
+               "Toronto, ON M6G 1B7",
+               "Canada"
+            ]
+         },
+         "phone": "+16479274321",
+         "display_phone": "+1 647-927-4321",
+         "distance": 1876.4858050044866
+      },
+      {
+         "id": "bDgmLfAh_TWRCHEYC8hbpQ",
+         "alias": "the-keg-steakhouse-and-bar-toronto-5",
+         "name": "The Keg Steakhouse & Bar",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/BUvhSxCT_TvnPmc2rEwSmA/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/the-keg-steakhouse-and-bar-toronto-5?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 117,
+         "categories": [
+            {
+               "alias": "steak",
+               "title": "Steakhouses"
+            },
+            {
+               "alias": "bars",
+               "title": "Bars"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.6449240548783,
+            "longitude": -79.3988109048935
+         },
+         "transactions": [],
+         "price": "$$$",
+         "location": {
+            "address1": "560 King Street W",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5V 0L5",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "560 King Street W",
+               "Toronto, ON M5V 0L5",
+               "Canada"
+            ]
+         },
+         "phone": "+14163647227",
+         "display_phone": "+1 416-364-7227",
+         "distance": 2055.9280114974886
+      },
+      {
+         "id": "PPCEx65Lm121Hw5yQhM_Zw",
+         "alias": "craft-beer-market-toronto",
+         "name": "Craft Beer Market",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/jlLR6K5DM4U6W5tyxlNiYg/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/craft-beer-market-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 138,
+         "categories": [
+            {
+               "alias": "beerbar",
+               "title": "Beer Bar"
+            },
+            {
+               "alias": "tradamerican",
+               "title": "American (Traditional)"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.650159,
+            "longitude": -79.378093
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "1 Adelaide Street E",
+            "address2": "",
+            "address3": null,
+            "city": "Toronto",
+            "zip_code": "M5C 2V9",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "1 Adelaide Street E",
+               "Toronto, ON M5C 2V9",
+               "Canada"
+            ]
+         },
+         "phone": "+14379222337",
+         "display_phone": "+1 437-922-2337",
+         "distance": 2033.4123661951658
+      },
+      {
+         "id": "UH6mET5JYZR6yPDVpTG9Og",
+         "alias": "little-anthonys-toronto",
+         "name": "Little Anthony's",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/h3V8jyhHeIcQFXPljVHR5A/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/little-anthonys-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 132,
+         "categories": [
+            {
+               "alias": "bars",
+               "title": "Bars"
+            },
+            {
+               "alias": "italian",
+               "title": "Italian"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.650406,
+            "longitude": -79.384358
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "121 Richmond Street W",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5H 2K1",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "121 Richmond Street W",
+               "Toronto, ON M5H 2K1",
+               "Canada"
+            ]
+         },
+         "phone": "+14163682223",
+         "display_phone": "+1 416-368-2223",
+         "distance": 1697.4300466243371
+      },
+      {
+         "id": "QFPS9JBNdOOHVP0C3pSslw",
+         "alias": "earls-kitchen-bar-toronto",
+         "name": "Earls Kitchen + Bar",
+         "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/d5lDPc9Tu-K2qeIvhsqFfw/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/earls-kitchen-bar-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 430,
+         "categories": [
+            {
+               "alias": "newcanadian",
+               "title": "Canadian (New)"
+            },
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.6480134620711,
+            "longitude": -79.3839246431072
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "150 King Street West",
+            "address2": "Unit 100",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "V5H 1J9",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "150 King Street West",
+               "Unit 100",
+               "Toronto, ON V5H 1J9",
+               "Canada"
+            ]
+         },
+         "phone": "+14169160227",
+         "display_phone": "+1 416-916-0227",
+         "distance": 1943.8112254979944
+      },
+      {
+         "id": "cefRDEK5O3t_iUuwnmL27Q",
+         "alias": "smith-toronto",
+         "name": "Smith",
+         "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/QOOXC0ltb2n1EgHzAbJrLg/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/smith-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 225,
+         "categories": [
+            {
+               "alias": "breakfast_brunch",
+               "title": "Breakfast & Brunch"
+            },
+            {
+               "alias": "newcanadian",
+               "title": "Canadian (New)"
+            },
+            {
+               "alias": "bars",
+               "title": "Bars"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.6669924,
+            "longitude": -79.3813287
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "553 Church Street",
+            "address2": null,
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M4Y 2E2",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "553 Church Street",
+               "Toronto, ON M4Y 2E2",
+               "Canada"
+            ]
+         },
+         "phone": "+14169262501",
+         "display_phone": "+1 416-926-2501",
+         "distance": 1227.9373482543022
+      },
+      {
+         "id": "2lHLb0Hi_UtGa1Bne-jZuA",
+         "alias": "h-bar-toronto",
+         "name": "H Bar",
+         "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/2huXo7ngZAyHftGn_A0WoQ/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/h-bar-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 28,
+         "categories": [
+            {
+               "alias": "sportsbars",
+               "title": "Sports Bars"
+            },
+            {
+               "alias": "newcanadian",
+               "title": "Canadian (New)"
+            }
+         ],
+         "rating": 4.0,
+         "coordinates": {
+            "latitude": 43.6457619092439,
+            "longitude": -79.4104793334332
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "859 Queen Street W",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M6J 1G5",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "859 Queen Street W",
+               "Toronto, ON M6J 1G5",
+               "Canada"
+            ]
+         },
+         "phone": "+16473524227",
+         "display_phone": "+1 647-352-4227",
+         "distance": 2281.6114708100818
+      },
+      {
+         "id": "3cAy1gxlprn1ue0q3L_ziw",
+         "alias": "lee-chen-bistro-toronto",
+         "name": "Lee Chen Bistro",
+         "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/Qj1L0RMXlrtr4cMiGvg8vA/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/lee-chen-bistro-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 162,
+         "categories": [
+            {
+               "alias": "dimsum",
+               "title": "Dim Sum"
+            },
+            {
+               "alias": "asianfusion",
+               "title": "Asian Fusion"
+            },
+            {
+               "alias": "wine_bars",
+               "title": "Wine Bars"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.672372,
+            "longitude": -79.387436
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "813 Yonge Street",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M4W 2G9",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "813 Yonge Street",
+               "Toronto, ON M4W 2G9",
+               "Canada"
+            ]
+         },
+         "phone": "+14169018869",
+         "display_phone": "+1 416-901-8869",
+         "distance": 1210.4513062982808
+      },
+      {
+         "id": "DnY2LxRXhD8L1XGyOzVAcg",
+         "alias": "true-true-diner-toronto",
+         "name": "True True Diner",
+         "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/gW7ZjhcNjXmPAiPfVNTo3w/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/true-true-diner-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 5,
+         "categories": [
+            {
+               "alias": "breakfast_brunch",
+               "title": "Breakfast & Brunch"
+            },
+            {
+               "alias": "diners",
+               "title": "Diners"
+            },
+            {
+               "alias": "cocktailbars",
+               "title": "Cocktail Bars"
+            }
+         ],
+         "rating": 3.0,
+         "coordinates": {
+            "latitude": 43.65039,
+            "longitude": -79.37129
+         },
+         "transactions": [],
+         "location": {
+            "address1": "169 King St E",
+            "address2": "",
+            "address3": null,
+            "city": "Toronto",
+            "zip_code": "M5A 1J4",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "169 King St E",
+               "Toronto, ON M5A 1J4",
+               "Canada"
+            ]
+         },
+         "phone": "+16473503228",
+         "display_phone": "+1 647-350-3228",
+         "distance": 2432.9889227465865
+      },
+      {
+         "id": "nOu-pkyvRkRH-Cw3t00gyw",
+         "alias": "the-football-factory-toronto",
+         "name": "The Football Factory",
+         "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/hsd1TaBN0JBnM-odQLXyWw/o.jpg",
+         "is_closed": false,
+         "url": "https://www.yelp.com/biz/the-football-factory-toronto?adjust_creative=ZC0jamuQQVfomgOMrt_Dpw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=ZC0jamuQQVfomgOMrt_Dpw",
+         "review_count": 43,
+         "categories": [
+            {
+               "alias": "sportsbars",
+               "title": "Sports Bars"
+            },
+            {
+               "alias": "tradamerican",
+               "title": "American (Traditional)"
+            },
+            {
+               "alias": "beerbar",
+               "title": "Beer Bar"
+            }
+         ],
+         "rating": 3.5,
+         "coordinates": {
+            "latitude": 43.6463209,
+            "longitude": -79.4038606
+         },
+         "transactions": [],
+         "price": "$$",
+         "location": {
+            "address1": "164 Bathurst Street",
+            "address2": "",
+            "address3": "",
+            "city": "Toronto",
+            "zip_code": "M5V 2R3",
+            "country": "CA",
+            "state": "ON",
+            "display_address": [
+               "164 Bathurst Street",
+               "Toronto, ON M5V 2R3",
+               "Canada"
+            ]
+         },
+         "phone": "+14163684625",
+         "display_phone": "+1 416-368-4625",
+         "distance": 1996.2839302700509
+      }
+   ],
+   "total": 221,
+   "region": {
+      "center": {
+         "longitude": -79.39570426940918,
+         "latitude": 43.66327634710703
+      }
+   }
+}
