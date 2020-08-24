@@ -1,0 +1,21 @@
+runtime: python
+env: flex
+entrypoint: gunicorn -b :$PORT main:app
+
+runtime_config:
+  python_version: 3
+# If decided to host react app through flask, use the below option. 
+#
+# handlers:
+#   # This configures Google App Engine to serve the files in the app's static
+#   # directory.
+# - url: /
+#   static_files: ../_client/livethere-app/build/index.html
+#   upload: ../_client/livethere-app/build/index.html
+
+#   # This handler routes all requests not caught above to your main app. It is
+#   # required when static routes are defined, but can be omitted (along with
+#   # the entire handlers section) when there are no static files defined.
+# - url: /(.*)
+#   static_files: ../_client/livethere-app/build/\1
+#   upload: ../_client/livethere-app/build/(.*)

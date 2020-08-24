@@ -14,3 +14,16 @@ On Unix or MacOS, run:
 
 Then
 `pip install -r requirements.txt`
+
+
+#### Deployment
+##### You must have gcloud SDK installed to deploy through CLI
+
+To select project (only need to be done once)
+`gcloud init`
+
+run following command
+`gcloud app deploy`
+
+to check if the deployment has been done properly
+`gcloud app browse`
