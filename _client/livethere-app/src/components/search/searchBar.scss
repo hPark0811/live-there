@@ -16,6 +16,10 @@ $search-max-width: 80vw;
   justify-content: space-between;
   border-bottom: 0.2em solid black;
   padding: 0;
+
+  & > input::placeholder {
+    color: #505050;
+  }
 }
 
 .popup {

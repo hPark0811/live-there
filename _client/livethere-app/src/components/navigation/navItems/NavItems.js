@@ -9,9 +9,6 @@ const NavItems = () => (
       <NavLink to="/" activeClassName={styles.active} exact>HOME</NavLink>
     </li>
     <li className={styles.Item}>
-      <NavLink to="/cost-of-living/overview/uwo" activeClassName={styles.active} exact>TEST</NavLink>
-    </li>
-    <li className={styles.Item}>
       <NavLink to="/about" activeClassName={styles.active} exact>ABOUT US</NavLink>
     </li>
     {/*<li className={styles.Item}>

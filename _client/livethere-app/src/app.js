@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {BrowserRouter} from "react-router-dom";
-import {Route, Switch} from "react-router"
+import {Redirect, Route, Switch} from "react-router"
 import {ThemeProvider} from '@material-ui/core/styles';
 import mainTheme from "./assets/styles/_theme";
 import Home from "./pages/home/Home";
@@ -9,6 +9,7 @@ import PageLayout from "./components/layout/page/PageLayout";
 import * as actionTypes from "./store/actions";
 import {connect} from "react-redux";
 import axios from "./axios-wrapper";
+import NotFound from "./pages/error/not-found/not-found";
 
 function App(props) {
   useEffect(() => {
@@ -44,6 +45,12 @@ function App(props) {
                    component={Home}/>
             <Route path="/cost-of-living"
                    component={CostOfLiving}/>
+            <Route path="/error"
+                   exact
+                   component={NotFound}/>
+            <Route path="/">
+              <Redirect to="/error"/>
+            </Route>
           </Switch>
         </PageLayout>
       </ThemeProvider>
