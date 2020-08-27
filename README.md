@@ -3,11 +3,11 @@
 LiveThere is a cost of living analysis & budgeting website for highschool students, where students can view their most up to date estimated cost of living based on the selected post-secondary institution. 
 
 * **20,000+ data points** collected through web scraping to provide analysis (rental, eating out, utilities, etc.).
-* **Accurate** cost of living analysis with following query options.
+* **Cost of living** analysis with following query options.
   * **Rental**: # of bedrooms, # of bathrooms, property type, distance from campus
-  * **Utilities**: Electrical, gas, water, etc.
-  * **Eating out**: Retaurant type, has patio etc.
-* **Compatible** with devices of all sizes and all Operating Systems and browsers.
+  * **Utilities**: electrical, gas, water, etc.
+  * **Eating out**: retaurant type, has patio etc.
+* **Compatible** with devices of all sizes and all operating systems and browsers.
 
 ## Tech Stack
 <div style="text-align: center">
@@ -19,7 +19,7 @@ LiveThere is a cost of living analysis & budgeting website for highschool studen
   <img src="_client/livethere-app/src/assets/DB Class Diagram.png" width="70%">
 </div>
 
-#### Behind the Scene
+## Behind the Scene
 * **Frontend**
   * **Redux** for application state management.
   * **Material UI** theme to provide common theme throughout the user experience.
