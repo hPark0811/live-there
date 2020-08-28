@@ -34,7 +34,7 @@ const Overview = (props) => {
           <UniversitySearch/>
         </div>
         <div className={styles.summaryList}>
-          <RentalSummary universityId={universityDetail.id}/>
+          <RentalSummary universityId={universityDetail.id} postalCode={universityDetail.postalCode}/>
           <UtilitySummary universityDetail={universityDetail}/>
           <EatOutSummary universityId={universityDetail.id}/>
         </div>

@@ -115,7 +115,7 @@ class UniversitySchema(ma.Schema):
 class UniversityDetailSchema(ma.Schema):
     class Meta:
         fields = ('id', 'universityName', 'campus', 'institutionType',
-                  'city', 'province', 'longitude', 'latitude')
+                  'city', 'province', 'longitude', 'latitude', 'postalCode')
 
 
 class MainCampusMap(University):
