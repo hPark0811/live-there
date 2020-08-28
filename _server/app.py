@@ -32,6 +32,7 @@ def handle_invalid_usage(error):
     response = jsonify(error.to_dict())
     return response
 
+
 # Run Server
 if __name__ == '__main__':
     app.run(debug=True)
