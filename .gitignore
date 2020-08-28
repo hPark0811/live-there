@@ -142,9 +142,3 @@ cython_debug/
 
 # MacOS
 .DS_Store
-
-# Pickle Ml Models
-.pkl
-
-# Torch Ml Models
-.pt

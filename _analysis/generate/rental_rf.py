@@ -96,16 +96,20 @@ def main(path, test_size=0.2, random_state=DEFAULT_RANDOM_STATE, n_trees=DEFAULT
     # Log hyperparameters and settings.
     print(f'N trees: {n_trees}')
     print(f'Random State: {random_state}')
-    
+
     # Create model.
     print('Training model...')
     rf, test_score = _create_model(train_x, train_y, test_x, test_y, random_state, n_trees)
     print(f'Test score: { test_score }')
 
-    # Save model.
-    with open(path, 'wb') as f:
-        pickle.dump(rf, f)
-    print(f'Model saved at {path}')
+    if input('Confirm saving model [y/n]') == 'y':
+        # Save model.
+        with open(path, 'wb') as f:
+            pickle.dump(rf, f)
+        print(f'Model saved at {path}')
+
+    else:
+        print('Saved cancelled.')
 
 
 if __name__ == '__main__':
