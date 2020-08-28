@@ -1,9 +1,23 @@
 from models import *
 from flask import Blueprint
 from flask import request
-import numpy
 from api.exception.exception_handler import *
+import numpy as np
+import pickle
+import pgeocode
+import os
 
+
+# CONST
+ML_MODEL_PATH = os.path.join('api', '_predictive', 'rental_rf')
+PROPERTY_ALIAS_MAP = {
+    'condo': ['apartment', 'condo'],
+    'house': ['house', 'loft', 'duplex', 'multi-unit'],
+    'town house': ['town house'],
+    'bachelor': ['bachelor', 'studio']
+}
+
+# Config
 rental_api = Blueprint('rental_api', __name__)
 db = SQLAlchemy()
 
@@ -11,13 +25,69 @@ db = SQLAlchemy()
 rental_schema = RentalSchema()
 rentals_schema = RentalSchema(many=True)
 
+
 # Get all Rentals
-
-
 @rental_api.route('', methods=['GET'])
 def get_rentals():
     all_rentals = Rental.query.all()
     return rentals_schema.jsonify(all_rentals)
+
+
+# Return predicted rental price.
+@rental_api.route('/predict', methods=['GET'])
+def predict_rental():
+    valid_args = [
+        request.args.get('universityId') is not None,
+        request.args.get('bathCount') is not None,
+        request.args.get('bedCount') is not None,
+        request.args.get('propertyType') is not None, 
+        request.args.get('postalCode') is not None
+    ]
+
+    if not all(valid_args):
+        raise BadRequest('Must provide valid arguments')
+
+    # Retrieve county.
+    nomi = pgeocode.Nominatim('ca')
+    postal_code = nomi.query_postal_code([request.args.get('postalCode')]).to_dict('records')[0]
+    county = postal_code['county_name']
+
+    # Load model.
+    with open(os.path.join(ML_MODEL_PATH, 'model.pkl'), 'rb') as f:
+        rf_model = pickle.load(f) 
+
+    # Load scalers. 
+    # TODO: only single one hot enocoding.
+    with open(os.path.join(ML_MODEL_PATH, 'property_one_hot.pkl'), 'rb') as f:
+        property_one_hot = pickle.load(f)
+
+    with open(os.path.join(ML_MODEL_PATH, 'county_one_hot.pkl'), 'rb') as f:
+        county_one_hot = pickle.load(f)
+
+    with open(os.path.join(ML_MODEL_PATH, 'normalization.pkl'), 'rb') as f:
+        scaler = pickle.load(f)
+
+    # Average all the alias
+    alias = PROPERTY_ALIAS_MAP[request.args.get('propertyType')]
+    predictions = []
+
+    # For each property type in alias, predict using RF model.
+    for p in alias:
+        # Normalize features.
+        features = scaler.transform(np.array([int(request.args.get('bathCount')), int(request.args.get('bedCount'))]).reshape(1, -1))
+
+        # One hot encode property and location.
+        p_sparse = property_one_hot.transform(np.array([p]).reshape(1, -1)).toarray()
+        c_sparse = county_one_hot.transform(np.array([county]).reshape(1, -1)).toarray()
+
+        x = np.concatenate([features, p_sparse, c_sparse], axis=1)
+
+        # Predict.
+        predictions.append(rf_model.predict(x).item())
+
+    return {
+        'prediction': np.mean(predictions)
+    }
 
 
 @rental_api.route('/average', methods=['GET'])
@@ -37,9 +107,9 @@ def get_average_rental():
     if request.args.get('maxDistance'):
         max_distance_km = request.args['maxDistance']
     if request.args.get('propertyType'):
-        property_types = property_type_alias_mapper(
+        property_types = PROPERTY_ALIAS_MAP[
             request.args.get('propertyType')
-        )
+        ]
     if request.args.get('bathCount'):
         bath_count = request.args.get('bathCount')
     if request.args.get('bedCount'):
@@ -113,33 +183,12 @@ def calculate_mean(nums):
     Returns:
         float: mean of nums
     """
-    nums = numpy.array(nums)
-    mean = numpy.mean(nums)
-    std_dev = numpy.std(nums)
+    nums = np.array(nums)
+    mean = np.mean(nums)
+    std_dev = np.std(nums)
     distance_from_mean = abs(nums - mean)
     max_deviations = 1.5
     not_outlier = distance_from_mean < max_deviations * std_dev
     no_outliers = nums[not_outlier]
 
-    return numpy.mean(no_outliers)
-
-
-def property_type_alias_mapper(alias):
-    """ map property property alias names to existing property 
-    types in the database
-
-    Args:
-        alias (string))
-    """
-
-    if (alias == 'condo'):
-        return ['apartment', 'condo']
-    if (alias == 'house'):
-        return ['house', 'loft', 'duplex', 'multi-unit']
-    if (alias == 'town house'):
-        return ['town house']
-    if (alias == 'bachelor'):
-        return ['bachelor', 'studio']
-
-    # TODO: Handle unmapped alias error
-    return None
+    return np.mean(no_outliers)

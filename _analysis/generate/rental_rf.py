@@ -5,6 +5,7 @@ import getpass
 import pandas as pd
 import os
 import pickle
+import shutil
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
@@ -59,14 +60,15 @@ def main(path, test_size=0.2, random_state=DEFAULT_RANDOM_STATE, n_trees=DEFAULT
 
     # Transform data.
     scaler = MinMaxScaler()
-    one_hot = OneHotEncoder()
+    property_one_hot = OneHotEncoder()
+    county_one_hot = OneHotEncoder()
     
     # Normalize.
     x = scaler.fit_transform(df[['bathroomCount', 'bedroomCount']])
 
     # One-Hot encode property type.
     p = df['propertyType'].to_numpy().astype(str).reshape(-1, 1)
-    p = one_hot.fit_transform(p).toarray()
+    p = property_one_hot.fit_transform(p).toarray()
 
     x = np.concatenate([x, p], axis=1)
 
@@ -76,7 +78,7 @@ def main(path, test_size=0.2, random_state=DEFAULT_RANDOM_STATE, n_trees=DEFAULT
 
     # One-hot encode counties(location).
     c = counties.to_numpy().astype(str).reshape(-1, 1)
-    c = one_hot.fit_transform(c).toarray()
+    c = county_one_hot.fit_transform(c).toarray()
 
     x = np.concatenate([x, c], axis=1)
 
@@ -103,11 +105,27 @@ def main(path, test_size=0.2, random_state=DEFAULT_RANDOM_STATE, n_trees=DEFAULT
     print(f'Test score: { test_score }')
 
     if input('Confirm saving model [y/n]') == 'y':
-        # Save model.
-        with open(path, 'wb') as f:
-            pickle.dump(rf, f)
-        print(f'Model saved at {path}')
+        # Remove dir if exists.
+        if os.path.exists(path):
+            shutil.rmtree(path)
+        os.mkdir(path)
 
+        # Save model.
+        with open(os.path.join(path, 'model.pkl'), 'wb') as f:
+            pickle.dump(rf, f)
+
+        # Save preprocessing scalers.
+        with open(os.path.join(path, 'property_one_hot.pkl'), 'wb') as f:
+            pickle.dump(property_one_hot, f)
+
+        # Save preprocessing scalers.
+        with open(os.path.join(path, 'county_one_hot.pkl'), 'wb') as f:
+            pickle.dump(county_one_hot, f)
+
+        with open(os.path.join(path, 'normalization.pkl'), 'wb') as f:
+            pickle.dump(scaler, f)
+        
+        print(f'Model saved at {path}')
     else:
         print('Saved cancelled.')
 
@@ -116,7 +134,7 @@ if __name__ == '__main__':
     # Parse Terminal Arguments. 
     parser = ArgumentParser(description='Create Random Forest models from Rental data from SQL server.')
     parser.add_argument('--tr', default=0.2, help='Test Ratio', type=float)
-    parser.add_argument('--path', default=os.path.join(os.getcwd(), 'rf.pkl'), help='Directory for saving model as pkl file.')
+    parser.add_argument('--path', default=os.path.join(os.getcwd(), 'rental_rf'), help='Directory for saving model as pkl file.')
     parser.add_argument('--random', default=DEFAULT_RANDOM_STATE, type=int, help=f'Random State, default = {DEFAULT_RANDOM_STATE}.')
     parser.add_argument('--n_trees', default=DEFAULT_N_TREES, type=int, help=f'Random Forest Hyperparameter: number of decision trees, default = {DEFAULT_N_TREES}')
     args = vars(parser.parse_args())
