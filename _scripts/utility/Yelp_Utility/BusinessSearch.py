@@ -1,7 +1,6 @@
 #Business Search      URL -- 'https://api.yelp.com/v3/businesses/search'
 #Business Match       URL -- 'https://api.yelp.com/v3/businesses/matches'
 #Phone Search         URL -- 'https://api.yelp.com/v3/businesses/search/phone'
-
 #Business Details     URL -- 'https://api.yelp.com/v3/businesses/{id}'
 #Business Reviews     URL -- 'https://api.yelp.com/v3/businesses/{id}/reviews'
 
@@ -24,7 +23,7 @@ HEADERS = {'Authorization': 'bearer %s' % API_KEY}
 
 # Define my parameters of the search
 # BUSINESS SEARCH PARAMETERS - EXAMPLE
-PARAMETERS = {'term': 'restaurants',
+PARAMETERS = {'term': 'restaurants, All',
               'limit': 50,
               'offset': 51,
             #   'radius': 10000,
@@ -46,8 +45,13 @@ response = requests.get(url = ENDPOINT,
 # Conver the JSON String
 business_data = response.json()
 
-# print the response
-# print(json.dumps(business_data, indent = 3))
 
 with open('/Users/saminouralla/Desktop/restaurantData.json', 'w', encoding='utf-8') as f:
     json.dump(business_data, f, ensure_ascii=False, indent=3)
+
+with open('/Users/saminouralla/Desktop/restaurantData.json', 'r') as JSON:
+       json_dict = json.load(JSON)
+
+
+with open('/Users/saminouralla/Desktop/filteredData.json', 'w', encoding='utf-8') as f:
+    json.dump(json_dict, f, ensure_ascii=False, indent=1)
