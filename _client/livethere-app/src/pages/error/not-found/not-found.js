@@ -2,8 +2,7 @@ import React from "react";
 import "./not-found.scss"
 import {Desktop, Mobile} from "../../../components/_hoc/Responsive";
 import Button from "@material-ui/core/Button";
-import Box from "@material-ui/core/Box";
-import {Link, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 const NotFound = () => {
   const history = useHistory();

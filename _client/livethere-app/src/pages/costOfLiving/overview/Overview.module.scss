@@ -25,6 +25,7 @@
 .listContainer {
   @include desktop {
     width: 720px;
+    overflow-y: auto;
   }
   @include mobile {
     width: 100%;

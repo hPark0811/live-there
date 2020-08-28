@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import HouseRoundedIcon from '@material-ui/icons/HouseRounded';
 import styles from "./RentalSummary.module.scss";
-import {FormControl, FormControlLabel, FormLabel, FormGroup, Checkbox} from '@material-ui/core';
+import {FormControl, FormControlLabel} from '@material-ui/core';
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import NativeSelect from "@material-ui/core/NativeSelect";

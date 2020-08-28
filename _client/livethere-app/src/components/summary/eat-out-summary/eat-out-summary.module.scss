@@ -1,0 +1,10 @@
+@import "src/assets/styles/breakpoint";
+
+.Dropdown {
+  @include desktop {
+    width: 60%;
+  }
+  @include mobile {
+    width: 100%;
+  }
+}

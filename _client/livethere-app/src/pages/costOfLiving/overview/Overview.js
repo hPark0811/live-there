@@ -5,12 +5,13 @@ import axios from "../../../axios-wrapper";
 import RentalSummary from "../../../components/summary/rentalSummary/RentalSummary";
 import UtilitySummary from "../../../components/summary/utilitySummary/utilitySummary"
 import UniversitySearch from "../../../components/search/universitySearch/UniversitySearch";
+import EatOutSummary from "../../../components/summary/eat-out-summary/eat-out-summary";
 
 const Overview = (props) => {
   const [universityDetail, setUniversityDetail] = useState();
 
   useEffect(() => {
-    const { match: { params } } = props;
+    const {match: {params}} = props;
 
     console.log('Fetch cost of living overview data with university id: ' + params.id);
     axios.get(`/university/${params.id}`)
@@ -35,9 +36,10 @@ const Overview = (props) => {
         <div className={styles.summaryList}>
           <RentalSummary universityId={universityDetail.id}/>
           <UtilitySummary universityDetail={universityDetail}/>
+          <EatOutSummary universityId={universityDetail.id}/>
         </div>
       </div>
-    </div >
+    </div>
     : null;
 }
 
