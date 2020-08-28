@@ -12,10 +12,12 @@ from argparse import ArgumentParser
 
 
 DEFAULT_RANDOM_STATE = 312
+DEFAULT_N_TREES = 30
 
-def _create_model(train_x, train_y, test_x, test_y, random_state):
+
+def _create_model(train_x, train_y, test_x, test_y, random_state, n_trees=DEFAULT_N_TREES):
     # Fit random forest.
-    rf = RandomForestRegressor().fit(train_x, train_y)
+    rf = RandomForestRegressor(n_estimators=n_trees).fit(train_x, train_y)
     rf_prd = rf.predict(test_x)
 
     # Evaluate.
@@ -30,7 +32,7 @@ def _create_model(train_x, train_y, test_x, test_y, random_state):
     return rf, metrics
 
 
-def main(path, test_size=0.2, random_state=DEFAULT_RANDOM_STATE):
+def main(path, test_size=0.2, random_state=DEFAULT_RANDOM_STATE, n_trees=DEFAULT_N_TREES):
     # Configure DB
     config = {
         'host':'localhost',
@@ -91,9 +93,13 @@ def main(path, test_size=0.2, random_state=DEFAULT_RANDOM_STATE):
         'test_y': test_y.shape
     })
 
+    # Log hyperparameters and settings.
+    print(f'N trees: {n_trees}')
+    print(f'Random State: {random_state}')
+    
     # Create model.
     print('Training model...')
-    rf, test_score = _create_model(train_x, train_y, test_x, test_y, random_state)
+    rf, test_score = _create_model(train_x, train_y, test_x, test_y, random_state, n_trees)
     print(f'Test score: { test_score }')
 
     # Save model.
@@ -105,13 +111,14 @@ def main(path, test_size=0.2, random_state=DEFAULT_RANDOM_STATE):
 if __name__ == '__main__':
     # Parse Terminal Arguments. 
     parser = ArgumentParser(description='Create Random Forest models from Rental data from SQL server.')
-    parser.add_argument('--tr', help='Test Ratio', type=float)
+    parser.add_argument('--tr', default=0.2, help='Test Ratio', type=float)
     parser.add_argument('--path', default=os.path.join(os.getcwd(), 'rf.pkl'), help='Directory for saving model as pkl file.')
     parser.add_argument('--random', default=DEFAULT_RANDOM_STATE, type=int, help=f'Random State, default = {DEFAULT_RANDOM_STATE}.')
+    parser.add_argument('--n_trees', default=DEFAULT_N_TREES, type=int, help=f'Random Forest Hyperparameter: number of decision trees, default = {DEFAULT_N_TREES}')
     args = vars(parser.parse_args())
 
     # Run main.
-    main(path=args['path'], test_size=args['tr'], random_state=args['random'])
+    main(path=args['path'], test_size=args['tr'], random_state=args['random'], n_trees=args['n_trees'])
     
 
 
