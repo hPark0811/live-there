@@ -131,6 +131,8 @@ class YelpSchema(db.Model):
     priceLevel = db.Column(db.Integer, nullable=False)
     minPrice = db.Column(db.Float)
     maxPrice = db.Column(db.Float)
+    ratingCount = db.Column(db.Integer)
+    businessId = db.Column(db.String(30), nullable=False)
 
 
 class AverageUtilityFee(db.Model):
