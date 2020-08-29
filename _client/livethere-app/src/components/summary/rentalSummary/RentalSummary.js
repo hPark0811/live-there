@@ -8,16 +8,18 @@ import NativeSelect from "@material-ui/core/NativeSelect";
 import SummaryLayout from "../../layout/summary/SummaryLayout";
 import Grid from "@material-ui/core/Grid";
 import axios from '../../../axios-wrapper';
+import useIsMountedRef from "../../../util/useIsMountedRef";
 
 const RentalSummary = (props) => {
   const [maxDistance, setMaxDistance] = useState(15);
   const [propertyType, setPropertyType] = useState('');
   const [bathCount, setBathCount] = useState('');
   const [bedCount, setBedCount] = useState('');
-  const [summary, setSummary] = useState()
+  const [summary, setSummary] = useState();
+  const isMountedRef = useIsMountedRef();
 
   useEffect(() => {
-    fetchRentalSummary()
+    fetchRentalSummary();
   }, [props]);
 
   const fetchRentalSummary = () => {
@@ -45,7 +47,9 @@ const RentalSummary = (props) => {
       })
       .then(response => {
         console.log('fetched rental summary data');
-        setSummary(response.data);
+        if (isMountedRef.current) {
+          setSummary(response.data);
+        }
       })
       .catch(error => {
         console.error(error);

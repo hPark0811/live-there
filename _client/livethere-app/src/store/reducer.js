@@ -1,7 +1,8 @@
 import * as actionTypes from './actions.js'
 
 const initialState = {
-  universityDict: {}
+  universityDict: {},
+  selectedUniId: null
 }
 
 export const reducer = (state = initialState, action) => {
@@ -9,7 +10,13 @@ export const reducer = (state = initialState, action) => {
     case actionTypes.LOAD_UNIVERSITIES:
       return {
         ...state,
-        universityDict: action.payload.universityDict
+        universityDict: action.payload.universityDict,
+        selectedUniId: Object.keys(action.payload.universityDict)[0]
+      }
+    case actionTypes.SELECT_UNIVERSITY:
+      return {
+        ...state,
+        selectedUniId: action.payload.selectedUniId
       }
     default:
       return state;
