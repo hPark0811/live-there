@@ -49,8 +49,8 @@ def predict_rental():
 
     # Retrieve county.
     nomi = pgeocode.Nominatim('ca')
-    postal_code = nomi.query_postal_code([request.args.get('postalCode')]).to_dict('records')[0]
-    county = postal_code['county_name']
+    location_data = nomi.query_postal_code([request.args.get('postalCode')]).to_dict('records')[0]
+    county = location_data['county_name']
 
     # Load model.
     with open(os.path.join(ML_MODEL_PATH, 'model.pkl'), 'rb') as f:

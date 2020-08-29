@@ -10,12 +10,14 @@ import Grid from "@material-ui/core/Grid";
 import axios from '../../../axios-wrapper';
 import useIsMountedRef from "../../../util/useIsMountedRef";
 
+
 const RentalSummary = (props) => {
   const [maxDistance, setMaxDistance] = useState(15);
   const [propertyType, setPropertyType] = useState('');
   const [bathCount, setBathCount] = useState('');
   const [bedCount, setBedCount] = useState('');
   const [summary, setSummary] = useState();
+  const [prediction, setPrediction] = useState();
   const isMountedRef = useIsMountedRef();
 
   useEffect(() => {
@@ -33,10 +35,10 @@ const RentalSummary = (props) => {
     if (propertyType) {
       params.propertyType = propertyType;
     }
-    if (bathCount?.length > 0) {
+    if (bathCount !== '') {
       params.bathCount = bathCount;
     }
-    if (bedCount?.length > 0) {
+    if (bedCount !== '') {
       params.bedCount = bedCount;
     }
 
@@ -53,7 +55,36 @@ const RentalSummary = (props) => {
       })
       .catch(error => {
         console.error(error);
-      })
+      });
+    
+    fetchRentalPrediction();
+  }
+
+  const fetchRentalPrediction = () => {
+    console.log('fetch rental prediction');
+
+    let params = {
+      universityId: props.universityId
+    };
+
+    params.propertyType = propertyType ? propertyType : 'condo';
+    params.bathCount = bathCount !== '' ? bathCount : 0;
+    params.bedCount = bedCount !== '' ? bedCount : 0;
+    params.postalCode = props.postalCode.slice(0, 3) + " " + props.postalCode.slice(3);
+
+    axios.get(
+      '/rental/predict',
+      {
+        params: params
+      }
+    )
+    .then(response => {
+      console.log('fetched rental prediction data');
+      setPrediction(response.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
 
   const form = (
@@ -105,7 +136,7 @@ const RentalSummary = (props) => {
             <div>Bathrooms:</div>
             <FormControl className={styles.Dropdown}>
               <NativeSelect value={bathCount}
-                            onChange={event => setBathCount(parseInt(event.currentTarget.value))}>
+                            onChange={event => setBathCount(parseInt(event.target.value))}>
                 <option value={''}>All</option>
                 {
                   [5, 4, 3, 2, 1].map((bathCount, ndx) => (
@@ -121,7 +152,7 @@ const RentalSummary = (props) => {
             <div>Bedrooms:</div>
             <FormControl className={styles.Dropdown}>
               <NativeSelect value={bedCount}
-                            onChange={event => setBedCount(parseInt(event.currentTarget.value))}>
+                            onChange={event => setBedCount(parseInt(event.target.value))}>
                 <option value={''}>All</option>
                 {
                   [5, 4, 3, 2, 1].map((bedCount, ndx) => (
@@ -137,13 +168,31 @@ const RentalSummary = (props) => {
   )
 
   const summaryText = (
-    summary && summary.rentalsCount > 0 ? (
+    <div>
       <div>
-        <div>Average rental price is <b>${summary.average?.toFixed(0)}/mo per
-          room</b></div>
-        <div>Calculated with <b>{summary.rentalsCount}</b> listings found online</div>
+        {
+          summary && summary.rentalsCount > 0 ? (
+          <div>
+            <div>
+              Average rental price is <b>${summary.average?.toFixed(0)}/mo per room</b>
+            </div>
+          <div>
+            Calculated with <b>{summary.rentalsCount}</b> listings found online
+          </div>
+        </div>
+        ) : <div>No listings found!</div>
+        }
       </div>
-    ) : <div>No listings found!</div>
+      <div>
+        {
+          prediction ? (
+            <div>
+              Predicted rental price is <b>${prediction.prediction?.toFixed(0)}/mo per room</b>
+            </div>
+          ): null
+        }
+      </div>
+    </div>
   )
 
   return (
