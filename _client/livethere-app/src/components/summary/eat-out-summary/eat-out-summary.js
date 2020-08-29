@@ -7,18 +7,20 @@ import FormGroup from "@material-ui/core/FormGroup";
 import styles from "../rentalSummary/RentalSummary.module.scss";
 import NativeSelect from "@material-ui/core/NativeSelect";
 
+const DEFAULT_SELECTED_PRICE = {
+  1: false,
+  2: false,
+  3: false,
+  4: false,
+  'ALL': true
+}
+
 const EatOutSummary = (props) => {
   const [summary, setSummary] = useState()
   const [maxDistance, setMaxDistance] = useState(15);
   const [minReviews, setMinReviews] = useState(0);
 
-  const [selectedPrices, setSelectedPrices] = useState({
-    1: false,
-    2: false,
-    3: false,
-    4: false,
-    'ALL': true
-  })
+  const [selectedPrices, setSelectedPrices] = useState(DEFAULT_SELECTED_PRICE);
 
   useEffect(() => {
     fetchEatOutSummary();
@@ -33,15 +35,8 @@ const EatOutSummary = (props) => {
     let selected = {...selectedPrices};
     if (event.target.name !== 'ALL' && !!event.target.checked) {
       selected.ALL = false;
-    }
-    else if (event.target.name === 'ALL' && !!event.target.checked) {
-      selected = {
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        'ALL': true
-      };
+    } else if (event.target.name === 'ALL' && !!event.target.checked) {
+      selected = DEFAULT_SELECTED_PRICE;
     }
     selected[event.target.name] = event.target.checked;
     setSelectedPrices(selected);
@@ -66,9 +61,9 @@ const EatOutSummary = (props) => {
             {['$', '$$', '$$$', '$$$$+'].map((price, ndx) => (
               <FormControlLabel
                 control={<Checkbox color="primary"
-                                   key={ndx}
-                                   name={ndx + 1}
+                                   name={(ndx + 1).toString()}
                                    checked={selectedPrices[ndx + 1]}/>}
+                key={ndx}
                 onChange={handlePriceChange}
                 label={price}
               />

@@ -3,11 +3,13 @@ import axios from '../../../axios-wrapper'
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import {FormControl, FormControlLabel, Checkbox} from '@material-ui/core';
 import SummaryLayout from "../../layout/summary/SummaryLayout";
+import useIsMountedRef from "../../../util/useIsMountedRef";
 
 const UtilitySummary = (props) => {
   const [includeEC, setIncludeEC] = useState(true);
   const [includeNG, setIncludeNG] = useState(true);
   const [summary, setSummary] = useState();
+  const isMountedRef = useIsMountedRef();
 
   useEffect(() => {
     fetchUtilitySummary()
@@ -25,7 +27,9 @@ const UtilitySummary = (props) => {
       })
       .then(response => {
         console.log('fetched utility summary data');
-        setSummary(response.data);
+        if (isMountedRef.current) {
+          setSummary(response.data);
+        }
       })
       .catch(error => {
         console.error(error);
@@ -61,7 +65,8 @@ const UtilitySummary = (props) => {
   const summaryText = (
     props.universityDetail
       ? <div>
-        Estimated utility fee is in the city of <b>{props.universityDetail.city}, {props.universityDetail.province}</b> is <b>${totalFee.toFixed(0)}</b>
+        Estimated utility fee is in the city
+        of <b>{props.universityDetail.city}, {props.universityDetail.province}</b> is <b>${totalFee.toFixed(0)}</b>
       </div>
       : <div>No utilities found</div>
   )

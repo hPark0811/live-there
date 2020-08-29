@@ -1,14 +1,24 @@
 import React from "react";
-import {Route} from "react-router";
+import {Redirect, Route, Switch} from "react-router";
 import Overview from "./overview/Overview";
+import {connect} from "react-redux";
 
-const CostOfLiving = ({match}) => (
-  <>
+const CostOfLiving = ({selectedUniId, match}) => (
+  <Switch>
     <Route path={match.url + "/overview/:id"}
            exact
            component={Overview}>
     </Route>
-  </>
+    <Route path={match.url}>
+      <Redirect to={match.url + "/overview/" + selectedUniId}/>
+    </Route>
+  </Switch>
 )
 
-export default CostOfLiving;
+const mapStateToProps = state => {
+  return {
+    selectedUniId: state.selectedUniId
+  }
+}
+
+export default connect(mapStateToProps)(CostOfLiving);
