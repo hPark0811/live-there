@@ -6,9 +6,15 @@ import RentalSummary from "../../../components/summary/rentalSummary/RentalSumma
 import UtilitySummary from "../../../components/summary/utilitySummary/utilitySummary"
 import UniversitySearch from "../../../components/search/universitySearch/UniversitySearch";
 import EatOutSummary from "../../../components/summary/eat-out-summary/eat-out-summary";
+import {connect} from "react-redux";
+import * as actionTypes from "../../../store/actions";
+import {useHistory} from "react-router";
+import useIsMountedRef from "../../../util/useIsMountedRef";
 
 const Overview = (props) => {
+  const history = useHistory();
   const [universityDetail, setUniversityDetail] = useState();
+  const isMountedRef = useIsMountedRef();
 
   useEffect(() => {
     const {match: {params}} = props;
@@ -16,15 +22,18 @@ const Overview = (props) => {
     console.log('Fetch cost of living overview data with university id: ' + params.id);
     axios.get(`/university/${params.id}`)
       .then(response => {
-        setUniversityDetail(response.data);
+        if (isMountedRef.current) {
+          setUniversityDetail(response.data);
+          props.selectUniversity({selectedUniId: params.id});
+        }
       })
       .catch(error => {
         console.error(error);
-      })
+        history.push("/error");
+      });
+  }, [props, isMountedRef, history])
 
-  }, [props])
-
-  return universityDetail ?
+  return universityDetail && isMountedRef.current ?
     <div className={styles.overviewContainer}>
       <div className={styles.mapContainer}>
         <SimpleMap center={{lat: universityDetail.latitude, lng: universityDetail.longitude}}/>
@@ -43,4 +52,16 @@ const Overview = (props) => {
     : null;
 }
 
-export default Overview;
+const mapStateToProps = state => {
+  return {
+    selectedUniId: state.selectedUniId
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    selectUniversity: (payload) => dispatch(actionTypes.selectUniversity(payload))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Overview);

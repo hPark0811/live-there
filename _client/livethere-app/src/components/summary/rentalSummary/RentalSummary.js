@@ -8,6 +8,8 @@ import NativeSelect from "@material-ui/core/NativeSelect";
 import SummaryLayout from "../../layout/summary/SummaryLayout";
 import Grid from "@material-ui/core/Grid";
 import axios from '../../../axios-wrapper';
+import useIsMountedRef from "../../../util/useIsMountedRef";
+
 
 
 const RentalSummary = (props) => {
@@ -18,6 +20,7 @@ const RentalSummary = (props) => {
   const [summary, setSummary] = useState();
   // TODO: append prediction to summary?
   const [prediction, setPrediction] = useState();
+  const isMountedRef = useIsMountedRef();
 
   useEffect(() => {
     fetchRentalSummary();
@@ -48,7 +51,9 @@ const RentalSummary = (props) => {
       })
       .then(response => {
         console.log('fetched rental summary data');
-        setSummary(response.data);
+        if (isMountedRef.current) {
+          setSummary(response.data);
+        }
       })
       .catch(error => {
         console.error(error);
