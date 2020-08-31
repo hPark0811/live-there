@@ -1,0 +1,111 @@
+@import "src/assets/styles/breakpoint";
+
+.topContainer {
+  @include desktop {
+    height: 520px;
+  }
+
+  @include mobile {
+    height: 100%;
+  }
+
+  display: flex;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url("../../assets/about-us-background.png");
+}
+
+.infoContainer {
+  margin: auto;
+  padding: 52px;
+  max-width: 900px;
+  width: 80%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+
+  .headerWrapper {
+    display: inline-block;
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #FFFFFF;
+  }
+
+  .contactUsBtn {
+    margin-top: 20px;
+    color: white;
+    border-color: white;
+    padding: 8px 46px;
+  }
+}
+
+.contributorsContainer {
+  @include desktop {
+    max-width: 900px;
+    margin: 60px auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include mobile {
+    margin: 30px 20px;
+  }
+}
+
+.contributorWrapper {
+  cursor: pointer;
+
+  @include desktop {
+    text-align: center;
+  }
+
+  @include mobile {
+    display: flex;
+    align-items: center;
+  }
+
+}
+
+.contributorImg {
+  transition: all .2s ease-in-out;
+  width: 144px !important;
+  height: 144px !important;
+  filter: drop-shadow(5px 6px 16px rgba(0, 0, 0, 0.35));
+
+  @include desktop {
+    margin: 0 auto 16px;
+  }
+
+  @include mobile {
+    margin: 0 20px 20px 0;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.dialogProfileContainer {
+  margin-bottom: 20px;
+  display: flex;
+  overflow: hidden;
+  white-space: normal;
+
+  @include desktop {
+    width: 500px;
+  }
+
+  @include mobile {
+    flex-direction: column;
+
+    img {
+      margin: auto;
+    }
+  }
+}
+
+.dialogDescription {
+
+}
