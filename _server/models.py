@@ -66,13 +66,12 @@ class Restaurant(db.Model):
 
     restaurantId = db.Column(db.Integer, primary_key=True)
     restaurantType = db.Column(db.String(1))
-    postalCode = db.Column(db.String(6), nullable=False)
-    yelpId = db.Column(db.ForeignKey('YelpSchema.yelpId'),
-                       nullable=False, index=True)
-
-    YelpSchema = db.relationship(
-        'YelpSchema', primaryjoin='Restaurant.yelpId == YelpSchema.yelpId', backref='restaurants')
-
+    postalCode = db.Column(db.String(6), nullable=True)
+    yelpId = db.Column(db.String(55),nullable=False)
+    priceLevel = db.Column(db.String(6))
+    ratingCount = db.Column(db.Integer)
+    longitude = db.Column(CastToFloatType, nullable=False)
+    latitude = db.Column(CastToFloatType, nullable=False)
 
 class RestaurantRange(db.Model):
     __tablename__ = 'RestaurantRange'
@@ -124,15 +123,6 @@ class MainCampusMap(University):
     universityId = db.Column(db.ForeignKey('University.id'), primary_key=True)
 
 
-class YelpSchema(db.Model):
-    __tablename__ = 'YelpSchema'
-
-    yelpId = db.Column(db.Integer, primary_key=True)
-    priceLevel = db.Column(db.Integer, nullable=False)
-    minPrice = db.Column(db.Float)
-    maxPrice = db.Column(db.Float)
-    ratingCount = db.Column(db.Integer)
-    businessId = db.Column(db.String(30), nullable=False)
 
 
 class AverageUtilityFee(db.Model):
@@ -153,4 +143,4 @@ class AverageUtilityFeeSchema(ma.Schema):
 
 class RestaurantSchema(ma.Schema):
     class Meta:
-        fields = ('restaurantId', 'restaurantType', 'postalCode','yelpId')
+        fields = ('restaurantId', 'restaurantType', 'postalCode','yelpId','priceLevel','latitude','longitude','ratingCount')

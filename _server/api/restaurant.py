@@ -20,7 +20,7 @@ def get_restaurants():
     return restaurant_schema.jsonify(all_restaurants)
 
 
-@restaurant_api.route('/averageRestaurantPrice', methods=['GET'])
+@restaurant_api.route('/average', methods=['GET'])
 def get_average_restaurantPrice():
     if not request.args.get('universityId'):
         raise BadRequest('University ID must not be null')
@@ -28,29 +28,29 @@ def get_average_restaurantPrice():
     min_distance_km = 0
     max_distance_km = 10
     restaurant__type = None
-    
+    minReviews = 0
+    selectedPrices = None
 
     # TODO: Filter out edge cases
     if request.args.get('minDistance'):
         min_distance_km = request.args['minDistance']
     if request.args.get('maxDistance'):
         max_distance_km = request.args['maxDistance']
-    if request.args.get('restaurantTypes'):
-        restaurantTypes = property_type_alias_mapper(
-            request.args.get('restaurantTypes')
-        )
-    
+
+    if request.args.get('minReviews'):
+        minReviews = request.args.get('minReviews')
+    if request.args.get('selectedPrices'):
+
+        selectedPrices = request.args.get('selectedPrices').split(',')
 
     # Querying DB
     queried_restaurants = db.session.query(
-        Restaurant.yelpId,
-        Restaurant.restaurantType
+        Restaurant.priceLevel,
+        Restaurant.ratingCount,
+        Restaurant.yelpId
     ).join(
         RestaurantRange,
         Restaurant.restaurantId == RestaurantRange.restaurantId
-    ).join(
-        YelpSchema,
-        Restaurant.yelpId == YelpSchema.yelpId
     ).filter(
         RestaurantRange.universityId == request.args['universityId']
     ).filter(
@@ -59,61 +59,65 @@ def get_average_restaurantPrice():
         RestaurantRange.restaurantToUniversityDistance <= max_distance_km
     )
 
+    if minReviews:
+        queried_restaurants = queried_restaurants.filter(
+            Restaurant.ratingCount >= minReviews)
+    if selectedPrices:
+        queried_restaurants = queried_restaurants.filter(
+            Restaurant.priceLevel.in_(selectedPrices))
     queried_restaurants = queried_restaurants.all()
 
     # Calculating average average
     restaurants_count = len(queried_restaurants)
-    dineIn_Average=calculate_average_dineIn(queried_restaurants)
-    bar_Average=calculate_average_Bar(queried_restaurants)
-
+    dine_in_average = calculate_average_dineIn(queried_restaurants)
 
     return {
-        'Dine In Average': dineIn_Average,
-        'Bar Average': bar_Average,
-        'Number of Restaurants and Bars':restaurants_count
+        'Going Out Average': dine_in_average,
+        'Number of Restaurants and Bars': restaurants_count
     }
 
-def calculate_average_Bar(stores):
+
+""" def calculate_average_Bar(stores):
    
     restaurantPrices = []
     for store in stores:
         if store.restaurantType == 'B':
             priceRange = store.priceLevel
             restaurantPrices.append(priceRange)
-    return calculate_mean(restaurantPrices)
+    return calculate_mean(restaurantPrices) """
 
 
 def calculate_average_dineIn(stores):
-   
+
     restaurantPrices = []
     for store in stores:
-        if store.restaurantType == 'D':
-            priceRange = store.priceLevel
-            restaurantPrices.append(priceRange)
+        priceRange = store.priceLevel
+        if priceRange == '$':
+            priceRange = 10
+        if priceRange == '$$':
+            priceRange = 16
+        if priceRange == '$$$':
+            priceRange = 26
+        if priceRange == '$$$$':
+            priceRange = 40
+        restaurantPrices.append(priceRange)
     return calculate_mean(restaurantPrices)
 
 
-
 def calculate_mean(nums):
-    
+
     nums = numpy.array(nums)
     mean = numpy.mean(nums)
-    std_dev = numpy.std(nums)
-    distance_from_mean = abs(nums - mean)
-    max_deviations = 1.5
-    not_outlier = distance_from_mean < max_deviations * std_dev
-    no_outliers = nums[not_outlier]
 
-    return numpy.mean(no_outliers)
+    return mean
 
 
 def restaurant_type_alias_mapper(alias):
-  
 
     if (alias == 'restaurant'):
         return ['D']
     if (alias == 'bar'):
         return ['B']
-    
+
     # TODO: Handle unmapped alias error
     return None

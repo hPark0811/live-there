@@ -29,6 +29,32 @@ const EatOutSummary = (props) => {
   const fetchEatOutSummary = () => {
     console.log('fetch eat out summary data');
     // TODO(Sami): Make fetch call to eat out summary API here
+    let params = {universityId: props.universityId};
+
+    if (maxDistance) {
+      params.maxDistance = maxDistance;
+    }
+    if (minReviews !== '') {
+      params.minReviews = minReviews;
+    }
+    if (selectedPrices !== '') {
+      params.selectedPrices = selectedPrices;
+    }
+
+    axios.get(
+      `/restaurant/average`,
+      {
+        params: params
+      })
+      .then(response => {
+        console.log('fetched restaurant summary data');
+        if (isMountedRef.current) {
+          setSummary(response.data);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   const handlePriceChange = (event) => {

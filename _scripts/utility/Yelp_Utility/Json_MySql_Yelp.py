@@ -28,13 +28,19 @@ cursor = con.cursor()
 
 
 # parse json data to SQL insert
-for i, item in enumerate(json_obj):
-    print(item)
-    
+for i, item in enumerate(json_obj.get('businesses')):
+    #print(item)    
     yelpID = validate_string(item.get("id",None))
     price = validate_string(item.get("price",None))
-    rating = validate_string(item.get("review_count",None))
-    cursor.execute("INSERT INTO YelpScehma (businessId,	priceLevel,	ratingCount) VALUES (%s,%s,%s)", (yelpID,price,rating))
+    postal = validate_string(item.get("location",None).get("zip_code",None))
+    
+    latitude = item.get("coordinates",None).get("latitude",None)
+    longitude = item.get("coordinates",None).get("longitude",None)
+    rating = item.get("review_count",None)
+    
+    cursor.execute(
+        "INSERT INTO Restaurant (yelpId,priceLevel,postalCode,ratingCount,latitude,longitude) VALUES (%s,%s,%s,%s,%s,%s)", 
+    (yelpID,price,postal,rating,latitude,longitude))
 
 con.commit()
 con.close()

@@ -23,9 +23,9 @@ HEADERS = {'Authorization': 'bearer %s' % API_KEY}
 
 # Define my parameters of the search
 # BUSINESS SEARCH PARAMETERS - EXAMPLE
-PARAMETERS = {'term': 'restaurants, All',
+PARAMETERS = {'term': 'bars',
               'limit': 50,
-              'offset': 51,
+              'offset': 351,
             #   'radius': 10000,
               'categories': 'bars',
               'location': 'University of Toronto'}
