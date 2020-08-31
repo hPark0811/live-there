@@ -25,7 +25,7 @@ const NavItems = () => {
                  activeClassName={styles.active}>COST OF LIVING</NavLink>
       </li>
       <li className={styles.Item}>
-        <NavLink to="/about"
+        <NavLink to="/about-us"
                  activeClassName={styles.active}
                  exact>ABOUT US</NavLink>
       </li>

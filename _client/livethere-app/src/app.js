@@ -10,6 +10,7 @@ import * as actionTypes from "./store/actions";
 import {connect} from "react-redux";
 import axios from "./axios-wrapper";
 import NotFound from "./pages/error/not-found/not-found";
+import AboutUs from "./pages/about-us/about-us";
 
 function App(props) {
   useEffect(() => {
@@ -48,6 +49,9 @@ function App(props) {
             <Route path="/error"
                    exact
                    component={NotFound}/>
+            <Route path="/about-us"
+                   exact
+                   component={AboutUs}/>
             <Route path="/">
               <Redirect to="/error"/>
             </Route>
