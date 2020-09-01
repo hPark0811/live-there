@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import HouseRoundedIcon from '@material-ui/icons/HouseRounded';
 import styles from "./RentalSummary.module.scss";
-import { FormControl, FormControlLabel } from '@material-ui/core';
+import {FormControl, FormControlLabel} from '@material-ui/core';
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import NativeSelect from "@material-ui/core/NativeSelect";
@@ -9,7 +9,8 @@ import SummaryLayout from "../../layout/summary/SummaryLayout";
 import Grid from "@material-ui/core/Grid";
 import axios from '../../../axios-wrapper';
 import useIsMountedRef from "../../../util/useIsMountedRef";
-
+import * as actionTypes from "../../../store/actions";
+import {connect} from "react-redux";
 
 
 const RentalSummary = (props) => {
@@ -28,7 +29,7 @@ const RentalSummary = (props) => {
   const fetchRentalSummary = () => {
     console.log('fetch rental summary data');
 
-    let params = { universityId: props.universityId };
+    let params = {universityId: props.universityId};
 
     params.maxDistance = maxDistance;
     params.propertyType = propertyType === '' ? '' : propertyType;
@@ -44,6 +45,10 @@ const RentalSummary = (props) => {
         console.log('fetched rental summary data');
         if (isMountedRef.current) {
           setSummary(response.data);
+          props.loadCostOfLivingSummary({
+            label: "Rental",
+            estimate: response.data.average.toFixed(0)
+          })
         }
       })
       .catch(error => {
@@ -62,8 +67,7 @@ const RentalSummary = (props) => {
 
     if (bathCount === '' || bedCount === '' || propertyType === '') {
       setPrediction(() => undefined);
-    }
-    else {
+    } else {
       params.propertyType = propertyType;
       params.bathCount = bathCount;
       params.bedCount = bedCount;
@@ -82,78 +86,94 @@ const RentalSummary = (props) => {
         });
     }
 
+    axios.get(
+      '/rental/predict',
+      {
+        params: params
+      }
+    )
+      .then(response => {
+        console.log('fetched rental prediction data');
+        setPrediction(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   const form = (
     <>
       <Grid container>
         <Grid item
-          sm={4}
-          xs={6}>
+              sm={4}
+              xs={6}>
           <div>Includes:</div>
           <FormControl component="fieldset">
             <RadioGroup aria-label="propertyType"
-              name="propertyType"
-              value={propertyType}
-              onChange={event => setPropertyType(event.target.value)}>
+                        name="propertyType"
+                        value={propertyType}
+                        onChange={event => setPropertyType(event.target.value)}>
               {['condo', 'house', 'town house', 'bachelor'].map((type, ndx) => (
                 <FormControlLabel value={type}
-                  key={ndx}
-                  control={<Radio color="primary" />}
-                  label={type} />
+                                  key={ndx}
+                                  control={<Radio color="primary"/>}
+                                  label={type}/>
               ))}
               <FormControlLabel value={""}
-                control={<Radio color="primary" />}
-                label={'ALL'} />
+                                control={<Radio color="primary"/>}
+                                label={'ALL'}/>
             </RadioGroup>
           </FormControl>
         </Grid>
         <Grid container
-          item
-          sm={8}
-          xs={6}>
+              item
+              sm={8}
+              xs={6}>
           <Grid item
-            xs={12}
-            sm={6}>
+                xs={12}
+                sm={6}>
             <div>Distance:</div>
             <FormControl className={styles.Dropdown}>
               <NativeSelect value={maxDistance}
-                onChange={event => setMaxDistance(parseInt(event.target.value))}>
+                            onChange={event => setMaxDistance(parseInt(event.target.value))}>
                 {
                   [15, 10, 5, 1].map((maxDistance, ndx) => (
-                    <option key={ndx} value={maxDistance}>{'< ' + maxDistance + 'km'}</option>
+                    <option key={ndx}
+                            value={maxDistance}>{'< ' + maxDistance + 'km'}</option>
                   ))
                 }
               </NativeSelect>
             </FormControl>
           </Grid>
           <Grid item
-            xs={12}
-            sm={6}>
+                xs={12}
+                sm={6}>
             <div>Bathrooms:</div>
             <FormControl className={styles.Dropdown}>
               <NativeSelect value={bathCount}
-                onChange={event => setBathCount(parseInt(event.target.value))}>
+                            onChange={event => setBathCount(parseInt(event.target.value))}>
                 <option value={''}>All</option>
                 {
                   [3, 2, 1].map((bathCount, ndx) => (
-                    <option key={ndx} value={bathCount}>{bathCount}</option>
+                    <option key={ndx}
+                            value={bathCount}>{bathCount}</option>
                   ))
                 }
               </NativeSelect>
             </FormControl>
           </Grid>
           <Grid item
-            xs={12}
-            sm={6}>
+                xs={12}
+                sm={6}>
             <div>Bedrooms:</div>
             <FormControl className={styles.Dropdown}>
               <NativeSelect value={bedCount}
-                onChange={event => setBedCount(parseInt(event.target.value))}>
+                            onChange={event => setBedCount(parseInt(event.target.value))}>
                 <option value={''}>All</option>
                 {
                   [5, 4, 3, 2, 1].map((bedCount, ndx) => (
-                    <option key={ndx} value={bedCount}>{bedCount}</option>
+                    <option key={ndx}
+                            value={bedCount}>{bedCount}</option>
                   ))
                 }
               </NativeSelect>
@@ -175,7 +195,7 @@ const RentalSummary = (props) => {
               </div>
               <div>
                 Calculated with <b>{summary.rentalsCount}</b> listings found online
-          </div>
+              </div>
             </div>
           ) : <div>No listings found!</div>
         }
@@ -184,7 +204,7 @@ const RentalSummary = (props) => {
         {
           prediction ? (
             <div>
-               Predicted rental price is <b>${prediction?.toFixed(0)}/mo per room</b>
+              Predicted rental price is <b>${prediction?.toFixed(0)}/mo per room</b>
             </div>
           ) : null
         }
@@ -193,12 +213,18 @@ const RentalSummary = (props) => {
   )
 
   return (
-    <SummaryLayout icon={<HouseRoundedIcon />}
-      iconText={'RENTAL'}
-      formElement={form}
-      onSubmit={fetchRentalSummary}
-      summaryElement={summaryText} />
+    <SummaryLayout icon={<HouseRoundedIcon/>}
+                   iconText={'RENTAL'}
+                   formElement={form}
+                   onSubmit={fetchRentalSummary}
+                   summaryElement={summaryText}/>
   )
 }
 
-export default RentalSummary;
+const mapDispatchToProps = dispatch => {
+  return {
+    loadCostOfLivingSummary: (payload) => dispatch(actionTypes.loadCostOfLivingSummary(payload))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(RentalSummary);

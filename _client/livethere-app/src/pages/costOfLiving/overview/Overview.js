@@ -10,11 +10,20 @@ import {connect} from "react-redux";
 import * as actionTypes from "../../../store/actions";
 import {useHistory} from "react-router";
 import useIsMountedRef from "../../../util/useIsMountedRef";
+import SummaryGraph from "../../../components/summary/summary-chart/summary-chart";
 
 const Overview = (props) => {
   const history = useHistory();
   const [universityDetail, setUniversityDetail] = useState();
   const isMountedRef = useIsMountedRef();
+
+  useEffect(() => {
+    props.showSnackBar({
+      message: "Map's radius is 3KM",
+      duration: 8000,
+      severity: "info"
+    })
+  }, [])
 
   useEffect(() => {
     const {match: {params}} = props;
@@ -41,9 +50,13 @@ const Overview = (props) => {
       <div className={styles.listContainer}>
         <div className={styles.searchContainer}>
           <UniversitySearch/>
+          <div className={styles.chart}>
+            <SummaryGraph/>
+          </div>
         </div>
         <div className={styles.summaryList}>
-          <RentalSummary universityId={universityDetail.id} postalCode={universityDetail.postalCode}/>
+          <RentalSummary universityId={universityDetail.id}
+                         postalCode={universityDetail.postalCode}/>
           <UtilitySummary universityDetail={universityDetail}/>
           <EatOutSummary universityId={universityDetail.id}/>
         </div>
@@ -60,7 +73,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    selectUniversity: (payload) => dispatch(actionTypes.selectUniversity(payload))
+    selectUniversity: (payload) => dispatch(actionTypes.selectUniversity(payload)),
+    showSnackBar: (payload) => dispatch(actionTypes.showSnackBar(payload))
   }
 }
 
