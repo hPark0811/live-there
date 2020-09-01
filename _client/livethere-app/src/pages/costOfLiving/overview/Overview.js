@@ -10,6 +10,7 @@ import {connect} from "react-redux";
 import * as actionTypes from "../../../store/actions";
 import {useHistory} from "react-router";
 import useIsMountedRef from "../../../util/useIsMountedRef";
+import SummaryGraph from "../../../components/summary/summary-chart/summary-chart";
 
 const Overview = (props) => {
   const history = useHistory();
@@ -41,9 +42,13 @@ const Overview = (props) => {
       <div className={styles.listContainer}>
         <div className={styles.searchContainer}>
           <UniversitySearch/>
+          <div className={styles.chart}>
+            <SummaryGraph/>
+          </div>
         </div>
         <div className={styles.summaryList}>
-          <RentalSummary universityId={universityDetail.id} postalCode={universityDetail.postalCode}/>
+          <RentalSummary universityId={universityDetail.id}
+                         postalCode={universityDetail.postalCode}/>
           <UtilitySummary universityDetail={universityDetail}/>
           <EatOutSummary universityId={universityDetail.id}/>
         </div>
