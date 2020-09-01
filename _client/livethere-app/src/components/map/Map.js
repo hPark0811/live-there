@@ -18,7 +18,7 @@ const SimpleMap = (props) => {
           fillOpacity: 0.1,
           map,
           center: props.center,
-          radius: 5000,
+          radius: 3000,
         }));
       }
     }

@@ -19,7 +19,7 @@ const Overview = (props) => {
 
   useEffect(() => {
     props.showSnackBar({
-      message: "Map's radius is 5KM",
+      message: "Map's radius is 3KM",
       duration: 8000,
       severity: "info"
     })
