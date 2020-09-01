@@ -15,7 +15,7 @@ const SimpleMap = (props) => {
         setCircle(new maps.Circle({
           strokeWeight: 0,
           fillColor: '#FF0000',
-          fillOpacity: 0.2,
+          fillOpacity: 0.1,
           map,
           center: props.center,
           radius: 5000,

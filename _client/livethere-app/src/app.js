@@ -11,6 +11,7 @@ import {connect} from "react-redux";
 import axios from "./axios-wrapper";
 import NotFound from "./pages/error/not-found/not-found";
 import AboutUs from "./pages/about-us/about-us";
+import CustomSnackBar from "./components/custom-snack-bar/custom-snack-bar";
 
 function App(props) {
   useEffect(() => {
@@ -57,6 +58,7 @@ function App(props) {
             </Route>
           </Switch>
         </PageLayout>
+        <CustomSnackBar/>
       </ThemeProvider>
     </BrowserRouter>
   );

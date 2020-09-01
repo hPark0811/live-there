@@ -18,6 +18,14 @@ const Overview = (props) => {
   const isMountedRef = useIsMountedRef();
 
   useEffect(() => {
+    props.showSnackBar({
+      message: "Map's radius is 5KM",
+      duration: 8000,
+      severity: "info"
+    })
+  }, [])
+
+  useEffect(() => {
     const {match: {params}} = props;
 
     console.log('Fetch cost of living overview data with university id: ' + params.id);
@@ -65,7 +73,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    selectUniversity: (payload) => dispatch(actionTypes.selectUniversity(payload))
+    selectUniversity: (payload) => dispatch(actionTypes.selectUniversity(payload)),
+    showSnackBar: (payload) => dispatch(actionTypes.showSnackBar(payload))
   }
 }
 
