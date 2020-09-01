@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import HouseRoundedIcon from '@material-ui/icons/HouseRounded';
 import styles from "./RentalSummary.module.scss";
-import {FormControl, FormControlLabel} from '@material-ui/core';
+import { FormControl, FormControlLabel } from '@material-ui/core';
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import NativeSelect from "@material-ui/core/NativeSelect";
@@ -18,7 +18,6 @@ const RentalSummary = (props) => {
   const [bathCount, setBathCount] = useState('');
   const [bedCount, setBedCount] = useState('');
   const [summary, setSummary] = useState();
-  // TODO: append prediction to summary?
   const [prediction, setPrediction] = useState();
   const isMountedRef = useIsMountedRef();
 
@@ -29,20 +28,12 @@ const RentalSummary = (props) => {
   const fetchRentalSummary = () => {
     console.log('fetch rental summary data');
 
-    let params = {universityId: props.universityId};
+    let params = { universityId: props.universityId };
 
-    if (maxDistance) {
-      params.maxDistance = maxDistance;
-    }
-    if (propertyType) {
-      params.propertyType = propertyType;
-    }
-    if (bathCount !== '') {
-      params.bathCount = bathCount;
-    }
-    if (bedCount !== '') {
-      params.bedCount = bedCount;
-    }
+    params.maxDistance = maxDistance;
+    params.propertyType = propertyType === '' ? '' : propertyType;
+    params.bathCount = bathCount === '' ? '' : bathCount;
+    params.bedCount = bedCount === '' ? '' : bedCount;
 
     axios.get(
       `/rental/average`,
@@ -58,7 +49,7 @@ const RentalSummary = (props) => {
       .catch(error => {
         console.error(error);
       });
-    
+
     fetchRentalPrediction();
   }
 
@@ -69,63 +60,67 @@ const RentalSummary = (props) => {
       universityId: props.universityId
     };
 
-    params.propertyType = propertyType ? propertyType : 'condo';
-    params.bathCount = bathCount !== '' ? bathCount : 0;
-    params.bedCount = bedCount !== '' ? bedCount : 0;
-    params.postalCode = props.postalCode.slice(0, 3) + " " + props.postalCode.slice(3);
+    if (bathCount === '' || bedCount === '' || propertyType === '') {
+      setPrediction(() => undefined);
+    }
+    else {
+      params.propertyType = propertyType;
+      params.bathCount = bathCount;
+      params.bedCount = bedCount;
+      params.postalCode = props.postalCode.slice(0, 3) + " " + props.postalCode.slice(3);
+      axios.get(
+        '/rental/predict',
+        {
+          params: params
+        }
+      )
+        .then(response => {
+          setPrediction(response.data.prediction / params.bedCount);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
 
-    axios.get(
-      '/rental/predict',
-      {
-        params: params
-      }
-    )
-    .then(response => {
-      console.log('fetched rental prediction data');
-      setPrediction(response.data);
-    })
-    .catch(err => {
-      console.log(err);
-    });
   }
 
   const form = (
     <>
       <Grid container>
         <Grid item
-              sm={4}
-              xs={6}>
+          sm={4}
+          xs={6}>
           <div>Includes:</div>
           <FormControl component="fieldset">
             <RadioGroup aria-label="propertyType"
-                        name="propertyType"
-                        value={propertyType}
-                        onChange={event => setPropertyType(event.target.value)}>
+              name="propertyType"
+              value={propertyType}
+              onChange={event => setPropertyType(event.target.value)}>
               {['condo', 'house', 'town house', 'bachelor'].map((type, ndx) => (
                 <FormControlLabel value={type}
-                                  key={ndx}
-                                  control={<Radio color="primary"/>}
-                                  label={type}/>
+                  key={ndx}
+                  control={<Radio color="primary" />}
+                  label={type} />
               ))}
               <FormControlLabel value={""}
-                                control={<Radio color="primary"/>}
-                                label={'N/A'}/>
+                control={<Radio color="primary" />}
+                label={'ALL'} />
             </RadioGroup>
           </FormControl>
         </Grid>
         <Grid container
-              item
-              sm={8}
-              xs={6}>
+          item
+          sm={8}
+          xs={6}>
           <Grid item
-                xs={12}
-                sm={6}>
+            xs={12}
+            sm={6}>
             <div>Distance:</div>
             <FormControl className={styles.Dropdown}>
               <NativeSelect value={maxDistance}
-                            onChange={event => setMaxDistance(parseInt(event.target.value))}>
+                onChange={event => setMaxDistance(parseInt(event.target.value))}>
                 {
-                  [15, 10, 7, 5, 3, 1].map((maxDistance, ndx) => (
+                  [15, 10, 5, 1].map((maxDistance, ndx) => (
                     <option key={ndx} value={maxDistance}>{'< ' + maxDistance + 'km'}</option>
                   ))
                 }
@@ -133,15 +128,15 @@ const RentalSummary = (props) => {
             </FormControl>
           </Grid>
           <Grid item
-                xs={12}
-                sm={6}>
+            xs={12}
+            sm={6}>
             <div>Bathrooms:</div>
             <FormControl className={styles.Dropdown}>
               <NativeSelect value={bathCount}
-                            onChange={event => setBathCount(parseInt(event.target.value))}>
+                onChange={event => setBathCount(parseInt(event.target.value))}>
                 <option value={''}>All</option>
                 {
-                  [5, 4, 3, 2, 1].map((bathCount, ndx) => (
+                  [3, 2, 1].map((bathCount, ndx) => (
                     <option key={ndx} value={bathCount}>{bathCount}</option>
                   ))
                 }
@@ -149,12 +144,12 @@ const RentalSummary = (props) => {
             </FormControl>
           </Grid>
           <Grid item
-                xs={12}
-                sm={6}>
+            xs={12}
+            sm={6}>
             <div>Bedrooms:</div>
             <FormControl className={styles.Dropdown}>
               <NativeSelect value={bedCount}
-                            onChange={event => setBedCount(parseInt(event.target.value))}>
+                onChange={event => setBedCount(parseInt(event.target.value))}>
                 <option value={''}>All</option>
                 {
                   [5, 4, 3, 2, 1].map((bedCount, ndx) => (
@@ -174,35 +169,35 @@ const RentalSummary = (props) => {
       <div>
         {
           summary && summary.rentalsCount > 0 ? (
-          <div>
             <div>
-              Average rental price is <b>${summary.average?.toFixed(0)}/mo per room</b>
-            </div>
-          <div>
-            Calculated with <b>{summary.rentalsCount}</b> listings found online
+              <div>
+                Average rental price is <b>${summary.average?.toFixed(0)}/mo per room</b>
+              </div>
+              <div>
+                Calculated with <b>{summary.rentalsCount}</b> listings found online
           </div>
-        </div>
-        ) : <div>No listings found!</div>
+            </div>
+          ) : <div>No listings found!</div>
         }
       </div>
       <div>
         {
           prediction ? (
             <div>
-              Predicted rental price is <b>${prediction.prediction?.toFixed(0)}/mo per room</b>
+               Predicted rental price is <b>${prediction?.toFixed(0)}/mo per room</b>
             </div>
-          ): null
+          ) : null
         }
       </div>
     </div>
   )
 
   return (
-    <SummaryLayout icon={<HouseRoundedIcon/>}
-                   iconText={'RENTAL'}
-                   formElement={form}
-                   onSubmit={fetchRentalSummary}
-                   summaryElement={summaryText}/>
+    <SummaryLayout icon={<HouseRoundedIcon />}
+      iconText={'RENTAL'}
+      formElement={form}
+      onSubmit={fetchRentalSummary}
+      summaryElement={summaryText} />
   )
 }
 

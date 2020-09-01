@@ -6,6 +6,8 @@ import {Checkbox, FormControl, FormControlLabel} from "@material-ui/core";
 import FormGroup from "@material-ui/core/FormGroup";
 import styles from "../rentalSummary/RentalSummary.module.scss";
 import NativeSelect from "@material-ui/core/NativeSelect";
+import axios from '../../../axios-wrapper';
+import useIsMountedRef from "../../../util/useIsMountedRef";
 
 const DEFAULT_SELECTED_PRICE = {
   1: false,
@@ -19,8 +21,8 @@ const EatOutSummary = (props) => {
   const [summary, setSummary] = useState()
   const [maxDistance, setMaxDistance] = useState(15);
   const [minReviews, setMinReviews] = useState(0);
-
   const [selectedPrices, setSelectedPrices] = useState(DEFAULT_SELECTED_PRICE);
+  const isMountedRef = useIsMountedRef();
 
   useEffect(() => {
     fetchEatOutSummary();
