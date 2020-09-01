@@ -9,7 +9,8 @@ import SummaryLayout from "../../layout/summary/SummaryLayout";
 import Grid from "@material-ui/core/Grid";
 import axios from '../../../axios-wrapper';
 import useIsMountedRef from "../../../util/useIsMountedRef";
-
+import * as actionTypes from "../../../store/actions";
+import {connect} from "react-redux";
 
 
 const RentalSummary = (props) => {
@@ -53,12 +54,16 @@ const RentalSummary = (props) => {
         console.log('fetched rental summary data');
         if (isMountedRef.current) {
           setSummary(response.data);
+          props.loadCostOfLivingSummary({
+            label: "Rental",
+            estimate: response.data.average.toFixed(0)
+          })
         }
       })
       .catch(error => {
         console.error(error);
       });
-    
+
     fetchRentalPrediction();
   }
 
@@ -80,13 +85,13 @@ const RentalSummary = (props) => {
         params: params
       }
     )
-    .then(response => {
-      console.log('fetched rental prediction data');
-      setPrediction(response.data);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+      .then(response => {
+        console.log('fetched rental prediction data');
+        setPrediction(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   const form = (
@@ -126,7 +131,8 @@ const RentalSummary = (props) => {
                             onChange={event => setMaxDistance(parseInt(event.target.value))}>
                 {
                   [15, 10, 7, 5, 3, 1].map((maxDistance, ndx) => (
-                    <option key={ndx} value={maxDistance}>{'< ' + maxDistance + 'km'}</option>
+                    <option key={ndx}
+                            value={maxDistance}>{'< ' + maxDistance + 'km'}</option>
                   ))
                 }
               </NativeSelect>
@@ -142,7 +148,8 @@ const RentalSummary = (props) => {
                 <option value={''}>All</option>
                 {
                   [5, 4, 3, 2, 1].map((bathCount, ndx) => (
-                    <option key={ndx} value={bathCount}>{bathCount}</option>
+                    <option key={ndx}
+                            value={bathCount}>{bathCount}</option>
                   ))
                 }
               </NativeSelect>
@@ -158,7 +165,8 @@ const RentalSummary = (props) => {
                 <option value={''}>All</option>
                 {
                   [5, 4, 3, 2, 1].map((bedCount, ndx) => (
-                    <option key={ndx} value={bedCount}>{bedCount}</option>
+                    <option key={ndx}
+                            value={bedCount}>{bedCount}</option>
                   ))
                 }
               </NativeSelect>
@@ -174,15 +182,15 @@ const RentalSummary = (props) => {
       <div>
         {
           summary && summary.rentalsCount > 0 ? (
-          <div>
             <div>
-              Average rental price is <b>${summary.average?.toFixed(0)}/mo per room</b>
+              <div>
+                Average rental price is <b>${summary.average?.toFixed(0)}/mo per room</b>
+              </div>
+              <div>
+                Calculated with <b>{summary.rentalsCount}</b> listings found online
+              </div>
             </div>
-          <div>
-            Calculated with <b>{summary.rentalsCount}</b> listings found online
-          </div>
-        </div>
-        ) : <div>No listings found!</div>
+          ) : <div>No listings found!</div>
         }
       </div>
       <div>
@@ -191,7 +199,7 @@ const RentalSummary = (props) => {
             <div>
               Predicted rental price is <b>${prediction.prediction?.toFixed(0)}/mo per room</b>
             </div>
-          ): null
+          ) : null
         }
       </div>
     </div>
@@ -206,4 +214,10 @@ const RentalSummary = (props) => {
   )
 }
 
-export default RentalSummary;
+const mapDispatchToProps = dispatch => {
+  return {
+    loadCostOfLivingSummary: (payload) => dispatch(actionTypes.loadCostOfLivingSummary(payload))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(RentalSummary);

@@ -4,6 +4,8 @@ import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import {FormControl, FormControlLabel, Checkbox} from '@material-ui/core';
 import SummaryLayout from "../../layout/summary/SummaryLayout";
 import useIsMountedRef from "../../../util/useIsMountedRef";
+import * as actionTypes from "../../../store/actions";
+import {connect} from "react-redux";
 
 const UtilitySummary = (props) => {
   const [includeEC, setIncludeEC] = useState(true);
@@ -12,8 +14,12 @@ const UtilitySummary = (props) => {
   const isMountedRef = useIsMountedRef();
 
   useEffect(() => {
-    fetchUtilitySummary()
+    fetchUtilitySummary();
   }, [props]);
+
+  useEffect(() => {
+    handleSummaryUpdate(summary);
+  }, [includeEC, includeNG]);
 
   const fetchUtilitySummary = () => {
     console.log('fetch utility summary data');
@@ -28,7 +34,7 @@ const UtilitySummary = (props) => {
       .then(response => {
         console.log('fetched utility summary data');
         if (isMountedRef.current) {
-          setSummary(response.data);
+          handleSummaryUpdate(response.data);
         }
       })
       .catch(error => {
@@ -36,13 +42,23 @@ const UtilitySummary = (props) => {
       })
   }
 
-  let totalFee = 0;
-  if (includeEC === true) {
-    totalFee += summary?.averageEC || 0;
+  const handleSummaryUpdate = (summary) => {
+    let totalFee = 0;
+    if (includeEC === true) {
+      totalFee += summary?.averageEC || 0;
+    }
+    if (includeNG === true) {
+      totalFee += summary?.averageNG || 0;
+    }
+    setSummary({
+      ...summary, totalFee
+    });
+    props.loadCostOfLivingSummary({
+      label: "Utilities",
+      estimate: totalFee.toFixed(0)
+    })
   }
-  if (includeNG === true) {
-    totalFee += summary?.averageNG || 0;
-  }
+
 
   const form = summary ? <>
     <FormControl>
@@ -63,10 +79,10 @@ const UtilitySummary = (props) => {
   </> : null;
 
   const summaryText = (
-    props.universityDetail
+    props.universityDetail && summary
       ? <div>
         Estimated utility fee is in the city
-        of <b>{props.universityDetail.city}, {props.universityDetail.province}</b> is <b>${totalFee.toFixed(0)}</b>
+        of <b>{props.universityDetail.city}, {props.universityDetail.province}</b> is <b>${summary.totalFee.toFixed(0)}</b>
       </div>
       : <div>No utilities found</div>
   )
@@ -80,5 +96,11 @@ const UtilitySummary = (props) => {
   )
 }
 
-export default UtilitySummary;
+const mapDispatchToProps = dispatch => {
+  return {
+    loadCostOfLivingSummary: (payload) => dispatch(actionTypes.loadCostOfLivingSummary(payload))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(UtilitySummary);
 
