@@ -1,4 +1,11 @@
-# generated with -> flask-sqlacodegen --flask --outfile models.py mysql+pymysql://root:livethere2020@35.225.74.52/livethere
+""" 
+This file will store the reference of common isntances used
+throughout the lifecycle of the app.
+
+SQLAlchemy table schema datatypes are created with below commands.
+generated with -> flask-sqlacodegen --flask --outfile models.py mysql+pymysql://ID:PW@DB_SERVER_IP_ADDRESS/DB_NAME
+"""
+
 
 # coding: utf-8
 from sqlalchemy import types, Column, Date, Float, ForeignKey, Index, Integer, Numeric, SmallInteger, String
@@ -6,10 +13,12 @@ from sqlalchemy.orm import relationship
 from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql.expression import cast
+from flask_caching import Cache
 
 
 db = SQLAlchemy()
 ma = Marshmallow()
+cache = Cache()
 
 
 class CastToFloatType(types.TypeDecorator):
@@ -67,11 +76,12 @@ class Restaurant(db.Model):
     restaurantId = db.Column(db.Integer, primary_key=True)
     restaurantType = db.Column(db.String(1))
     postalCode = db.Column(db.String(6), nullable=True)
-    yelpId = db.Column(db.String(55),nullable=False)
+    yelpId = db.Column(db.String(55), nullable=False)
     priceLevel = db.Column(db.String(6))
     ratingCount = db.Column(db.Integer)
     longitude = db.Column(CastToFloatType, nullable=False)
     latitude = db.Column(CastToFloatType, nullable=False)
+
 
 class RestaurantRange(db.Model):
     __tablename__ = 'RestaurantRange'
@@ -123,8 +133,6 @@ class MainCampusMap(University):
     universityId = db.Column(db.ForeignKey('University.id'), primary_key=True)
 
 
-
-
 class AverageUtilityFee(db.Model):
     __tablename__ = 'AverageUtilityFee'
     __table_args__ = (
@@ -141,6 +149,8 @@ class AverageUtilityFeeSchema(ma.Schema):
     class Meta:
         fields = ('universityId', 'averageEC', 'averageNG', 'averageHD')
 
+
 class RestaurantSchema(ma.Schema):
     class Meta:
-        fields = ('restaurantId', 'restaurantType', 'postalCode','yelpId','priceLevel','latitude','longitude','ratingCount')
+        fields = ('restaurantId', 'restaurantType', 'postalCode',
+                  'yelpId', 'priceLevel', 'latitude', 'longitude', 'ratingCount')
