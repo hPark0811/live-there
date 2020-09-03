@@ -1,4 +1,5 @@
 from models import *
+from util import make_cache_key
 from flask import Blueprint, request
 from api.exception.exception_handler import *
 import numpy as np
@@ -23,9 +24,9 @@ rental_api = Blueprint('rental_api', __name__)
 rental_schema = RentalSchema()
 rentals_schema = RentalSchema(many=True)
 
-
 # Get all Rentals
 @rental_api.route('', methods=['GET'])
+@cache.cached(timeout=86400, key_prefix=make_cache_key)
 def get_rentals():
     all_rentals = Rental.query.all()
     return rentals_schema.jsonify(all_rentals)
@@ -33,12 +34,13 @@ def get_rentals():
 
 # Return predicted rental price.
 @rental_api.route('/predict', methods=['GET'])
+@cache.cached(timeout=86400, key_prefix=make_cache_key)
 def predict_rental():
     valid_args = [
         request.args.get('universityId') is not None,
         request.args.get('bathCount') is not None,
         request.args.get('bedCount') is not None,
-        request.args.get('propertyType') is not None, 
+        request.args.get('propertyType') is not None,
         request.args.get('postalCode') is not None
     ]
 
@@ -47,14 +49,15 @@ def predict_rental():
 
     # Retrieve county.
     nomi = pgeocode.Nominatim('ca')
-    location_data = nomi.query_postal_code([request.args.get('postalCode')]).to_dict('records')[0]
+    location_data = nomi.query_postal_code(
+        [request.args.get('postalCode')]).to_dict('records')[0]
     county = location_data['county_name']
 
     # Load model.
     with open(os.path.join(ML_MODEL_PATH, 'model.pkl'), 'rb') as f:
-        rf_model = pickle.load(f) 
+        rf_model = pickle.load(f)
 
-    # Load scalers. 
+    # Load scalers.
     # TODO: only single one hot enocoding.
     with open(os.path.join(ML_MODEL_PATH, 'property_one_hot.pkl'), 'rb') as f:
         property_one_hot = pickle.load(f)
@@ -72,11 +75,14 @@ def predict_rental():
     # For each property type in alias, predict using RF model.
     for p in alias:
         # Normalize features.
-        features = scaler.transform(np.array([int(request.args.get('bathCount')), int(request.args.get('bedCount'))]).reshape(1, -1))
+        features = scaler.transform(np.array([int(request.args.get('bathCount')), int(
+            request.args.get('bedCount'))]).reshape(1, -1))
 
         # One hot encode property and location.
-        p_sparse = property_one_hot.transform(np.array([p]).reshape(1, -1)).toarray()
-        c_sparse = county_one_hot.transform(np.array([county]).reshape(1, -1)).toarray()
+        p_sparse = property_one_hot.transform(
+            np.array([p]).reshape(1, -1)).toarray()
+        c_sparse = county_one_hot.transform(
+            np.array([county]).reshape(1, -1)).toarray()
 
         x = np.concatenate([features, p_sparse, c_sparse], axis=1)
 
@@ -89,6 +95,7 @@ def predict_rental():
 
 
 @rental_api.route('/average', methods=['GET'])
+@cache.cached(timeout=86400, key_prefix=make_cache_key)
 def get_average_rental():
     if not request.args.get('universityId'):
         raise BadRequest('University ID must not be null')
@@ -114,7 +121,6 @@ def get_average_rental():
         bed_count = request.args.get('bedCount')
 
     # Querying DB
-    from main import db
     queried_rentals = db.session.query(
         Rental.rentalPrice,
         Rental.bathroomCount,
