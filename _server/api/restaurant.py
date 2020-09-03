@@ -1,11 +1,10 @@
 from models import *
-from flask import Blueprint
-from flask import request
+from util import make_cache_key
+from flask import Blueprint, request
 import numpy
 from api.exception.exception_handler import *
 
 restaurant_api = Blueprint('restaurant_api', __name__)
-db = SQLAlchemy()
 
 # Init Schema
 restaurant_schema = RestaurantSchema()
@@ -15,12 +14,14 @@ restaurants_schema = RestaurantSchema(many=True)
 
 
 @restaurant_api.route('', methods=['GET'])
+@cache.cached(timeout=86400, key_prefix=make_cache_key)
 def get_restaurants():
     all_restaurants = Restaurant.query.all()
     return restaurant_schema.jsonify(all_restaurants)
 
 
 @restaurant_api.route('/average', methods=['GET'])
+@cache.cached(timeout=86400, key_prefix=make_cache_key)
 def get_average_restaurantPrice():
     if not request.args.get('universityId'):
         raise BadRequest('University ID must not be null')
