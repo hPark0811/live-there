@@ -1,11 +1,9 @@
 from models import *
-from flask import Blueprint
-from flask import request
+from flask import Blueprint, request
 import numpy
 from api.exception.exception_handler import *
 
 restaurant_api = Blueprint('restaurant_api', __name__)
-db = SQLAlchemy()
 
 # Init Schema
 restaurant_schema = RestaurantSchema()
@@ -44,6 +42,7 @@ def get_average_restaurantPrice():
         selectedPrices = request.args.get('selectedPrices').split(',')
 
     # Querying DB
+    from main import db
     queried_restaurants = db.session.query(
         Restaurant.priceLevel,
         Restaurant.ratingCount,
