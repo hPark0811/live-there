@@ -1,6 +1,5 @@
 from models import *
-from flask import Blueprint
-from flask import request
+from flask import Blueprint, request
 from api.exception.exception_handler import *
 import numpy as np
 import pickle
@@ -19,7 +18,6 @@ PROPERTY_ALIAS_MAP = {
 
 # Config
 rental_api = Blueprint('rental_api', __name__)
-db = SQLAlchemy()
 
 # Init Schema
 rental_schema = RentalSchema()
@@ -116,6 +114,7 @@ def get_average_rental():
         bed_count = request.args.get('bedCount')
 
     # Querying DB
+    from main import db
     queried_rentals = db.session.query(
         Rental.rentalPrice,
         Rental.bathroomCount,
