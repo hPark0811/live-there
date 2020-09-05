@@ -27,8 +27,10 @@ const RentalSummary = (props) => {
   const fetchRentalSummary = () => {
     let params = {
       universityId: props.universityId,
-      maxDistance: maxDistance,
       postalCode: props.postalCode.slice(0, 3) + " " + props.postalCode.slice(3)
+    }    
+    if (maxDistance){
+      params.maxDistance = maxDistance;
     }
     if (propertyType !== '') {
       params.propertyType = propertyType;

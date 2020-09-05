@@ -79,7 +79,7 @@ def get_rental_summary():
 
     # Default min/max distance.
     min_distance = 0
-    max_distance = 10
+    max_distance = 15
 
     if request.args.get('minDistance'):
         min_distance = int(request.args.get('minDistance'))
@@ -105,15 +105,15 @@ def get_rental_summary():
     ) 
 
     # Filter baed on propertyType, bathCount, bedCount. If none, automatically unfiltered.
-    if request.args.get('propertyType'):
+    if request.args.get('propertyType') is not None:
         queried_rentals = queried_rentals.filter(
-            Rental.propertyType.in_(request.args.get('propertyType'))
-        )
-    if request.args.get('bathCount'):
+            Rental.propertyType.in_(PROPERTY_ALIAS_MAP[request.args.get('propertyType')])
+        )        
+    if request.args.get('bathCount') is not None:
         queried_rentals = queried_rentals.filter(
             Rental.bathroomCount == request.args.get('bathCount')
         )
-    if request.args.get('bedCount'):
+    if request.args.get('bedCount') is not None:
         queried_rentals = queried_rentals.filter(
             Rental.bedroomCount == request.args.get('bedCount')
         )
@@ -127,7 +127,7 @@ def get_rental_summary():
         rentals_count > 0,
     ]
 
-    print(request.args.get('propertyType'), request.args.get('bathCount'), request.args.get('bedCount'), rentals_count)
+    print(request.args.get('propertyType'), request.args.get('bathCount'), request.args.get('bedCount'), rentals_count, max_distance, min_distance)
     if all(valid_avg):
         rentals_average = calculate_average_rent_per_room(queried_rentals)
         # Successfully calculated filtered average.
