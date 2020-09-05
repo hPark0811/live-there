@@ -11,8 +11,6 @@ restaurant_schema = RestaurantSchema()
 restaurants_schema = RestaurantSchema(many=True)
 
 # Get all Restaurants
-
-
 @restaurant_api.route('', methods=['GET'])
 @cache.cached(timeout=86400, key_prefix=make_cache_key)
 def get_restaurants():
