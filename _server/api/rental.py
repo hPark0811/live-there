@@ -117,6 +117,7 @@ def get_rental_summary():
         queried_rentals = queried_rentals.filter(
             Rental.bedroomCount == request.args.get('bedCount')
         )
+
     queried_rentals = queried_rentals.all()
 
     # Calculating average.
@@ -127,7 +128,6 @@ def get_rental_summary():
         rentals_count > 0,
     ]
 
-    print(request.args.get('propertyType'), request.args.get('bathCount'), request.args.get('bedCount'), rentals_count, max_distance, min_distance)
     if all(valid_avg):
         rentals_average = calculate_average_rent_per_room(queried_rentals)
         # Successfully calculated filtered average.
