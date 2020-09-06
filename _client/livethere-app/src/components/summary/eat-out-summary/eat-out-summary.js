@@ -6,12 +6,14 @@ import {Checkbox, FormControl, FormControlLabel} from "@material-ui/core";
 import FormGroup from "@material-ui/core/FormGroup";
 import styles from "../rentalSummary/RentalSummary.module.scss";
 import NativeSelect from "@material-ui/core/NativeSelect";
+import axios from "../../../axios-wrapper";
+import useIsMountedRef from "../../../util/useIsMountedRef";
 
 const DEFAULT_SELECTED_PRICE = {
-  1: false,
-  2: false,
-  3: false,
-  4: false,
+  '$': false,
+  '$$': false,
+  '$$$': false,
+  '$$$$': false,
   'ALL': true
 }
 
@@ -19,8 +21,9 @@ const EatOutSummary = (props) => {
   const [summary, setSummary] = useState()
   const [maxDistance, setMaxDistance] = useState(15);
   const [minReviews, setMinReviews] = useState(0);
-
   const [selectedPrices, setSelectedPrices] = useState(DEFAULT_SELECTED_PRICE);
+
+  const isMountedRef = useIsMountedRef();
 
   useEffect(() => {
     fetchEatOutSummary();
@@ -28,7 +31,6 @@ const EatOutSummary = (props) => {
 
   const fetchEatOutSummary = () => {
     console.log('fetch eat out summary data');
-    // TODO(Sami): Make fetch call to eat out summary API here
     let params = {universityId: props.universityId};
 
     if (maxDistance) {
@@ -37,8 +39,14 @@ const EatOutSummary = (props) => {
     if (minReviews !== '') {
       params.minReviews = minReviews;
     }
-    if (selectedPrices !== '') {
-      params.selectedPrices = selectedPrices;
+    if (selectedPrices) {
+      let prices = [];
+      Object.entries(selectedPrices).filter(([price, isSelected]) => {
+        if (isSelected) {
+          prices.push(price);
+        }
+      })
+      params.selectedPrices = prices.toString();
     }
 
     axios.get(
@@ -71,7 +79,7 @@ const EatOutSummary = (props) => {
   const summaryText = (
     !!summary ? (
       <div>
-        <div>Average eat out price is <b>${summary.average?.toFixed(1)}/meal</b></div>
+        <div>Average eat out price is <b>~${summary.average?.toFixed(1)}/meal</b></div>
       </div>
     ) : <div>No restaurant data found!</div>
   )
@@ -84,23 +92,16 @@ const EatOutSummary = (props) => {
               xs={6}>
           <div>Prices:</div>
           <FormGroup>
-            {['$', '$$', '$$$', '$$$$+'].map((price, ndx) => (
+            {Object.keys(DEFAULT_SELECTED_PRICE).map((price, ndx) => (
               <FormControlLabel
                 control={<Checkbox color="primary"
-                                   name={(ndx + 1).toString()}
-                                   checked={selectedPrices[ndx + 1]}/>}
+                                   name={price}
+                                   checked={selectedPrices[price]}/>}
                 key={ndx}
                 onChange={handlePriceChange}
                 label={price}
               />
             ))}
-            <FormControlLabel
-              control={<Checkbox color="primary"
-                                 checked={selectedPrices.ALL}
-                                 name={'ALL'}/>}
-              onChange={handlePriceChange}
-              label="ALL"
-            />
           </FormGroup>
         </Grid>
         <Grid container
