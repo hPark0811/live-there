@@ -33,10 +33,10 @@ def get_rentals():
     return rentals_schema.jsonify(all_rentals)
 
 
-@rental_api.route('/summary', methods=['GET'])
+@rental_api.route('/average', methods=['GET'])
 @cache.cached(timeout=86400, key_prefix=make_cache_key)
-def get_rental_summary():
-    """ Return rental summary.
+def get_rental_average():
+    """ Return rental average.
 
     Args:
         universityId: university Id. If none -> raise BadRequest.
@@ -59,8 +59,8 @@ def get_rental_summary():
             average: number of rents that were used to calculate average.
             prediction: -1
         metrics: average(filter based) or prediction(random forest). (default average)
-        summary: average/prediction of rental prices.
-            If there is no rentals data -> prediction baed on random forest.
+        average: average/prediction of rental prices.
+            If there is no rentals data -> prediction based on random forest.
             If there is no rentals and propertyType is not provided, -1.       
         distance: maxDistance.
     """
@@ -75,7 +75,7 @@ def get_rental_summary():
     if any(invalid_args):
         raise BadRequest('Must provide universityId and postalCode')
 
-    """ Filter baed average starts here by default. """
+    """ Filter based average starts here by default. """
 
     # Default min/max distance.
     min_distance = 0
@@ -83,7 +83,7 @@ def get_rental_summary():
 
     if request.args.get('minDistance'):
         min_distance = int(request.args.get('minDistance'))
-    
+
     if request.args.get('maxDistnace'):
         max_distance = int(request.args.get('maxDistance'))
 
@@ -102,13 +102,14 @@ def get_rental_summary():
         RentalRange.rentToUniversityDistance >= min_distance
     ).filter(
         RentalRange.rentToUniversityDistance <= max_distance
-    ) 
+    )
 
-    # Filter baed on propertyType, bathCount, bedCount. If none, automatically unfiltered.
+    # Filter based on propertyType, bathCount, bedCount. If none, automatically unfiltered.
     if request.args.get('propertyType') is not None:
         queried_rentals = queried_rentals.filter(
-            Rental.propertyType.in_(PROPERTY_ALIAS_MAP[request.args.get('propertyType')])
-        )        
+            Rental.propertyType.in_(
+                PROPERTY_ALIAS_MAP[request.args.get('propertyType')])
+        )
     if request.args.get('bathCount') is not None:
         queried_rentals = queried_rentals.filter(
             Rental.bathroomCount == request.args.get('bathCount')
@@ -123,17 +124,12 @@ def get_rental_summary():
     # Calculating average.
     rentals_count = len(queried_rentals)
 
-    # Check if valid rental average.
-    valid_avg = [
-        rentals_count > 0,
-    ]
-
-    if all(valid_avg):
+    if rentals_count > 0:
         rentals_average = calculate_average_rent_per_room(queried_rentals)
         # Successfully calculated filtered average.
         return {
             'rentalsCount': int(rentals_count),
-            'summary': float(rentals_average),
+            'average': float(rentals_average),
             'distance': int(max_distance),
             'metric': 'average'
         }
@@ -144,12 +140,13 @@ def get_rental_summary():
         # request.args.get('bedCount') is not None,
         # request.args.get('bathCount') is not None
     ]
-    
-    """ Prediction starts here """    
-    if (not all(valid_avg)) and all(prd_valid):
+
+    """ Prediction starts here """
+    if all(prd_valid):
         # Retrieve county from pgeocode.
         nomi = pgeocode.Nominatim('ca')
-        location_data = nomi.query_postal_code([request.args.get('postalCode')]).to_dict('records')[0]
+        location_data = nomi.query_postal_code(
+            [request.args.get('postalCode')]).to_dict('records')[0]
         county = location_data['county_name']
 
         """ Load pickles. """
@@ -178,41 +175,44 @@ def get_rental_summary():
             bathRange = [int(request.args.get('bathCount'))]
 
         predictions = []
-        aggregator = product(alias, bedRange, bathRange)        
+        aggregator = product(alias, bedRange, bathRange)
 
         for p, bedCount, bathCount in aggregator:
             # Normalize features.
-            features = scaler.transform(np.array([bathCount, bedCount]).reshape(1, -1))
+            features = scaler.transform(
+                np.array([bathCount, bedCount]).reshape(1, -1))
 
             # One hot encode property and location.
-            p_sparse = property_one_hot.transform(np.array([p]).reshape(1, -1)).toarray()
-            c_sparse = county_one_hot.transform(np.array([county]).reshape(1, -1)).toarray()
+            p_sparse = property_one_hot.transform(
+                np.array([p]).reshape(1, -1)).toarray()
+            c_sparse = county_one_hot.transform(
+                np.array([county]).reshape(1, -1)).toarray()
 
             x = np.concatenate([features, p_sparse, c_sparse], axis=1)
 
             # Predict.
             predictions.append(rf_model.predict(x).item())
-        
-        # TODO: Instead of summary <- mean(predictions) must be weighted average based on probability distribution for each alias, bathRange, bedCount.
+
+        # TODO: Instead of average <- mean(predictions) must be weighted average based on probability distribution for each alias, bathRange, bedCount.
         if request.args.get('bedCount') is None:
-            # Considering all of bedCounts have probability distribution. 
+            # Considering all of bedCounts have probability distribution.
             pdf = np.array([0.2, 0.2, 0.2, 0.2, 0.2])
             divisor = np.dot(pdf, np.array(bedRange))
         else:
             divisor = float(request.args.get('bedCount'))
-        
+
         # Successfully calculated rental predictions.
         return {
             'rentalsCount': -1,
-            'summary':  np.mean(predictions)/divisor,
+            'average':  np.mean(predictions)/divisor,
             'distance': -1,
             'metric': 'prediction'
         }
     else:
-        # Unavaiable to provide meaningful summary.
+        # Unavaiable to provide meaningful average.
         return {
             'rentalsCount': 0,
-            'summary': -1,
+            'average': -1,
             'distance': int(max_distance),
             'metric': 'average'
         }
