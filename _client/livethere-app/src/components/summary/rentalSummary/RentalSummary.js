@@ -12,15 +12,12 @@ import useIsMountedRef from "../../../util/useIsMountedRef";
 import * as actionTypes from "../../../store/actions";
 import {connect} from "react-redux";
 
-
 const RentalSummary = (props) => {
   const [maxDistance, setMaxDistance] = useState(15);
   const [propertyType, setPropertyType] = useState('');
   const [bathCount, setBathCount] = useState('');
   const [bedCount, setBedCount] = useState('');
   const [summary, setSummary] = useState();
-  // TODO: append prediction to summary?
-  const [prediction, setPrediction] = useState();
   const isMountedRef = useIsMountedRef();
 
   useEffect(() => {
@@ -28,69 +25,38 @@ const RentalSummary = (props) => {
   }, [props]);
 
   const fetchRentalSummary = () => {
-    console.log('fetch rental summary data');
-
-    let params = {universityId: props.universityId};
-
+    let params = {
+      universityId: props.universityId,
+      postalCode: props.postalCode.slice(0, 3) + " " + props.postalCode.slice(3)
+    }
+    // TODO: move this to backend.
     if (maxDistance) {
       params.maxDistance = maxDistance;
     }
-    if (propertyType) {
+    if (propertyType !== '') {
       params.propertyType = propertyType;
     }
-    if (bathCount !== '') {
+    if (bathCount !== '' && !isNaN(bathCount)) {
       params.bathCount = bathCount;
     }
-    if (bedCount !== '') {
+    if (bedCount !== '' && !isNaN(bedCount)) {
       params.bedCount = bedCount;
     }
 
-    axios.get(
-      `/rental/average`,
-      {
-        params: params
-      })
+    axios.get('/rental/summary', {params: params})
       .then(response => {
-        console.log('fetched rental summary data');
+        console.log('RECEIVED', response.data);
         if (isMountedRef.current) {
           setSummary(response.data);
+          let estimate = response.data.metric !== 'na' ? response.data.estimate : 0;
           props.loadCostOfLivingSummary({
-            label: "Rental",
-            estimate: response.data.average.toFixed(0)
-          })
+            label: 'Rental',
+            estimate: estimate.toFixed(0)
+          });
         }
       })
       .catch(error => {
         console.error(error);
-      });
-
-    fetchRentalPrediction();
-  }
-
-  const fetchRentalPrediction = () => {
-    console.log('fetch rental prediction');
-
-    let params = {
-      universityId: props.universityId
-    };
-
-    params.propertyType = propertyType ? propertyType : 'condo';
-    params.bathCount = bathCount !== '' ? bathCount : 0;
-    params.bedCount = bedCount !== '' ? bedCount : 0;
-    params.postalCode = props.postalCode.slice(0, 3) + " " + props.postalCode.slice(3);
-
-    axios.get(
-      '/rental/predict',
-      {
-        params: params
-      }
-    )
-      .then(response => {
-        console.log('fetched rental prediction data');
-        setPrediction(response.data);
-      })
-      .catch(err => {
-        console.log(err);
       });
   }
 
@@ -112,9 +78,9 @@ const RentalSummary = (props) => {
                                   control={<Radio color="primary"/>}
                                   label={type}/>
               ))}
-              <FormControlLabel value={""}
+              <FormControlLabel value={''}
                                 control={<Radio color="primary"/>}
-                                label={'N/A'}/>
+                                label={'ALL'}/>
             </RadioGroup>
           </FormControl>
         </Grid>
@@ -130,7 +96,7 @@ const RentalSummary = (props) => {
               <NativeSelect value={maxDistance}
                             onChange={event => setMaxDistance(parseInt(event.target.value))}>
                 {
-                  [15, 10, 7, 5, 3, 1].map((maxDistance, ndx) => (
+                  [15, 10, 5, 1].map((maxDistance, ndx) => (
                     <option key={ndx}
                             value={maxDistance}>{'< ' + maxDistance + 'km'}</option>
                   ))
@@ -147,7 +113,7 @@ const RentalSummary = (props) => {
                             onChange={event => setBathCount(parseInt(event.target.value))}>
                 <option value={''}>All</option>
                 {
-                  [5, 4, 3, 2, 1].map((bathCount, ndx) => (
+                  [3, 2, 1].map((bathCount, ndx) => (
                     <option key={ndx}
                             value={bathCount}>{bathCount}</option>
                   ))
@@ -177,33 +143,31 @@ const RentalSummary = (props) => {
     </>
   )
 
-  const summaryText = (
-    <div>
-      <div>
-        {
-          summary && summary.rentalsCount > 0 ? (
-            <div>
-              <div>
-                Average rental price is <b>${summary.average?.toFixed(0)}/mo per room</b>
-              </div>
-              <div>
-                Calculated with <b>{summary.rentalsCount}</b> listings found online
-              </div>
-            </div>
-          ) : <div>No listings found!</div>
-        }
-      </div>
-      <div>
-        {
-          prediction ? (
-            <div>
-              Predicted rental price is <b>${prediction.prediction?.toFixed(0)}/mo per room</b>
-            </div>
-          ) : null
-        }
-      </div>
-    </div>
-  )
+  let summaryText;
+
+  switch (summary?.metric) {
+    case 'average':
+      summaryText = (
+        <div>
+          <div>
+            Average rental price is <b>${summary.estimate?.toFixed(0)}/month per room</b>
+          </div>
+          <div>
+            Calculated with <b>{summary.rentalsCount}</b> listings found online.
+          </div>
+        </div>
+      );
+      break;
+    case 'prediction':
+      summaryText = (
+        <div>
+          Predicted rental price is <b>${summary.estimate?.toFixed(0)}/month per room</b>
+        </div>
+      );
+      break;
+    default: // case 'na': 
+      summaryText = <div>No listings found!</div>
+  }
 
   return (
     <SummaryLayout icon={<HouseRoundedIcon/>}
