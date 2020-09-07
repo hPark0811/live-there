@@ -8,6 +8,8 @@ import styles from "../rentalSummary/RentalSummary.module.scss";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import axios from "../../../axios-wrapper";
 import useIsMountedRef from "../../../util/useIsMountedRef";
+import * as actionTypes from "../../../store/actions";
+import {connect} from "react-redux";
 
 const DEFAULT_SELECTED_PRICE = {
   '$': false,
@@ -58,6 +60,10 @@ const EatOutSummary = (props) => {
         console.log('fetched restaurant summary data');
         if (isMountedRef.current) {
           setSummary(response.data);
+          props.loadCostOfLivingSummary({
+            label: "Restaurant",
+            estimate: response.data.average.toFixed(0)
+          })
         }
       })
       .catch(error => {
@@ -77,9 +83,10 @@ const EatOutSummary = (props) => {
   };
 
   const summaryText = (
-    !!summary ? (
+    !!summary && summary.average? (
       <div>
-        <div>Average eat out price is <b>~${summary.average?.toFixed(1)}/meal</b></div>
+        <div>Average eat out price is <b>~${(30*summary.average).toFixed(1)}/month</b></div>
+      <div>Calculated from<b>{summary.restaurantCount}</b> restaurants in area</div>
       </div>
     ) : <div>No restaurant data found!</div>
   )
@@ -154,4 +161,10 @@ const EatOutSummary = (props) => {
   )
 }
 
-export default EatOutSummary;
+const mapDispatchToProps = dispatch => {
+  return {
+    loadCostOfLivingSummary: (payload) => dispatch(actionTypes.loadCostOfLivingSummary(payload))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(EatOutSummary);
