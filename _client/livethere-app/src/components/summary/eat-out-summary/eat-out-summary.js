@@ -59,6 +59,7 @@ const EatOutSummary = (props) => {
       .then(response => {
         console.log('fetched restaurant summary data');
         if (isMountedRef.current) {
+          response.data.average *= 30;
           setSummary(response.data);
           props.loadCostOfLivingSummary({
             label: "Restaurant",
@@ -85,7 +86,7 @@ const EatOutSummary = (props) => {
   const summaryText = (
     !!summary && summary.average? (
       <div>
-        <div>Average eat out price is <b>~${(30*summary.average).toFixed(1)}/month</b></div>
+        <div>Average eat out price is <b>${summary.average.toFixed(1)}/month</b></div>
       <div>Calculated from<b>{summary.restaurantCount}</b> restaurants in area</div>
       </div>
     ) : <div>No restaurant data found!</div>
