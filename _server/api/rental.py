@@ -35,8 +35,8 @@ def get_rentals():
 
 @rental_api.route('/summary', methods=['GET'])
 @cache.cached(timeout=86400, key_prefix=make_cache_key)
-def get_rental_average():
-    """ Return rental average.
+def get_rental_summary():
+    """ Return rental summary.
 
     Args:
         universityId: university Id. If none -> raise BadRequest.
@@ -64,8 +64,9 @@ def get_rental_average():
             If there is no rentals and propertyType is not provided, -1.       
         distance: maxDistance.
     """
-    # TODO: Break this function to parts.
+    # TODO: Break this function to parts - Denoted as F#.
 
+    # TODO: F1 - Create argument sanity check function.
     # Check for invalid arguments.
     invalid_args = [
         request.args.get('universityId') is None,
@@ -87,6 +88,7 @@ def get_rental_average():
     if request.args.get('maxDistnace'):
         max_distance = int(request.args.get('maxDistance'))
 
+    # TODO: F2 - Filter based average will be done in query or SQL in seperate function.
     # Querying DB & filter based on min/max radius and universityId.
     queried_rentals = db.session.query(
         Rental.rentalPrice,
@@ -148,6 +150,7 @@ def get_rental_average():
     ]
 
     """ Prediction starts here """
+    # TODO: F3 - Prediction in seperate function.
     if all(valid_prd):
         # Retrieve county from pgeocode.
         nomi = pgeocode.Nominatim('ca')
@@ -156,6 +159,8 @@ def get_rental_average():
         county = location_data['county_name']
 
         """ Load pickles. """
+        # TODO: F4 - ML submodules which take cares of loading pickles, and prediction. 
+        # TODO: F5 - Combine redundant pickle files.
         with open(os.path.join(ML_MODEL_PATH, 'model.pkl'), 'rb') as f:
             rf_model = pickle.load(f)
 
@@ -199,7 +204,7 @@ def get_rental_average():
             # Predict.
             predictions.append(rf_model.predict(x).item())
 
-        # TODO: Instead of average <- mean(predictions) must be weighted average based on probability distribution for each alias, bathRange, bedCount.
+        # TODO: F6 - Instead of average <- mean(predictions) must be weighted average based on probability distribution for each alias, bathRange, bedCount.
         if request.args.get('bedCount') is None:
             # Considering all of bedCounts have probability distribution.
             pdf = np.array([0.2, 0.2, 0.2, 0.2, 0.2])
@@ -223,9 +228,8 @@ def get_rental_average():
             'metric': 'na'
         }
 
-
+""" TODO: Following helper functions will be soon removed and logics will be done in query levels.""""
 def calculate_average_rent_per_room(rents):
-    # TODO: accounts for NaN values, and fix format.
     """ calculates average price of rent per room
 
     Args:
@@ -245,7 +249,6 @@ def calculate_average_rent_per_room(rents):
 
 
 def calculate_mean(nums):
-    # TODO: accounts for NaN values, and fix format.
     """ calculates mean with outliers removed
 
     Args:
