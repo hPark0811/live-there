@@ -87,7 +87,7 @@ const EatOutSummary = (props) => {
     !!summary && summary.average? (
       <div>
         <div>Average eat out price is <b>${summary.average.toFixed(1)}/month</b></div>
-      <div>Calculated from<b>{summary.restaurantCount}</b> restaurants in area</div>
+        <div>Calculated from<b>{summary.restaurantCount}</b> restaurants in area</div>
       </div>
     ) : <div>No restaurant data found!</div>
   )
