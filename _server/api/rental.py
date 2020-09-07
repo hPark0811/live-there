@@ -33,7 +33,7 @@ def get_rentals():
     return rentals_schema.jsonify(all_rentals)
 
 
-@rental_api.route('/average', methods=['GET'])
+@rental_api.route('/summary', methods=['GET'])
 @cache.cached(timeout=86400, key_prefix=make_cache_key)
 def get_rental_average():
     """ Return rental average.
@@ -120,29 +120,35 @@ def get_rental_average():
         )
 
     queried_rentals = queried_rentals.all()
-
+    
     # Calculating average.
     rentals_count = len(queried_rentals)
 
-    if rentals_count > 0:
+    # Check if valid rental average.
+    valid_avg = [
+        # TODO: add other edge cases later in future.
+        rentals_count > 0,
+    ]
+
+    if all(valid_avg):
         rentals_average = calculate_average_rent_per_room(queried_rentals)
         # Successfully calculated filtered average.
         return {
             'rentalsCount': int(rentals_count),
-            'average': float(rentals_average),
+            'estimate': float(rentals_average),
             'distance': int(max_distance),
             'metric': 'average'
         }
 
     # Check if prediction is available.
-    prd_valid = [
+    valid_prd = [
         request.args.get('propertyType') is not None,
         # request.args.get('bedCount') is not None,
         # request.args.get('bathCount') is not None
     ]
 
     """ Prediction starts here """
-    if all(prd_valid):
+    if all(valid_prd):
         # Retrieve county from pgeocode.
         nomi = pgeocode.Nominatim('ca')
         location_data = nomi.query_postal_code(
@@ -204,7 +210,7 @@ def get_rental_average():
         # Successfully calculated rental predictions.
         return {
             'rentalsCount': -1,
-            'average':  np.mean(predictions)/divisor,
+            'estimate':  np.mean(predictions)/divisor,
             'distance': -1,
             'metric': 'prediction'
         }
@@ -212,9 +218,9 @@ def get_rental_average():
         # Unavaiable to provide meaningful average.
         return {
             'rentalsCount': 0,
-            'average': -1,
+            'estimate': -1,
             'distance': int(max_distance),
-            'metric': 'average'
+            'metric': 'na'
         }
 
 

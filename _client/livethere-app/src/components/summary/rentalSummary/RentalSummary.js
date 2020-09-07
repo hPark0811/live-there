@@ -29,30 +29,30 @@ const RentalSummary = (props) => {
       universityId: props.universityId,
       postalCode: props.postalCode.slice(0, 3) + " " + props.postalCode.slice(3)
     }
+    // TODO: move this to backend.
     if (maxDistance) {
       params.maxDistance = maxDistance;
     }
     if (propertyType !== '') {
       params.propertyType = propertyType;
     }
-    if (bathCount !== '') {
+    if (bathCount !== '' && !isNaN(bathCount)) {
       params.bathCount = bathCount;
     }
-    if (bedCount !== '') {
+    if (bedCount !== '' && !isNaN(bedCount)) {
       params.bedCount = bedCount;
     }
 
-    console.log(propertyType, bathCount, bedCount)
-    console.log(params)
-
-    axios.get('/rental/average', {params: params})
+    axios.get('/rental/summary', {params: params})
       .then(response => {
+        console.log('RECEIVED', response.data);
         if (isMountedRef.current) {
           setSummary(response.data);
+          let estimate = response.data.metric !== 'na' ? response.data.estimate : 0;
           props.loadCostOfLivingSummary({
             label: 'Rental',
-            estimate: response.data.average.toFixed(0)
-          })
+            estimate: estimate.toFixed(0)
+          });
         }
       })
       .catch(error => {
@@ -150,7 +150,7 @@ const RentalSummary = (props) => {
       summaryText = (
         <div>
           <div>
-            Average rental price is <b>${summary.average?.toFixed(0)}/month per room</b>
+            Average rental price is <b>${summary.estimate?.toFixed(0)}/month per room</b>
           </div>
           <div>
             Calculated with <b>{summary.rentalsCount}</b> listings found online.
@@ -161,11 +161,11 @@ const RentalSummary = (props) => {
     case 'prediction':
       summaryText = (
         <div>
-          Predicted rental price is <b>${summary.average?.toFixed(0)}/month per room</b>
+          Predicted rental price is <b>${summary.estimate?.toFixed(0)}/month per room</b>
         </div>
       );
       break;
-    default:
+    default: // case 'na': 
       summaryText = <div>No listings found!</div>
   }
 
