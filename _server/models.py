@@ -1,3 +1,6 @@
+"""
+    TODO: move this file to same directory level as api/* & ml/* 
+"""
 """ 
 This file will store the reference of common isntances used
 throughout the lifecycle of the app.

@@ -1,13 +1,31 @@
+"""
+    TODO: All server relevent files should be stored in app/* as python package & main folder must call app.py from app package.
+    TODO: Recommended backend server structure
+        _server:
+            deployment config files.
+            main.py (or run.py) - run app.py & gcloud calls app.py/app(flask app). & contain options for dev/deployment
+            app:
+                app config files.
+                app.py
+                api:
+                    __init__.py
+                    api related files
+                ml:
+                    __init__.py
+                    pickles folder
+                models.py
+                utils.py
+"""
+
 from flask import Flask, request, jsonify, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from models import db, cache
-import os
-
-# routes import
 from api import rental, university, utility, restaurant
 from api.exception.exception_handler import *
+from models import db, cache
 from models import *
+
+import os
 import config
 
 

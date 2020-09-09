@@ -7,10 +7,10 @@ import pickle
 import pgeocode
 import os
 from itertools import product
+from .ml import rental_model as ml_model
 
 
 # CONST
-ML_MODEL_PATH = os.path.join('api', '_predictive', 'rental_rf')
 PROPERTY_ALIAS_MAP = {
     'condo': ['apartment', 'condo'],
     'house': ['house', 'loft', 'duplex', 'multi-unit'],
@@ -20,6 +20,9 @@ PROPERTY_ALIAS_MAP = {
 
 # Config
 rental_api = Blueprint('rental_api', __name__)
+
+if not ml_model.initialized:
+    ml_model.init()
 
 # Init Schema
 rental_schema = RentalSchema()
@@ -150,29 +153,12 @@ def get_rental_summary():
     ]
 
     """ Prediction starts here """
-    # TODO: F3 - Prediction in seperate function.
     if all(valid_prd):
         # Retrieve county from pgeocode.
         nomi = pgeocode.Nominatim('ca')
         location_data = nomi.query_postal_code(
             [request.args.get('postalCode')]).to_dict('records')[0]
         county = location_data['county_name']
-
-        """ Load pickles. """
-        # TODO: F4 - ML submodules which take cares of loading pickles, and prediction. 
-        # TODO: F5 - Combine redundant pickle files.
-        with open(os.path.join(ML_MODEL_PATH, 'model.pkl'), 'rb') as f:
-            rf_model = pickle.load(f)
-
-        # TODO: only single one hot enocoding.
-        with open(os.path.join(ML_MODEL_PATH, 'property_one_hot.pkl'), 'rb') as f:
-            property_one_hot = pickle.load(f)
-
-        with open(os.path.join(ML_MODEL_PATH, 'county_one_hot.pkl'), 'rb') as f:
-            county_one_hot = pickle.load(f)
-
-        with open(os.path.join(ML_MODEL_PATH, 'normalization.pkl'), 'rb') as f:
-            scaler = pickle.load(f)
 
         # Average all the alias, bedRanges, bathRanges.
         alias = PROPERTY_ALIAS_MAP[request.args.get('propertyType')]
@@ -186,23 +172,8 @@ def get_rental_summary():
             bathRange = [int(request.args.get('bathCount'))]
 
         predictions = []
-        aggregator = product(alias, bedRange, bathRange)
-
-        for p, bedCount, bathCount in aggregator:
-            # Normalize features.
-            features = scaler.transform(
-                np.array([bathCount, bedCount]).reshape(1, -1))
-
-            # One hot encode property and location.
-            p_sparse = property_one_hot.transform(
-                np.array([p]).reshape(1, -1)).toarray()
-            c_sparse = county_one_hot.transform(
-                np.array([county]).reshape(1, -1)).toarray()
-
-            x = np.concatenate([features, p_sparse, c_sparse], axis=1)
-
-            # Predict.
-            predictions.append(rf_model.predict(x).item())
+        aggregator = np.array(list(product(alias, [county], bedRange, bathRange)))
+        predictions = ml_model.predict(aggregator[:, 0], aggregator[:, 1], aggregator[:, 2].astype(float), aggregator[:, 3].astype(float))
 
         # TODO: F6 - Instead of average <- mean(predictions) must be weighted average based on probability distribution for each alias, bathRange, bedCount.
         if request.args.get('bedCount') is None:
@@ -217,7 +188,7 @@ def get_rental_summary():
             'rentalsCount': -1,
             'estimate':  np.mean(predictions)/divisor,
             'distance': -1,
-            'metric': 'prediction'
+            'metric': 'prediction',
         }
     else:
         # Unavaiable to provide meaningful average.
@@ -228,7 +199,7 @@ def get_rental_summary():
             'metric': 'na'
         }
 
-""" TODO: Following helper functions will be soon removed and logics will be done in query levels.""""
+""" TODO: Following helper functions will be soon removed and logics will be done in query levels."""
 def calculate_average_rent_per_room(rents):
     """ calculates average price of rent per room
 
