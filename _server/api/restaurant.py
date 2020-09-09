@@ -26,9 +26,8 @@ def get_average_restaurantPrice():
     # default parameters
     min_distance_km = 0
     max_distance_km = 10
-    restaurant__type = None
     minReviews = 0
-    selectedPrices = None
+    selected_prices = None
 
     # TODO: Filter out edge cases
     if request.args.get('minDistance'):
@@ -39,8 +38,7 @@ def get_average_restaurantPrice():
     if request.args.get('minReviews'):
         minReviews = request.args.get('minReviews')
     if request.args.get('selectedPrices'):
-
-        selectedPrices = request.args.get('selectedPrices').split(',')
+        selected_prices = request.args.get('selectedPrices').split(',')
 
     # Querying DB
     queried_restaurants = db.session.query(
@@ -61,9 +59,9 @@ def get_average_restaurantPrice():
     if minReviews:
         queried_restaurants = queried_restaurants.filter(
             Restaurant.ratingCount >= minReviews)
-    if selectedPrices:
+    if selected_prices and not 'ALL' in selected_prices:
         queried_restaurants = queried_restaurants.filter(
-            Restaurant.priceLevel.in_(selectedPrices))
+            Restaurant.priceLevel.in_(selected_prices))
     queried_restaurants = queried_restaurants.all()
 
     # Calculating average average
@@ -71,8 +69,8 @@ def get_average_restaurantPrice():
     dine_in_average = calculate_average_dineIn(queried_restaurants)
 
     return {
-        'Going Out Average': dine_in_average,
-        'Number of Restaurants and Bars': restaurants_count
+        'average': dine_in_average,
+        'restaurantCount': restaurants_count
     }
 
 
