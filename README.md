@@ -29,8 +29,5 @@ LiveThere is a cost of living analysis & budgeting website for highschool studen
 * **Frontend**
   * **Figma** for UI/UX design
 
-## Demo
-Working live demo:  https://live-there-281716.firebaseapp.com/
-
 
 
