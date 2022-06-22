@@ -20,7 +20,7 @@ joblib==0.16.0
 MarkupSafe==1.1.1
 marshmallow==3.7.0
 marshmallow-sqlalchemy==0.23.1
-numpy==1.19.1
+numpy==1.22.0
 pandas==1.1.1
 pgeocode==0.2.1
 pickle-mixin==1.0.2
